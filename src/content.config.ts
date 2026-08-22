@@ -17,7 +17,7 @@ const datedContent = {
 };
 
 const writing = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/writing" }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/writing" }),
   schema: z
     .object({
       ...datedContent,
@@ -31,7 +31,7 @@ const writing = defineCollection({
 });
 
 const notes = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/notes" }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/notes" }),
   schema: z
     .object(datedContent)
     .strict()
@@ -42,7 +42,7 @@ const notes = defineCollection({
 });
 
 const pages = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/pages" }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/pages" }),
   schema: z
     .object({
       title: nonEmptyString,
