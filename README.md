@@ -33,4 +33,3 @@ pnpm quality
 ```
 
 `pnpm quality` is the single local and CI quality gate.
-

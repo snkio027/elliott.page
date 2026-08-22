@@ -1,0 +1,7 @@
+.astro/
+dist/
+node_modules/
+pnpm-lock.yaml
+
+# Frozen architecture baselines are preserved verbatim.
+docs/
