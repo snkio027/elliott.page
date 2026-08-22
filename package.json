@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "deploy": "wrangler deploy",
     "preview": "astro preview",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
@@ -29,6 +30,7 @@
     "prettier": "3.9.6",
     "prettier-plugin-astro": "0.14.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.67.0"
+    "typescript-eslint": "8.67.0",
+    "wrangler": "4.125.0"
   }
 }
