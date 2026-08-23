@@ -2,13 +2,15 @@
 
 **Version:** 1.0
 
-**Status:** PASS / FROZEN — Phase 1.2 / Gate A: Typography Contract
+**Status:** GATE C REMOTE GATE PENDING — Phase 1.2: Typography System
 
-**Evidence:** SYSTEM-FIRST SPECIMEN — PASS / LOCAL CONTROL BASELINE
+**Evidence:** LOCAL IMPLEMENTATION COMPLETE / LOCAL EVIDENCE PASS
 
-**Gate B:** PASS — Native System Font Stack selected for v1
+**Gate A:** PASS / FROZEN — Typography Contract
 
-**Gate C:** NEXT — Implementation Readiness
+**Gate B:** PASS / FROZEN — Native System Font Stack selected for v1
+
+**Gate C:** REMOTE GATE PENDING — Implementation Readiness
 
 **Depends on:** `information-and-page-semantics.md`
 
@@ -59,7 +61,9 @@ Phase 1.2 does not create:
 - final Home, About, or Now copy.
 
 No CSS, font asset, or page implementation is authorized merely because it appears
-as an example in this contract.
+as an example in this contract. Gate C authorizes only the shared typography
+tokens and primitives, their import through the minimal base layout, and the
+baseline identity proof recorded in Section 14.
 
 ## 3. Frozen inputs
 
@@ -474,7 +478,7 @@ Lorem ipsum or repeated placeholder glyphs are not sufficient evidence.
 - accessibility and loading constraints are executable;
 - no page-layout or color decision has entered the contract.
 
-### Gate B — Font family (PASS)
+### Gate B — Font family (PASS / FROZEN)
 
 - the system-first specimen is the control;
 - every candidate uses the same content, metrics, and viewports;
@@ -488,18 +492,46 @@ rejected for v1; Newsreader + Geist is deferred. This is not a claim of cross-pl
 typography equivalence. Windows, Linux, iOS, Android, and independent browser-engine
 behavior remain unverified and are deferred until a real need or defect appears.
 
-### Gate C — Implementation readiness (NEXT)
+### Gate C — Implementation readiness (REMOTE GATE PENDING)
 
 - the selected values can become shared Design Tokens without component-specific
   exceptions;
 - the required specimen passes all viewport, zoom, spacing, and failure states;
-- no font asset or style exists outside the selected stack;
+- no production font asset or style exists outside the selected stack;
 - Phase 1.3 can consume the contract without reopening semantic hierarchy.
 
-Gate A is frozen and Gate B has passed within its explicit current-host evidence
-boundary. Phase 1.2 as a whole becomes `PASS / FROZEN` only after Gate C passes. No
-production typography implementation is authorized until Gate C establishes
-implementation readiness.
+The implementation authority is deliberately narrow:
+
+- `src/styles/tokens.css` contains the frozen family slots, scale, line-height,
+  weight, tracking, measure, and typographic-flow values;
+- `src/styles/typography.css` maps the seven roles and language behavior to reusable
+  primitives without page- or component-specific scale exceptions;
+- `src/layouts/BaseLayout.astro` imports that shared source once and preserves
+  explicit document language;
+- `src/pages/index.astro` is only the smallest semantic production proof: one
+  `Elliott Bai` identity heading consuming Display inside a type region;
+- `specimens/typography-system.html` imports the same production tokens and
+  primitives, while `specimens/typography-system.css` now contains only the neutral
+  experiment shell, controls, annotations, and stress overrides;
+- the static production build contains no `@font-face`, WOFF2 asset, or
+  rejected/deferred candidate family reference.
+
+The shared implementation reproduced the frozen control geometry at `320px`,
+`768px`, and `1440px`. At `320px`, 200% root text, the WCAG text-spacing override,
+and their combined state produced no page-level horizontal overflow; long code
+remained locally scrollable. The candidate routes and Geist delayed-load failure
+also remained reproducible after the specimen began consuming production CSS.
+
+Gate C implementation and local evidence are complete within the explicit
+current-host evidence boundary. The local canonical `pnpm quality` entrypoint did
+not complete because the execution environment's pnpm shim attempted an unsafe
+`node_modules` reconstruction and TTY protection stopped it. Its four constituent
+checks were run independently and passed without mutating the dependency tree.
+
+Gate C remains open until the branch is reviewed through a pull request and the
+Required `Delivery / Quality` check executes canonical `pnpm quality` successfully
+in clean GitHub CI. Phase 1.2 is therefore not yet frozen, and Phase 1.3 must not
+consume this implementation as final authority until that remote gate passes.
 
 ## 15. Change control
 

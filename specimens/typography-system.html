@@ -9,6 +9,8 @@
     />
     <title>Typography System Specimen — Elliott.page</title>
     <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../src/styles/tokens.css" />
+    <link rel="stylesheet" href="../src/styles/typography.css" />
     <link rel="stylesheet" href="./typography-system.css" />
     <script>
       (() => {
@@ -116,23 +118,26 @@
   <body>
     <div class="specimen-shell">
       <header class="identity-specimen">
-        <p class="specimen-label">
+        <p class="specimen-label type-meta">
           Local validation artifact · not a product page
         </p>
         <h1 class="type-display">Elliott Bai</h1>
-        <p class="identity-statement">
+        <p class="identity-statement type-body">
           A quiet place for writing, notes, and things worth keeping.
         </p>
-        <nav aria-label="Specimen navigation">
+        <nav class="type-meta" aria-label="Specimen navigation">
           <a href="#english">About</a>
           <a href="#chinese">Now</a>
         </nav>
-        <a class="contact-link" href="mailto:hi@elliott.page"
+        <a class="contact-link type-meta" href="mailto:hi@elliott.page"
           >hi@elliott.page</a
         >
       </header>
 
-      <aside class="test-controls" aria-labelledby="test-controls-title">
+      <aside
+        class="test-controls type-meta"
+        aria-labelledby="test-controls-title"
+      >
         <h2 id="test-controls-title">Test controls</h2>
         <p class="candidate-status" aria-live="polite">
           <strong id="candidate-name">Control — System</strong>
@@ -171,8 +176,10 @@
       </aside>
 
       <main id="specimen-content" class="specimen-content">
-        <section id="english" class="language-sample" lang="en">
-          <p class="specimen-label">English-dominant · target measure 66ch</p>
+        <section id="english" class="language-sample type-region" lang="en">
+          <p class="specimen-label type-meta">
+            English-dominant · target measure 66ch
+          </p>
           <div class="type-title" data-token="type-title">
             Reading as a durable practice
           </div>
@@ -248,8 +255,10 @@ const identifier = "a_very_long_identifier_that_preserves_source_meaning";</code
           </div>
         </section>
 
-        <section id="chinese" class="language-sample" lang="zh-CN">
-          <p class="specimen-label">简体中文为主 · 目标行长约 32 字</p>
+        <section id="chinese" class="language-sample type-region" lang="zh-CN">
+          <p class="specimen-label type-meta">
+            简体中文为主 · 目标行长约 32 字
+          </p>
           <div class="type-title" data-token="type-title">
             一处安静的长期空间
           </div>
@@ -271,8 +280,7 @@ const identifier = "a_very_long_identifier_that_preserves_source_meaning";</code
 
             <div class="emphasis-comparison" aria-label="中文强调方式比较">
               <p>
-                已选着重号：这里需要<span class="emphasis-mark">认真阅读</span
-                >，并检查标记是否与下一行发生碰撞。
+                已选着重号：这里需要<em>认真阅读</em>，并检查标记是否与下一行发生碰撞。
               </p>
               <p>
                 已拒绝字重方案：这里需要<span class="emphasis-weight"
@@ -315,7 +323,10 @@ const identifier = "a_very_long_identifier_that_preserves_source_meaning";</code
           </div>
         </section>
 
-        <section class="role-sample" aria-labelledby="role-sample-title">
+        <section
+          class="role-sample type-meta"
+          aria-labelledby="role-sample-title"
+        >
           <h2 id="role-sample-title">Role inventory</h2>
           <dl>
             <div>

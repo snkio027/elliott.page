@@ -1,9 +1,11 @@
 # Typography specimens
 
-**Status:** PASS / LOCAL CONTROL BASELINE — Phase 1.2 / Gate A
+**Status:** LOCAL EVIDENCE PASS / REMOTE GATE PENDING — Phase 1.2 Gate C
 
-This directory contains local design-validation artifacts. It is not imported by
-Astro, copied to `public/`, or deployed as part of Elliott.page.
+This directory contains local design-validation artifacts. Astro does not import
+the directory, copy it to `public/`, or deploy it as part of Elliott.page. The
+typography specimen deliberately imports production CSS from `src/styles/` so the
+same contract implementation is verified rather than duplicated.
 
 `typography-system.html` is the system-font control for Phase 1.2. Open it directly
 in a browser or serve this directory with any local static-file server.
@@ -56,4 +58,28 @@ production integration.
 
 **Gate B result:** PASS — SELECT Native System Font Stack for v1
 
-**Next:** Gate C — Implementation Readiness
+## Gate C implementation record
+
+Validated on 23 August 2026 in the same local macOS Chrome/Chromium evidence
+boundary used by Gate B:
+
+| Concern              | Result                                                                                                                              |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Shared source        | The specimen consumes `src/styles/tokens.css` and `src/styles/typography.css` directly                                              |
+| Control parity       | Display, English title/body, and Chinese title/body geometry match the frozen Gate A control at `320px`, `768px`, and `1440px`      |
+| `320px` resilience   | 200% root text, WCAG text spacing, and the combined state produce no page-level horizontal overflow                                 |
+| Long code            | Remains horizontally scrollable inside its own block in every stress state                                                          |
+| Chinese `<em>`       | The production primitive renders filled dots below the text on the validated host                                                   |
+| Candidate regression | Candidate routes still load only their selected local assets; the Geist `+53.758px` delayed-load title failure remains reproducible |
+| Production proof     | `BaseLayout.astro` imports the shared source and the baseline Home renders one semantic Display heading                             |
+| Production isolation | The static build contains no `@font-face`, WOFF2 asset, or candidate-family reference                                               |
+
+Candidate CSS and WOFF2 files remain reproducibility evidence under `specimens/`.
+They override font slots only inside an explicitly selected local evaluation route
+and never enter the production dependency graph.
+
+**Gate C result:** LOCAL IMPLEMENTATION COMPLETE / LOCAL EVIDENCE PASS
+
+**Remote gate:** PENDING — Required `Delivery / Quality`
+
+**Phase 1.2 result:** NOT YET FROZEN
