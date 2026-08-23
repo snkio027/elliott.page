@@ -1,11 +1,10 @@
 # Gate B — Font Family Evaluation
 
-**Status:** CURRENT-HOST EVALUATION COMPLETE — Phase 1.2 / Gate B remains IN
-PROGRESS
+**Status:** PASS — Phase 1.2 / Gate B: Font Family Evaluation
 
 **Control:** System-first specimen — PASS
 
-**Current-host recommendation:** PROVISIONAL SELECT — System control
+**Selected for v1:** Native System Font Stack
 
 **Production integration:** NOT AUTHORIZED
 
@@ -143,7 +142,7 @@ Checked-in WOFF2 SHA-256 values:
 | Inter italic      | `f73bd787e2c679937a2e72d1aa94eae65bd8f5fd9bf4ad0fe7340d4ad2e9a5ed` |
 | Newsreader normal | `3a871cb5a902d58c422ca4a5f4478b6666d1167e1448bb2f0054b003e4769ba8` |
 
-## Required browser matrix
+## Required current-host matrix
 
 Each system must be reviewed at `320px`, `768px`, and `1440px` with normal font
 loading. It must also pass:
@@ -159,11 +158,37 @@ loading. It must also pass:
 
 ### Evidence boundary
 
-The controlled pass was completed on 23 August 2026 in the current macOS browser
-session. It establishes local font activation, geometry, overflow, stress-state,
-fallback, and payload evidence. It does not claim a Windows, Linux, iOS, Android,
-or independent browser-engine result. Gate B therefore remains open until the
-target browser and operating-system matrix receives final visual confirmation.
+The controlled pass was completed on 23 August 2026 in the current local
+Chrome/Chromium environment on macOS. It establishes local font activation,
+geometry, overflow, stress-state, fallback, and payload evidence for the v1 font
+family decision.
+
+```text
+Evaluation environment
+
+Host:
+macOS
+
+Control:
+native system font stack
+
+Primary validated browser:
+current local Chrome / Chromium environment
+
+Additional local browser:
+Safari — optional manual sanity check, not a Gate B blocker
+
+Out of scope:
+Windows
+Android
+iOS
+Linux
+cross-platform typography equivalence
+```
+
+This result does not claim that the System Font Stack has been verified across
+platforms. Cross-platform typography behavior remains unverified and is deferred
+until a real need or defect appears.
 
 No remote font service was contacted by the specimen. The local server observed
 only the selected candidate stylesheet and its local WOFF2 assets. The browser
@@ -232,11 +257,12 @@ be averaged away by stronger visual scores.
 
 The numbers summarize the evidence; they do not override admission failures.
 
-### Current disposition
+### Final disposition
 
 ```text
 Control
-PASS / PROVISIONAL SELECT
+PASS / SELECT FOR V1
+Native System Font Stack
 
 Geist
 FAIL / REJECT FOR V1
@@ -251,8 +277,40 @@ FAIL / DEFER
 Reason: strongest character, but near-limit payload and geometry failure
 ```
 
-The current evidence supports **System Fonts Selected** if the target-platform
-visual pass does not reveal a real control defect. No candidate has yet cleared the
-higher rule of materially beating the control as a complete bilingual system.
-Until that final matrix is complete, this is a current-host recommendation rather
-than a frozen Gate B decision.
+**SELECT — Native System Font Stack for Elliott.page v1.**
+
+The system stack won a controlled comparison; it was not selected by default or
+because font evaluation was skipped. No web-font candidate cleared the higher rule
+of materially beating the zero-byte control as a complete bilingual system.
+
+Cross-platform verification is intentionally deferred. A real readability,
+glyph-coverage, emphasis, overflow, or fallback defect on another platform may
+reopen the relevant compatibility work later; theoretical typography equivalence
+does not keep Gate B open.
+
+```text
+Phase 1.2 — Typography System
+
+Gate A — Typography Contract
+PASS / FROZEN
+
+Gate B — Font Family Evaluation
+PASS
+
+Selected for v1
+└── Native System Font Stack
+
+Rejected
+├── Inter
+└── Geist
+
+Deferred
+└── Newsreader + Geist
+
+Evidence scope
+└── Current macOS host
+    └── Cross-platform verification deferred
+
+Gate C — Implementation Readiness
+NEXT
+```
