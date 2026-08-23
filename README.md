@@ -7,14 +7,17 @@ The product direction and engineering boundaries are defined in:
 
 - [`docs/manifesto.md`](docs/manifesto.md)
 - [`docs/architecture.md`](docs/architecture.md)
+- [`docs/information-and-page-semantics.md`](docs/information-and-page-semantics.md)
+- [`docs/typography.md`](docs/typography.md)
 
 ## Status
 
-Phase 0.2 — Repository & Astro Baseline Initialization.
+Foundation is frozen. Domain trust, the repository and Astro baseline, and the
+Cloudflare deployment baseline have passed their acceptance gates.
 
-The repository currently establishes the smallest reproducible and verifiable
-foundation. Product design, production content, and deployment are intentionally
-outside this phase.
+Phase 1.1 — Information & Page Semantics is frozen. Phase 1.2 — Typography System
+is in progress. Publishing, production content, and later design concerns remain
+outside the current phase.
 
 ## Runtime
 
