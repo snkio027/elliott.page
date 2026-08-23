@@ -6,9 +6,9 @@
 
 **Evidence:** SYSTEM-FIRST SPECIMEN — PASS / LOCAL CONTROL BASELINE
 
-**Gate B:** OPEN — Font Family Evaluation
+**Gate B:** PASS — Native System Font Stack selected for v1
 
-**Gate C:** NOT STARTED — Implementation Readiness
+**Gate C:** NEXT — Implementation Readiness
 
 **Depends on:** `information-and-page-semantics.md`
 
@@ -474,7 +474,7 @@ Lorem ipsum or repeated placeholder glyphs are not sufficient evidence.
 - accessibility and loading constraints are executable;
 - no page-layout or color decision has entered the contract.
 
-### Gate B — Font family (OPEN)
+### Gate B — Font family (PASS)
 
 - the system-first specimen is the control;
 - every candidate uses the same content, metrics, and viewports;
@@ -482,7 +482,13 @@ Lorem ipsum or repeated placeholder glyphs are not sufficient evidence.
 - the chosen stack passes fallback, licensing, and payload checks;
 - a no-web-font decision is considered a complete and valid result.
 
-### Gate C — Implementation readiness (NOT STARTED)
+The Native System Font Stack is selected for v1 based on the controlled current-host
+evaluation in the local macOS Chrome/Chromium environment. Geist and Inter are
+rejected for v1; Newsreader + Geist is deferred. This is not a claim of cross-platform
+typography equivalence. Windows, Linux, iOS, Android, and independent browser-engine
+behavior remain unverified and are deferred until a real need or defect appears.
+
+### Gate C — Implementation readiness (NEXT)
 
 - the selected values can become shared Design Tokens without component-specific
   exceptions;
@@ -490,9 +496,10 @@ Lorem ipsum or repeated placeholder glyphs are not sufficient evidence.
 - no font asset or style exists outside the selected stack;
 - Phase 1.3 can consume the contract without reopening semantic hierarchy.
 
-Gate A is frozen. Phase 1.2 as a whole becomes `PASS / FROZEN` only after all three
-gates pass. Font selection remains deliberately open, and no production typography
-implementation is authorized by the Gate A decision.
+Gate A is frozen and Gate B has passed within its explicit current-host evidence
+boundary. Phase 1.2 as a whole becomes `PASS / FROZEN` only after Gate C passes. No
+production typography implementation is authorized until Gate C establishes
+implementation readiness.
 
 ## 15. Change control
 

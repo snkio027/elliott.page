@@ -28,6 +28,32 @@ Validated on 23 August 2026 using the system-font control:
 | Simplified Chinese `<em>`       | Filled dots below the text remain distinct without line collision                                                     |
 | Weight-only Chinese `<em>`      | Rejected because it becomes visually equivalent to `<strong>`                                                         |
 
-This is Gate A evidence, not a cross-platform font-family decision. Gate B still
-requires the same specimen to be reviewed on the target browser and operating-system
-matrix before a final stack is selected.
+This is the frozen Gate A control baseline. Gate B subsequently selected the Native
+System Font Stack for v1 using current-host evidence from the local macOS
+Chrome/Chromium environment. Cross-platform typography behavior remains unverified
+and is intentionally deferred until a real need or defect appears.
+
+## Gate B candidate routing
+
+Gate B reuses the same content, scale, rhythm, measure, and page shell. A query
+parameter changes only the font slots:
+
+```text
+typography-system.html?candidate=control
+typography-system.html?candidate=geist
+typography-system.html?candidate=inter
+typography-system.html?candidate=editorial
+```
+
+Add `&load=blocked` to load only the candidate's declared fallback strategy while
+leaving its WOFF2 faces unused, or `&load=delayed` to hold that fallback for two
+seconds before activating the custom faces. Only the selected candidate assets are
+eligible to be requested.
+
+The source, subsetting, payload, test matrix, and decision record live in
+`candidates/README.md`. Candidate files are evaluation artifacts only; none are
+production integration.
+
+**Gate B result:** PASS — SELECT Native System Font Stack for v1
+
+**Next:** Gate C — Implementation Readiness
