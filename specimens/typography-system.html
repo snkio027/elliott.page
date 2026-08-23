@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Local system-font specimen for the Elliott.page typography contract."
+    />
+    <title>Typography System Specimen — Elliott.page</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./typography-system.css" />
+  </head>
+  <body>
+    <div class="specimen-shell">
+      <header class="identity-specimen">
+        <p class="specimen-label">
+          Local validation artifact · not a product page
+        </p>
+        <h1 class="type-display">Elliott Bai</h1>
+        <p class="identity-statement">
+          A quiet place for writing, notes, and things worth keeping.
+        </p>
+        <nav aria-label="Specimen navigation">
+          <a href="#english">About</a>
+          <a href="#chinese">Now</a>
+        </nav>
+        <a class="contact-link" href="mailto:hi@elliott.page"
+          >hi@elliott.page</a
+        >
+      </header>
+
+      <aside class="test-controls" aria-labelledby="test-controls-title">
+        <h2 id="test-controls-title">Test controls</h2>
+        <label>
+          <input id="spacing-override" type="checkbox" />
+          Apply the WCAG text-spacing override
+        </label>
+        <label>
+          <input id="text-resize" type="checkbox" />
+          Simulate 200% root text size
+        </label>
+        <p>
+          System fonts only. No font file, external request, or production token
+          is used.
+        </p>
+      </aside>
+
+      <main id="specimen-content" class="specimen-content">
+        <section id="english" class="language-sample" lang="en">
+          <p class="specimen-label">English-dominant · target measure 66ch</p>
+          <div class="type-title" data-token="type-title">
+            Reading as a durable practice
+          </div>
+          <p class="meta-line">
+            <time datetime="2026-08">Last updated: August 2026</time>
+          </p>
+
+          <div class="prose">
+            <p>
+              A personal site becomes useful through accumulation rather than
+              novelty. Its typography should make returning, revising, and
+              reading feel natural without turning the interface into the main
+              subject.
+            </p>
+            <p>
+              This paragraph includes <strong>strong text</strong>,
+              <em>genuine emphasis</em>, a
+              <a href="https://example.com/typography">descriptive prose link</a
+              >, and inline code such as <code>font-display: swap</code>.
+            </p>
+
+            <div class="type-heading-2" data-token="type-heading-2">
+              A hierarchy for long-form reading
+            </div>
+            <p>
+              Headings introduce the material that follows. They stay closer to
+              the section they own than to the previous section, preserving a
+              readable direction even when color and decoration are absent.
+            </p>
+
+            <div class="type-heading-3" data-token="type-heading-3">
+              Lists retain the prose rhythm
+            </div>
+            <ul>
+              <li>Body text remains the calibration point.</li>
+              <li>
+                Supporting information stays compact without becoming
+                disposable.
+                <ul>
+                  <li>Nested ideas remain visibly subordinate.</li>
+                  <li>List density does not collapse the reading rhythm.</li>
+                </ul>
+              </li>
+              <li>Components do not invent private type scales.</li>
+            </ul>
+
+            <div class="type-heading-4" data-token="type-heading-4">
+              Quotation and citation
+            </div>
+            <blockquote>
+              <p>
+                A durable interface is quiet enough to let the reader notice the
+                thought rather than the machinery around it.
+              </p>
+              <cite>Specimen copy, not a product quotation</cite>
+            </blockquote>
+
+            <div class="type-heading-4" data-token="type-code">
+              Code character distinction
+            </div>
+            <pre><code>const ambiguous = "0 O 1 l I";
+const operators = value =&gt; value !== null &amp;&amp; value &gt;= 0;
+const identifier = "a_very_long_identifier_that_preserves_source_meaning";</code></pre>
+
+            <p>
+              Long URL test:
+              <a
+                class="breakable"
+                href="https://example.com/a/very/long/path/that/tests/wrapping/without/widening/the/page"
+                >https://example.com/a/very/long/path/that/tests/wrapping/without/widening/the/page</a
+              >
+            </p>
+          </div>
+        </section>
+
+        <section id="chinese" class="language-sample" lang="zh-CN">
+          <p class="specimen-label">简体中文为主 · 目标行长约 32 字</p>
+          <div class="type-title" data-token="type-title">
+            一处安静的长期空间
+          </div>
+          <p class="meta-line">
+            <time datetime="2026-08">最后更新：2026 年 8 月</time>
+          </p>
+
+          <div class="prose">
+            <p>
+              个人网站的价值不来自频繁改版，而来自内容在时间中的积累。排版应该让阅读、修改与再次访问变得自然，同时避免界面本身抢走注意力。
+            </p>
+            <p>
+              这一段包含<strong>重要内容</strong>、两种待比较的强调方式，以及一个<a
+                href="https://example.com/reading"
+                >描述清楚的正文链接</a
+              >。混排示例使用 Astro、Markdown 与 2026
+              这样的拉丁文字和数字，但不会通过脚本自动插入空格。
+            </p>
+
+            <div class="emphasis-comparison" aria-label="中文强调方式比较">
+              <p>
+                已选着重号：这里需要<span class="emphasis-mark">认真阅读</span
+                >，并检查标记是否与下一行发生碰撞。
+              </p>
+              <p>
+                已拒绝字重方案：这里需要<span class="emphasis-weight"
+                  >认真阅读</span
+                >，但它会与 strong 的视觉含义合并。
+              </p>
+            </div>
+
+            <div class="type-heading-2" data-token="type-heading-2">
+              面向长期阅读的层级
+            </div>
+            <p>
+              标题负责引出后续内容。即使没有颜色、边框或动画，读者也应该能够理解页面结构，并顺畅地进入下一段内容。
+            </p>
+
+            <div class="type-heading-3" data-token="type-heading-3">
+              列表与段落保持同一节奏
+            </div>
+            <ol>
+              <li>正文是整套排版系统的基准。</li>
+              <li>辅助信息可以紧凑，但不能小到难以阅读。</li>
+              <li>中文标点不应孤立在错误的行首或行尾。</li>
+            </ol>
+
+            <div class="type-heading-4" data-token="type-heading-4">
+              引用与出处
+            </div>
+            <blockquote>
+              <p>
+                安静并不意味着缺少层级，而是让层级服务于内容，而不是成为内容的竞争者。
+              </p>
+              <cite>测试文本，并非正式内容</cite>
+            </blockquote>
+
+            <p>
+              超长标识符测试：<code class="breakable"
+                >typography_contract_with_a_deliberately_unbroken_identifier</code
+              >。
+            </p>
+          </div>
+        </section>
+
+        <section class="role-sample" aria-labelledby="role-sample-title">
+          <h2 id="role-sample-title">Role inventory</h2>
+          <dl>
+            <div>
+              <dt>Display</dt>
+              <dd>Identity only; rare and restrained.</dd>
+            </div>
+            <div>
+              <dt>Heading</dt>
+              <dd>Document hierarchy from title through h4.</dd>
+            </div>
+            <div>
+              <dt>Body</dt>
+              <dd>English, 简体中文, and mixed-language sustained reading.</dd>
+            </div>
+            <div>
+              <dt>Meta</dt>
+              <dd>
+                Navigation, dates, captions, labels, and freshness markers.
+              </dd>
+            </div>
+            <div>
+              <dt>Code</dt>
+              <dd><code>0 O 1 l I =&gt; !== &amp;&amp;</code></dd>
+            </div>
+            <div>
+              <dt>Quote</dt>
+              <dd>Body-level quoted voice with a Meta citation.</dd>
+            </div>
+            <div>
+              <dt>Link</dt>
+              <dd><a href="#english">Inherits its surrounding role</a>.</dd>
+            </div>
+          </dl>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
