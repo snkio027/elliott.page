@@ -2,6 +2,8 @@
   color-scheme: light dark;
   font-synthesis: none;
 
+  --font-display-latin:
+    ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-text-latin:
     ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-text-cjk: ui-serif, "Songti SC", STSong, SimSun, serif;
@@ -34,6 +36,7 @@ body {
   color: CanvasText;
   background: Canvas;
   font-family: var(--font-meta);
+  font-optical-sizing: auto;
 }
 
 a {
@@ -82,7 +85,7 @@ cite {
 .type-display {
   max-inline-size: 14ch;
   margin: 0;
-  font-family: var(--font-text-latin);
+  font-family: var(--font-display-latin);
   font-size: var(--type-display);
   font-weight: 600;
   line-height: 1.05;
@@ -121,6 +124,30 @@ nav {
   font: inherit;
 }
 
+.candidate-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  margin-block-start: 0.75rem !important;
+}
+
+.candidate-status span {
+  font-weight: 400;
+}
+
+.candidate-navigation {
+  margin-block-start: 0.75rem;
+}
+
+.candidate-navigation a[aria-current="page"] {
+  font-weight: 600;
+  text-decoration-thickness: 0.15em;
+}
+
+.failure-navigation {
+  margin-block-start: 0.75rem !important;
+}
+
 .test-controls label {
   display: inline-flex;
   align-items: baseline;
@@ -147,6 +174,7 @@ nav {
   --line-body: 1.65;
   --measure: 66ch;
   --title-measure: 24ch;
+  --font-display: var(--font-display-latin);
   --font-text: var(--font-text-latin);
   --body-line: calc(var(--type-body) * var(--line-body));
 
@@ -158,6 +186,7 @@ nav {
   --line-body: 1.75;
   --measure: 32ic;
   --title-measure: 16ic;
+  --font-display: var(--font-text-cjk);
   --font-text: var(--font-text-cjk);
 }
 
@@ -171,7 +200,7 @@ nav {
 .type-heading-3,
 .type-heading-4 {
   max-inline-size: var(--title-measure);
-  font-family: var(--font-text);
+  font-family: var(--font-display);
   font-weight: 600;
   overflow-wrap: break-word;
 }

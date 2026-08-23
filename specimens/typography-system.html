@@ -5,11 +5,113 @@
     <meta name="viewport" content="width=device-width" />
     <meta
       name="description"
-      content="Local system-font specimen for the Elliott.page typography contract."
+      content="Controlled font-family specimen for the Elliott.page typography contract."
     />
     <title>Typography System Specimen — Elliott.page</title>
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./typography-system.css" />
+    <script>
+      (() => {
+        const candidates = {
+          control: {
+            label: "Control — System",
+            payload: "0 KiB",
+          },
+          geist: {
+            label: "A — Geist",
+            payload: "30.5 KiB",
+          },
+          inter: {
+            label: "B — Inter",
+            payload: "79.5 KiB",
+          },
+          editorial: {
+            label: "C — Newsreader + Geist",
+            payload: "92.7 KiB",
+          },
+        };
+        const loadingModes = new Set(["normal", "blocked", "delayed"]);
+        const params = new URLSearchParams(window.location.search);
+        const candidate = Object.hasOwn(candidates, params.get("candidate"))
+          ? params.get("candidate")
+          : "control";
+        const loadingMode = loadingModes.has(params.get("load"))
+          ? params.get("load")
+          : "normal";
+        const state = {
+          candidate,
+          loadingMode,
+          ...candidates[candidate],
+          status: candidate === "control" ? "system control" : "pending",
+        };
+
+        document.documentElement.dataset.candidate = candidate;
+        document.documentElement.dataset.loadingMode = loadingMode;
+        window.typographySpecimen = state;
+
+        const announce = () => {
+          window.dispatchEvent(
+            new CustomEvent("typography-specimen-change", { detail: state }),
+          );
+        };
+
+        const activateCustomFonts = async () => {
+          state.status = "loading custom fonts with swap";
+          document.documentElement.dataset.fontStatus = "available";
+          if (!document.body) {
+            await new Promise((resolve) => {
+              document.addEventListener("DOMContentLoaded", resolve, {
+                once: true,
+              });
+            });
+          }
+          document.body.getBoundingClientRect();
+          announce();
+          await document.fonts.ready;
+          state.status = "custom fonts loaded";
+          announce();
+        };
+
+        const loadCandidateStylesheet = () => {
+          const stylesheet = document.createElement("link");
+          stylesheet.rel = "stylesheet";
+          stylesheet.href = `./candidates/${candidate}.css`;
+          stylesheet.dataset.candidateStylesheet = candidate;
+          stylesheet.addEventListener("load", () => {
+            if (loadingMode === "blocked") {
+              state.status = "custom fonts blocked; candidate fallback active";
+              announce();
+            } else if (loadingMode === "delayed") {
+              window.setTimeout(activateCustomFonts, 2000);
+            } else {
+              activateCustomFonts();
+            }
+          });
+          stylesheet.addEventListener("error", () => {
+            state.status = "stylesheet failed; system fallback active";
+            document.documentElement.dataset.fontStatus = "failed";
+            announce();
+          });
+          document.head.append(stylesheet);
+        };
+
+        if (candidate !== "control") {
+          if (loadingMode === "blocked") {
+            state.status = "loading candidate fallback strategy";
+            document.documentElement.dataset.fontStatus = "blocked";
+          } else if (loadingMode === "delayed") {
+            state.status = "candidate fallback; custom fonts delayed 2 seconds";
+            document.documentElement.dataset.fontStatus = "loading";
+          } else {
+            state.status = "loading candidate stylesheet";
+            document.documentElement.dataset.fontStatus = "loading";
+          }
+          loadCandidateStylesheet();
+        } else {
+          document.documentElement.dataset.fontStatus = "control";
+        }
+      })();
+    </script>
   </head>
   <body>
     <div class="specimen-shell">
@@ -32,6 +134,27 @@
 
       <aside class="test-controls" aria-labelledby="test-controls-title">
         <h2 id="test-controls-title">Test controls</h2>
+        <p class="candidate-status" aria-live="polite">
+          <strong id="candidate-name">Control — System</strong>
+          <span id="candidate-loading">system control</span>
+          <span id="candidate-payload">0 KiB font payload</span>
+        </p>
+        <nav class="candidate-navigation" aria-label="Font system candidates">
+          <a href="?candidate=control">Control</a>
+          <a href="?candidate=geist">A · Geist</a>
+          <a href="?candidate=inter">B · Inter</a>
+          <a href="?candidate=editorial">C · Editorial</a>
+        </nav>
+        <p class="failure-navigation">
+          Failure state:
+          <a id="blocked-font-link" href="?candidate=control&load=blocked"
+            >block the selected custom font</a
+          >
+          ·
+          <a id="delayed-font-link" href="?candidate=control&load=delayed"
+            >delay it by 2 seconds</a
+          >
+        </p>
         <label>
           <input id="spacing-override" type="checkbox" />
           Apply the WCAG text-spacing override
@@ -41,8 +164,9 @@
           Simulate 200% root text size
         </label>
         <p>
-          System fonts only. No font file, external request, or production token
-          is used.
+          Candidate assets are local, Latin-only evaluation subsets. CJK and
+          Code remain system-first; no third-party runtime request or production
+          token is used.
         </p>
       </aside>
 
@@ -228,5 +352,35 @@ const identifier = "a_very_long_identifier_that_preserves_source_meaning";</code
         </section>
       </main>
     </div>
+    <script>
+      (() => {
+        const state = window.typographySpecimen;
+        const syncStatus = () => {
+          document.querySelector("#candidate-name").textContent = state.label;
+          document.querySelector("#candidate-loading").textContent =
+            state.status;
+          document.querySelector("#candidate-payload").textContent =
+            `${state.payload} font payload`;
+          document.querySelector("#blocked-font-link").href =
+            `?candidate=${state.candidate}&load=blocked`;
+          document.querySelector("#delayed-font-link").href =
+            `?candidate=${state.candidate}&load=delayed`;
+
+          for (const link of document.querySelectorAll(
+            ".candidate-navigation a",
+          )) {
+            link.removeAttribute("aria-current");
+          }
+          document
+            .querySelector(
+              `.candidate-navigation a[href="?candidate=${state.candidate}"]`,
+            )
+            ?.setAttribute("aria-current", "page");
+        };
+
+        syncStatus();
+        window.addEventListener("typography-specimen-change", syncStatus);
+      })();
+    </script>
   </body>
 </html>
