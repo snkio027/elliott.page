@@ -10,6 +10,7 @@ The product direction and engineering boundaries are defined in:
 - [`docs/information-and-page-semantics.md`](docs/information-and-page-semantics.md)
 - [`docs/typography.md`](docs/typography.md)
 - [`docs/layout-and-visual-composition.md`](docs/layout-and-visual-composition.md)
+- [`docs/identity-surfaces.md`](docs/identity-surfaces.md)
 
 ## Status
 
@@ -27,6 +28,12 @@ production-navigation finding. The production proof exposes only the real root
 destination; About and Now remain specimen evidence rather than dead production
 links. The proof is not the formal Home surface, and no About or Now route has been
 created. Publishing and production content remain outside the frozen phase.
+
+Phase 1.4 — Identity Surfaces Gate A is in draft. It defines the content,
+activation, source-ownership, metadata, freshness, runtime, and accessibility
+contract for Home, About, and Now. Gate B and Gate C are not authorized; no About
+or Now content entry or production route has been created, and production
+navigation remains root-only until those destinations are real.
 
 ## Runtime
 
