@@ -330,8 +330,14 @@ the selected fallback metrics.
 - Prose links are underlined by default and remain identifiable without color.
 - Underline thickness and offset are calibrated after font selection so they clear
   Latin descenders and CJK punctuation.
-- Navigation links may omit a persistent underline only when hover, focus, current,
-  and visited states remain unambiguous without relying on color alone.
+- Navigation links remain identifiable as links without relying on color in both
+  unvisited and visited states. They may omit a persistent underline only when
+  another persistent non-color affordance preserves that recognition.
+- Hover, focus, and current states remain unambiguous without relying on color
+  alone.
+- A distinct visited-state treatment is optional. When used, it is limited to the
+  styling and observability permitted by the user agent's `:visited` privacy model
+  and must not remove the normal non-color link affordance.
 - Link text inherits size, family, weight, and line height from its surrounding
   role.
 - A link does not become bold solely because it is interactive.
@@ -489,6 +495,15 @@ token establish `500` as the intended Meta value. Section 6.3 now states the sam
 three-level invariant. This corrects a contradictory invariant; it does not reopen
 font selection or redesign the hierarchy.
 
+**Gate A correction — 25 August 2026:** Phase 1.3 Gate A review found that the
+original Link invariant required a visited state to remain distinct from an
+unvisited state without relying on color. Browser privacy protections may restrict
+`:visited` styling to color-related properties, hide the matched state from style
+query APIs, or prevent the selector from matching. Section 10.3 now separates
+persistent non-color link recognition from an optional visited-state distinction
+that follows the user agent's privacy model. This corrects an incompatible Web
+Platform invariant; it does not reopen the typographic roles or link hierarchy.
+
 ### Gate B — Font family (PASS / FROZEN)
 
 - the system-first specimen is the control;
@@ -573,3 +588,5 @@ distinct with a private scale, or a page mockup prefers different local spacing.
 - [CSS Values and Units Module Level 4](https://www.w3.org/TR/css-values-4/)
 - [Requirements for Chinese Text Layout](https://www.w3.org/International/clreq/)
 - [CSS Text Decoration Module Level 4](https://www.w3.org/TR/css-text-decor-4/)
+- [Selectors Level 4 — Link History and Privacy](https://drafts.csswg.org/selectors/#link)
+- [MDN — `:visited` privacy restrictions](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:visited#privacy_restrictions)
