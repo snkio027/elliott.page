@@ -31,10 +31,10 @@ created. Publishing and production content remain outside the frozen phase.
 
 Phase 1.4 — Identity Surfaces is in progress. Gate A — Identity Content & Surface
 Contract has passed Required `Delivery / Quality` and substantive delta review and
-is frozen. Gate B is next but remains not started and not authorized until the Gate
-A PR is merged; Gate C remains not started and not authorized. No About or Now
-content entry or production route has been created, and production navigation
-remains root-only until those destinations are real.
+is frozen. Gate B — Production Implementation is in progress on a candidate branch
+with publication approval pending. Gate C remains not started and not authorized,
+and production merge/deploy remains unauthorized until Gate B and Gate C pass on
+the same implementation candidate.
 
 ## Runtime
 

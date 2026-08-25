@@ -6,11 +6,11 @@
 
 **Gate A:** PASS / FROZEN — Identity Content & Surface Contract
 
-**Gate B:** NEXT / NOT STARTED / NOT AUTHORIZED — Production Implementation
+**Gate B:** IN PROGRESS — Production Implementation
 
 **Gate C:** NOT STARTED / NOT AUTHORIZED — Runtime & Accessibility Validation
 
-**Gate B implementation authorization:** NOT AUTHORIZED UNTIL GATE A MERGE
+**Gate B implementation authorization:** AUTHORIZED — Gate A merged
 
 **Gate C validation authorization:** NOT AUTHORIZED UNTIL GATE B IMPLEMENTATION
 REVIEW PASSES ON THE CANDIDATE REVISION
@@ -20,6 +20,8 @@ PASS ON THE SAME IMPLEMENTATION CANDIDATE
 
 **Evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
 SUBSTANTIVE DELTA REVIEW PASS
+
+**Gate B publication status:** CANDIDATE CONTENT / PUBLICATION APPROVAL PENDING
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`,
 `layout-and-visual-composition.md`, `src/content.config.ts`
@@ -546,7 +548,7 @@ Gate A passes only when:
 - frozen Phase 1.1–1.3 inputs are not contradicted;
 - no route, content entry, or production implementation is introduced.
 
-### Gate B — Production Implementation (NEXT / NOT STARTED / NOT AUTHORIZED)
+### Gate B — Production Implementation (IN PROGRESS)
 
 Gate B passes only when:
 
