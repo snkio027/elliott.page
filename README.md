@@ -20,9 +20,10 @@ Phase 1.1 — Information & Page Semantics and Phase 1.2 — Typography System a
 frozen. Typography Gates A, B, and C have passed; the Native System Font Stack is
 selected for v1, Required `Delivery / Quality` passed on the final reviewed
 revision, and the substantive delta review closed all findings. Phase 1.3 — Layout
-& Visual Composition has entered Gate A contract drafting. No layout or color
-production implementation is authorized yet. Publishing and production content
-remain outside the current phase.
+& Visual Composition Gate A has passed Required `Delivery / Quality` and
+substantive review and is frozen. Gate B — Composition Specimen is next but has not
+started. No layout or color production implementation is authorized yet.
+Publishing and production content remain outside the current phase.
 
 ## Runtime
 

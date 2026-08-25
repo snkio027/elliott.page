@@ -2,11 +2,15 @@
 
 **Version:** 1.0
 
-**Status:** DRAFT — Phase 1.3 / Gate A: Layout & Visual Contract
+**Status:** IN PROGRESS — Phase 1.3: Layout & Visual Composition
 
-**Gate B:** NOT STARTED — Composition Specimen
+**Gate A:** PASS / FROZEN — Layout & Visual Contract
+
+**Gate B:** NEXT / NOT STARTED — Composition Specimen
 
 **Gate C:** NOT STARTED — Production Integration
+
+**Evidence:** LOCAL QUALITY PASS / REMOTE QUALITY PASS / SUBSTANTIVE REVIEW PASS
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`
 
@@ -574,7 +578,7 @@ an open-ended gallery of visual styles.
 
 ## 15. Decision gates
 
-### Gate A — Layout & Visual Contract (DRAFT)
+### Gate A — Layout & Visual Contract (PASS / FROZEN)
 
 Gate A passes only when:
 
@@ -586,7 +590,7 @@ Gate A passes only when:
 - speculative component and token systems remain excluded;
 - no production implementation has entered the contract.
 
-### Gate B — Composition Specimen (NOT STARTED)
+### Gate B — Composition Specimen (NEXT / NOT STARTED)
 
 Gate B passes only when:
 
