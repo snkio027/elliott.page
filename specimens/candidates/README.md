@@ -1,12 +1,12 @@
 # Gate B — Font Family Evaluation
 
-**Status:** PASS — Phase 1.2 / Gate B: Font Family Evaluation
+**Status:** PASS / FROZEN — Phase 1.2 / Gate B: Font Family Evaluation
 
 **Control:** System-first specimen — PASS
 
 **Selected for v1:** Native System Font Stack
 
-**Production integration:** NOT AUTHORIZED
+**Production integration:** PASS / FROZEN — Native System Font Stack only
 
 This directory evaluates font systems against the frozen Typography Contract. The
 HTML content, type scale, line heights, rhythm, measure, responsive rules, and
@@ -290,12 +290,13 @@ does not keep Gate B open.
 
 ```text
 Phase 1.2 — Typography System
+PASS / FROZEN
 
 Gate A — Typography Contract
 PASS / FROZEN
 
 Gate B — Font Family Evaluation
-PASS
+PASS / FROZEN
 
 Selected for v1
 └── Native System Font Stack
@@ -312,5 +313,8 @@ Evidence scope
     └── Cross-platform verification deferred
 
 Gate C — Implementation Readiness
-NEXT
+PASS / FROZEN
+
+Next
+└── Phase 1.3
 ```

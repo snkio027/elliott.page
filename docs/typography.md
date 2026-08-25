@@ -2,13 +2,15 @@
 
 **Version:** 1.0
 
-**Status:** PASS / FROZEN — Phase 1.2 / Gate A: Typography Contract
+**Status:** PASS / FROZEN — Phase 1.2: Typography System
 
-**Evidence:** SYSTEM-FIRST SPECIMEN — PASS / LOCAL CONTROL BASELINE
+**Evidence:** LOCAL EVIDENCE PASS / REMOTE QUALITY PASS / SUBSTANTIVE REVIEW PASS
 
-**Gate B:** PASS — Native System Font Stack selected for v1
+**Gate A:** PASS / FROZEN — Typography Contract
 
-**Gate C:** NEXT — Implementation Readiness
+**Gate B:** PASS / FROZEN — Native System Font Stack selected for v1
+
+**Gate C:** PASS / FROZEN — Implementation Readiness
 
 **Depends on:** `information-and-page-semantics.md`
 
@@ -59,7 +61,9 @@ Phase 1.2 does not create:
 - final Home, About, or Now copy.
 
 No CSS, font asset, or page implementation is authorized merely because it appears
-as an example in this contract.
+as an example in this contract. Gate C authorizes only the shared typography
+tokens and primitives, their import through the minimal base layout, and the
+baseline identity proof recorded in Section 14.
 
 ## 3. Frozen inputs
 
@@ -170,11 +174,12 @@ complete type level of their context.
 
 ### 6.3 Weight and style
 
-The first implementation needs only two semantic weights:
+The first implementation uses three semantic weight levels:
 
 ```text
 Regular   400   Body, Quote, Code
-Strong    600   Display, Heading, Meta, strong emphasis
+Meta      500   Navigation, dates, captions, labels, freshness markers
+Strong    600   Display, Heading, strong emphasis
 ```
 
 - A selected font may map these values to the nearest genuine faces only when the
@@ -210,7 +215,7 @@ The final stacks must provide:
 
 - real glyph coverage for the declared language;
 - compatible perceived size and baseline alignment;
-- clear Regular and Strong states;
+- clear Regular, Meta, and Strong states;
 - legible punctuation and numerals;
 - stable fallback when the preferred face is unavailable.
 
@@ -444,6 +449,8 @@ It includes:
 - ordered, unordered, and nested lists;
 - a blockquote with citation;
 - inline code and a code block containing ambiguous glyphs;
+- explicit `p + p`, paragraph-to-list, and list-to-paragraph rhythm probes;
+- Heading, Blockquote, and Code cases as the first or last prose child;
 - a long URL and a long unbroken identifier;
 - intentional font-load failure.
 
@@ -474,7 +481,15 @@ Lorem ipsum or repeated placeholder glyphs are not sufficient evidence.
 - accessibility and loading constraints are executable;
 - no page-layout or color decision has entered the contract.
 
-### Gate B — Font family (PASS)
+**Gate A correction — 25 August 2026:** Gate C substantive review found that the
+type-level table and the implementation assigned Meta weight `500`, while the
+original prose in Section 6.3 incorrectly grouped Meta under Strong `600` and
+described only two weight levels. The table, accepted specimen, and production
+token establish `500` as the intended Meta value. Section 6.3 now states the same
+three-level invariant. This corrects a contradictory invariant; it does not reopen
+font selection or redesign the hierarchy.
+
+### Gate B — Font family (PASS / FROZEN)
 
 - the system-first specimen is the control;
 - every candidate uses the same content, metrics, and viewports;
@@ -488,18 +503,54 @@ rejected for v1; Newsreader + Geist is deferred. This is not a claim of cross-pl
 typography equivalence. Windows, Linux, iOS, Android, and independent browser-engine
 behavior remain unverified and are deferred until a real need or defect appears.
 
-### Gate C — Implementation readiness (NEXT)
+### Gate C — Implementation readiness (PASS / FROZEN)
 
 - the selected values can become shared Design Tokens without component-specific
   exceptions;
 - the required specimen passes all viewport, zoom, spacing, and failure states;
-- no font asset or style exists outside the selected stack;
+- no production font asset or style exists outside the selected stack;
 - Phase 1.3 can consume the contract without reopening semantic hierarchy.
 
-Gate A is frozen and Gate B has passed within its explicit current-host evidence
-boundary. Phase 1.2 as a whole becomes `PASS / FROZEN` only after Gate C passes. No
-production typography implementation is authorized until Gate C establishes
-implementation readiness.
+The implementation authority is deliberately narrow:
+
+- `src/styles/tokens.css` contains the frozen family slots, scale, line-height,
+  weight, tracking, measure, and typographic-flow values;
+- `src/styles/typography.css` maps the seven roles and language behavior to reusable
+  primitives without page- or component-specific scale exceptions;
+- `src/layouts/BaseLayout.astro` imports that shared source once and preserves
+  explicit document language;
+- `src/pages/index.astro` is only the smallest semantic production proof: one
+  `Elliott Bai` identity heading consuming Display inside a type region;
+- `specimens/typography-system.html` imports the same production tokens and
+  primitives, while `specimens/typography-system.css` now contains only the neutral
+  experiment shell, controls, annotations, and stress overrides;
+- the static production build contains no `@font-face`, WOFF2 asset, or
+  rejected/deferred candidate family reference.
+
+The initial Gate C implementation reproduced the prior control geometry, but
+substantive review found that both implementations contained the same selector
+cascade defect: the broad paragraph/list transition rule overrode the frozen
+`0.8B` consecutive-paragraph rhythm with `1B`. The production source and specimen
+were corrected to implement `p + p = 0.8B` and `p ↔ list = 1B`; the corrected
+baseline replaces the defective geometry rather than preserving it as false
+parity.
+
+The corrected specimen also verifies zero leading and trailing margin when a
+Heading, Blockquote, or Code block is the first or last prose child. Existing
+viewport, enlargement, text-spacing, CJK emphasis, local code overflow, candidate
+routing, and Geist delayed-load failure evidence is rerun after this correction.
+
+Gate C local evidence passed within the explicit current-host boundary. The local
+canonical `pnpm quality` entrypoint did not complete because the execution
+environment's pnpm shim attempted an unsafe `node_modules` reconstruction and TTY
+protection stopped it; its four constituent checks passed independently without
+mutating the dependency tree. Required `Delivery / Quality` subsequently executed
+canonical `pnpm quality` successfully in clean GitHub CI on the corrected revision.
+
+Substantive delta review passed and closed the rhythm cascade, Meta weight, and
+prose-boundary findings without introducing a new blocker. Gate C and Phase 1.2 are
+therefore `PASS / FROZEN`. Phase 1.3 is next and may consume this contract without
+reopening its semantic hierarchy.
 
 ## 15. Change control
 

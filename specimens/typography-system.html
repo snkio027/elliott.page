@@ -9,6 +9,8 @@
     />
     <title>Typography System Specimen — Elliott.page</title>
     <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../src/styles/tokens.css" />
+    <link rel="stylesheet" href="../src/styles/typography.css" />
     <link rel="stylesheet" href="./typography-system.css" />
     <script>
       (() => {
@@ -116,23 +118,26 @@
   <body>
     <div class="specimen-shell">
       <header class="identity-specimen">
-        <p class="specimen-label">
+        <p class="specimen-label type-meta">
           Local validation artifact · not a product page
         </p>
         <h1 class="type-display">Elliott Bai</h1>
-        <p class="identity-statement">
+        <p class="identity-statement type-body">
           A quiet place for writing, notes, and things worth keeping.
         </p>
-        <nav aria-label="Specimen navigation">
+        <nav class="type-meta" aria-label="Specimen navigation">
           <a href="#english">About</a>
           <a href="#chinese">Now</a>
         </nav>
-        <a class="contact-link" href="mailto:hi@elliott.page"
+        <a class="contact-link type-meta" href="mailto:hi@elliott.page"
           >hi@elliott.page</a
         >
       </header>
 
-      <aside class="test-controls" aria-labelledby="test-controls-title">
+      <aside
+        class="test-controls type-meta"
+        aria-labelledby="test-controls-title"
+      >
         <h2 id="test-controls-title">Test controls</h2>
         <p class="candidate-status" aria-live="polite">
           <strong id="candidate-name">Control — System</strong>
@@ -171,8 +176,10 @@
       </aside>
 
       <main id="specimen-content" class="specimen-content">
-        <section id="english" class="language-sample" lang="en">
-          <p class="specimen-label">English-dominant · target measure 66ch</p>
+        <section id="english" class="language-sample type-region" lang="en">
+          <p class="specimen-label type-meta">
+            English-dominant · target measure 66ch
+          </p>
           <div class="type-title" data-token="type-title">
             Reading as a durable practice
           </div>
@@ -248,8 +255,10 @@ const identifier = "a_very_long_identifier_that_preserves_source_meaning";</code
           </div>
         </section>
 
-        <section id="chinese" class="language-sample" lang="zh-CN">
-          <p class="specimen-label">简体中文为主 · 目标行长约 32 字</p>
+        <section id="chinese" class="language-sample type-region" lang="zh-CN">
+          <p class="specimen-label type-meta">
+            简体中文为主 · 目标行长约 32 字
+          </p>
           <div class="type-title" data-token="type-title">
             一处安静的长期空间
           </div>
@@ -271,8 +280,7 @@ const identifier = "a_very_long_identifier_that_preserves_source_meaning";</code
 
             <div class="emphasis-comparison" aria-label="中文强调方式比较">
               <p>
-                已选着重号：这里需要<span class="emphasis-mark">认真阅读</span
-                >，并检查标记是否与下一行发生碰撞。
+                已选着重号：这里需要<em>认真阅读</em>，并检查标记是否与下一行发生碰撞。
               </p>
               <p>
                 已拒绝字重方案：这里需要<span class="emphasis-weight"
@@ -315,7 +323,76 @@ const identifier = "a_very_long_identifier_that_preserves_source_meaning";</code
           </div>
         </section>
 
-        <section class="role-sample" aria-labelledby="role-sample-title">
+        <section
+          id="rhythm-boundaries"
+          class="boundary-sample type-region"
+          lang="en"
+          aria-labelledby="rhythm-boundaries-title"
+        >
+          <p class="specimen-label type-meta">
+            Production rhythm probes · computed-style acceptance cases
+          </p>
+          <h2 id="rhythm-boundaries-title" class="type-title">
+            Rhythm contract boundaries
+          </h2>
+
+          <div class="boundary-cases">
+            <article class="boundary-case">
+              <p class="type-meta">Paragraph and list transitions</p>
+              <div class="prose" data-rhythm-case="transitions">
+                <p data-rhythm="first-paragraph">
+                  The first paragraph starts without leading margin.
+                </p>
+                <p data-rhythm="consecutive-paragraph">
+                  A consecutive paragraph starts at exactly 0.8 Body line boxes.
+                </p>
+                <ul data-rhythm="list-after-paragraph">
+                  <li>A list after a paragraph starts at one Body line box.</li>
+                </ul>
+                <p data-rhythm="paragraph-after-list">
+                  A paragraph after a list also starts at one Body line box.
+                </p>
+              </div>
+            </article>
+
+            <article class="boundary-case">
+              <p class="type-meta">Heading as first and last prose child</p>
+              <div class="prose" data-boundary-case="heading">
+                <h3 class="type-heading-3" data-boundary="first">
+                  First-child heading
+                </h3>
+                <p>The heading keeps only the rhythm that follows it.</p>
+                <h4 class="type-heading-4" data-boundary="last">
+                  Last-child heading
+                </h4>
+              </div>
+            </article>
+
+            <article class="boundary-case">
+              <p class="type-meta">Blockquote as the only prose child</p>
+              <div class="prose" data-boundary-case="blockquote">
+                <blockquote data-boundary="only">
+                  <p>Both block edges normalize when the quote stands alone.</p>
+                  <cite>Boundary specimen</cite>
+                </blockquote>
+              </div>
+            </article>
+
+            <article class="boundary-case">
+              <p class="type-meta">Code block as the only prose child</p>
+              <div class="prose" data-boundary-case="pre">
+                <pre
+                  data-boundary="only"
+                ><code>const boundary = "no outer rhythm";</code></pre>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          class="role-sample type-meta"
+          aria-labelledby="role-sample-title"
+        >
           <h2 id="role-sample-title">Role inventory</h2>
           <dl>
             <div>
