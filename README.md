@@ -21,10 +21,11 @@ frozen. Typography Gates A, B, and C have passed; the Native System Font Stack i
 selected for v1, Required `Delivery / Quality` passed on the final reviewed
 revision, and the substantive delta review closed all findings. Phase 1.3 — Layout
 & Visual Composition Gate A has passed Required `Delivery / Quality` and
-substantive review and is frozen. Gate B — Composition Specimen is in progress as
-a local controlled experiment; production integration remains unauthorized. No
-formal Home, About, or Now surface has been created. Publishing and production
-content remain outside the current phase.
+substantive review and is frozen. Gate B — Composition Specimen has passed and is
+frozen with Candidate A — Editorial breathing room selected for v1. Gate C —
+Production Integration is next but has not started; it remains unauthorized until
+the Gate B PR is merged. No formal Home, About, or Now surface has been created.
+Publishing and production content remain outside the current phase.
 
 ## Runtime
 

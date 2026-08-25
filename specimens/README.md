@@ -110,7 +110,11 @@ and never enter the production dependency graph.
 
 ## Phase 1.3 Gate B — Controlled Composition Specimen
 
-**Status:** LOCAL DELTA EVIDENCE PASS / SUBSTANTIVE DELTA REVIEW PENDING
+**Status:** PASS / FROZEN — Phase 1.3 Gate B: Composition Specimen
+
+**Remote `Delivery / Quality`:** PASS
+
+**Substantive delta review:** PASS — all findings closed
 
 `layout-composition.html` and `layout-composition.css` form the controlled Gate B
 laboratory. The HTML imports frozen production `tokens.css` and `typography.css`
@@ -174,7 +178,7 @@ composition value and is not represented as a shared Section token.
 | Candidate        |    Inline |   Cluster | Section |   Region | Local page-edge block inset | Frame   | Disposition                                                                               |
 | ---------------- | --------: | --------: | :-----: | -------: | --------------------------: | ------- | ----------------------------------------------------------------------------------------- |
 | Control          | `0.75rem` | `1.25rem` |    —    |   `4rem` |                   `2.75rem` | `66rem` | PASS / REJECT FOR V1 — simplest, but provides the weakest identity and region distinction |
-| A — Editorial    |    `1rem` | `1.75rem` |    —    |   `6rem` |                      `4rem` | `72rem` | PASS / PROVISIONAL SELECT — strongest hierarchy without admitting an unnecessary Rule     |
+| A — Editorial    |    `1rem` | `1.75rem` |    —    |   `6rem` |                      `4rem` | `72rem` | PASS / SELECT FOR V1 — strongest hierarchy without admitting an unnecessary Rule          |
 | B — Quiet offset | `0.75rem` | `1.25rem` |    —    | `4.5rem` |                      `3rem` | `72rem` | PASS / REJECT FOR V1 — offset and inline Rule add action without a material gain over A   |
 
 Candidate A's actual normal-state gutter and frame behavior is:
@@ -296,15 +300,18 @@ Control
 PASS / REJECT FOR V1
 
 Candidate A — Editorial breathing room
-PASS / PROVISIONAL SELECT
+PASS / SELECT FOR V1
 
 Candidate B — Quiet offset
 PASS / REJECT FOR V1
 
 Gate B
-LOCAL DELTA EVIDENCE PASS
-SUBSTANTIVE DELTA REVIEW PENDING
+PASS / FROZEN
+
+Gate C
+NEXT / NOT STARTED
 ```
 
-Production integration remains unauthorized. Gate C may begin only after Candidate
-A (or another reviewed disposition) receives Gate B approval.
+Production integration remains unauthorized until this Gate B decision is merged.
+Gate C must preserve the unselected Section and Rule decisions, and the `4rem`
+page-edge block inset remains local until a second semantic consumer exists.
