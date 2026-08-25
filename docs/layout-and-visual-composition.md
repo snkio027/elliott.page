@@ -6,11 +6,23 @@
 
 **Gate A:** PASS / FROZEN — Layout & Visual Contract
 
-**Gate B:** NEXT / NOT STARTED — Composition Specimen
+**Gate B:** PASS / FROZEN — Composition Specimen
 
-**Gate C:** NOT STARTED — Production Integration
+**Gate B selection:** Candidate A — Editorial breathing room
 
-**Evidence:** LOCAL QUALITY PASS / REMOTE QUALITY PASS / SUBSTANTIVE REVIEW PASS
+**Gate B rejected:** Control; Candidate B — Quiet offset
+
+**Gate B evidence boundary:** Forced Colors — UNVERIFIED / DEFERRED
+
+**Gate C:** NEXT / NOT STARTED — Production Integration
+
+**Gate C authorization:** NOT AUTHORIZED UNTIL GATE B MERGE
+
+**Gate C handoff:** Section and Rule remain unselected; the `4rem` page-edge block
+inset remains a local composition value rather than a shared token.
+
+**Evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
+SUBSTANTIVE DELTA REVIEW PASS
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`
 
@@ -590,7 +602,7 @@ Gate A passes only when:
 - speculative component and token systems remain excluded;
 - no production implementation has entered the contract.
 
-### Gate B — Composition Specimen (NEXT / NOT STARTED)
+### Gate B — Composition Specimen (PASS / FROZEN)
 
 Gate B passes only when:
 
@@ -602,7 +614,7 @@ Gate B passes only when:
 - rejected candidates and evidence boundaries are recorded;
 - no candidate artifact enters production.
 
-### Gate C — Production Integration (NOT STARTED)
+### Gate C — Production Integration (NEXT / NOT STARTED)
 
 Gate C passes only when:
 
