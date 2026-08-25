@@ -228,6 +228,10 @@ need.
 ## 6. Markdown body ownership
 
 Writing and Notes remain Markdown-only (`.md`). Phase 2.1 does not authorize MDX.
+The canonical AST grammar is GitHub Flavored Markdown (GFM), matching Astro's
+enabled-by-default Markdown dialect. Gate B must parse GFM constructs as their
+actual AST node types rather than letting an unrecognized extension fall back to
+paragraph text.
 
 The frontmatter title owns the document name. The Markdown body owns the
 substantive content below that title.
@@ -250,12 +254,24 @@ The following do not satisfy non-empty body by themselves:
 - headings;
 - thematic breaks;
 - images or image alt text;
+- GFM tables;
 - raw HTML or HTML comments;
 - empty code fences.
 
-These exclusions do not forbid those nodes in an otherwise non-empty body. They
-only prevent structural or opaque markup from being mistaken for substantive v1
-Writing/Notes content.
+Images, thematic breaks, GFM tables, and headings may appear in an otherwise
+non-empty body, but they cannot independently prove substantive content.
+
+Raw HTML is stricter: every parsed Markdown AST `html` node, including an HTML
+comment, fails v1 validation even when a qualifying paragraph or code block also
+exists. Raw HTML could otherwise bypass the single-H1 and body-semantic oracles by
+emitting structure that the Markdown heading nodes do not expose.
+
+> **Narrow Gate A correction — 2026-08-26:** the earlier frozen wording treated
+> raw HTML as merely non-substantive. Gate B evidence proved that Astro renders it
+> into the final HTML tree, allowing an authored `<h1>` to bypass the heading
+> oracle. V1 therefore rejects raw HTML rather than introducing a second HTML
+> parser or expanding the outline contract. This correction does not authorize
+> MDX or new publishing capability.
 
 ### 6.2 Heading oracle
 
@@ -509,7 +525,9 @@ below:
 | malformed or impossible `date` / `updated` | fail |
 | `updated < date` | fail |
 | invalid, nested, or duplicate stable ID | fail |
+| Markdown-like source that does not use the exact lowercase `.md` extension | fail |
 | body fails the Section 6.1 non-empty oracle | fail |
+| raw HTML or HTML-comment AST node | fail |
 | heading sequence violates the Section 6.2 oracle | fail |
 
 Validation must not:
@@ -545,6 +563,11 @@ This inventory is evidence of an implementation handoff, not authorization to ed
 Gate B must discover and reject nested Markdown. Merely narrowing a glob from
 `**/*.md` to `*.md` would make an invalid nested file invisible rather than fail
 closed, so it is not sufficient evidence of this invariant.
+
+The same fail-closed discovery rule applies to obvious Markdown-like publishing
+assets that violate the canonical extension, including `.MD`, `.mdx`, and
+`.markdown`. They must fail before the canonical loader runs rather than silently
+disappear from validation.
 
 ## 13. Gate B implementation boundary
 

@@ -6,6 +6,8 @@ import { glob, type Loader } from "astro/loaders";
 import { parseFrontmatter } from "astro/markdown";
 import { z } from "astro/zod";
 import { fromMarkdown } from "mdast-util-from-markdown";
+import { gfmFromMarkdown } from "mdast-util-gfm";
+import { gfm } from "micromark-extension-gfm";
 
 export const stableIdPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -103,9 +105,13 @@ function hasSubstantiveParagraphContent(node: MarkdownNode): boolean {
 }
 
 export function validateMarkdownBody(body: string, source = "Markdown body") {
-  const tree = fromMarkdown(body) as MarkdownNode;
+  const tree = fromMarkdown(body, {
+    extensions: [gfm()],
+    mdastExtensions: [gfmFromMarkdown()],
+  }) as MarkdownNode;
   const headings: number[] = [];
   let hasSubstantiveBody = false;
+  let hasRawHtml = false;
 
   function visit(node: MarkdownNode) {
     if (node.type === "paragraph" && hasSubstantiveParagraphContent(node)) {
@@ -120,10 +126,21 @@ export function validateMarkdownBody(body: string, source = "Markdown body") {
       headings.push(node.depth);
     }
 
+    if (node.type === "html") {
+      hasRawHtml = true;
+    }
+
     for (const child of node.children ?? []) visit(child);
   }
 
   visit(tree);
+
+  if (hasRawHtml) {
+    throw new ContentContractError(
+      source,
+      "raw HTML and HTML comments are not allowed in v1 publishing content",
+    );
+  }
 
   if (!hasSubstantiveBody) {
     throw new ContentContractError(
@@ -237,7 +254,13 @@ async function findMarkdownFiles(
       continue;
     }
 
-    if (entry.isFile() && entry.name.endsWith(".md")) {
+    const lowercaseName = entry.name.toLowerCase();
+    const isMarkdownLike =
+      lowercaseName.endsWith(".md") ||
+      lowercaseName.endsWith(".mdx") ||
+      lowercaseName.endsWith(".markdown");
+
+    if (entry.isFile() && isMarkdownLike) {
       files.push({ absolutePath, relativePath });
     }
   }

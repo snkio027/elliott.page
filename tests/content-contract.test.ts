@@ -116,6 +116,8 @@ test("The substantive-body oracle accepts only the frozen node classes", () => {
     "[link text](https://example.com)",
     "> quoted paragraph",
     "- list paragraph",
+    "- [x] GFM task paragraph",
+    "~~GFM strikethrough text~~",
     "`inline code`",
     "```ts\nconst answer = 42;\n```",
   ]) {
@@ -131,6 +133,9 @@ test("The substantive-body oracle accepts only the frozen node classes", () => {
     "<!-- comment -->",
     "<p>raw html only</p>",
     "```\n```",
+    "| A | B |\n| - | - |\n| 1 | 2 |",
+    "A normal paragraph.\n\n<h1>Second H1</h1>",
+    "A normal paragraph.\n\n<p>Raw HTML</p>",
   ]) {
     assert.throws(() => validateMarkdownBody(body));
   }
@@ -253,4 +258,17 @@ test("Directory validation rejects invalid raw names and bodies", async () => {
 
     await assert.rejects(() => validatePublishingDirectory(directoryUrl));
   });
+});
+
+test("Markdown-like non-canonical extensions fail instead of disappearing", async () => {
+  for (const fileName of ["article.MD", "article.mdx", "article.markdown"]) {
+    await withTemporaryDirectory(async (directory, directoryUrl) => {
+      await writeFile(
+        join(directory, fileName),
+        '---\ntitle: Invalid extension\ndate: "2026-08-26"\nlang: en\n---\nBody.\n',
+      );
+
+      await assert.rejects(() => validatePublishingDirectory(directoryUrl));
+    });
+  }
 });
