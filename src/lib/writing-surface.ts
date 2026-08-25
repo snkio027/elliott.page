@@ -4,7 +4,7 @@ import {
   type PublishingEntry,
 } from "../content/content-contract.ts";
 
-export type WritingLanguage = "en" | "zh-CN";
+type WritingLanguage = PublishingEntry["data"]["lang"];
 
 export function requirePublicWriting<TEntry extends PublishingEntry>(
   entries: readonly TEntry[],

@@ -19,7 +19,7 @@ const description =
     <ol class="writing-list">
       {
         writings.map((writing) => (
-          <li class="writing-list-item" lang={writing.data.lang}>
+          <li class="type-region writing-list-item" lang={writing.data.lang}>
             <h2 class="type-heading-2 writing-item-title">
               <a href={writingPathFor(writing.id)}>{writing.data.title}</a>
             </h2>

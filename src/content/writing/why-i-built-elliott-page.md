@@ -1,6 +1,6 @@
 ---
 title: Why I Built Elliott.page
-description: Why I chose to build a quiet, durable, and owned personal space on the open web.
+description: Why I chose to build a quiet, durable personal space I own on the open web.
 date: "2026-08-26"
 lang: en
 draft: false
