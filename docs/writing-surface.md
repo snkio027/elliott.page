@@ -10,9 +10,10 @@
 
 **Gate A:** PASS / FROZEN — Writing Surface Contract
 
-**Gate B:** NEXT / NOT STARTED — Candidate Implementation + Public Content
+**Gate B:** IN PROGRESS — Candidate Implementation + Public Content
 
-**Gate B authorization:** NOT AUTHORIZED UNTIL GATE A MERGES TO PROTECTED `main`
+**Gate B authorization:** AUTHORIZED — Gate A merged to protected `main` at
+`a07cff638a00844df3d51d831505acd5dae0b6e1`
 
 **Gate C:** NOT STARTED / NOT AUTHORIZED — Runtime, Accessibility & URL
 Validation
@@ -20,6 +21,9 @@ Validation
 **Writing production activation:** NOT AUTHORIZED
 
 **Notes surface:** NOT AUTHORIZED
+
+**Gate B candidate:** FIRST WRITING / INDEX / DETAIL / NAVIGATION IMPLEMENTATION IN
+PROGRESS — PUBLICATION APPROVAL PENDING
 
 **Gate A evidence:** LOCAL `pnpm quality` PASS / REQUIRED `Delivery / Quality`
 PASS / SUBSTANTIVE DELTA REVIEW PASS
@@ -620,7 +624,7 @@ Gate A `PASS / FROZEN` on protected `main` authorizes Gate B to implement the fi
 Writing surface candidate. It does not authorize Gate C, production merge, deploy,
 or Notes.
 
-### Gate B — Candidate Implementation + Public Content (NEXT / NOT STARTED)
+### Gate B — Candidate Implementation + Public Content (IN PROGRESS)
 
 Gate B passes only when the exact candidate satisfies Section 13, substantive
 implementation review passes, Elliott approves its exact public content, and Local

@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatWritingDate,
+  requirePublicWriting,
+  writingPathFor,
+} from "../../lib/writing-surface.ts";
+
+const writings = requirePublicWriting(await getCollection("writing"));
+const description =
+  "Writing about systems, tools, and questions worth working through.";
+---
+
+<BaseLayout title="Writing — Elliott.page" description={description} lang="en">
+  <section class="type-region" aria-labelledby="writing-title">
+    <h1 id="writing-title" class="type-title">Writing</h1>
+    <ol class="writing-list">
+      {
+        writings.map((writing) => (
+          <li class="writing-list-item" lang={writing.data.lang}>
+            <h2 class="type-heading-2 writing-item-title">
+              <a href={writingPathFor(writing.id)}>{writing.data.title}</a>
+            </h2>
+            <p class="meta-line">
+              <time datetime={writing.data.date}>
+                {formatWritingDate(writing.data.date, writing.data.lang)}
+              </time>
+            </p>
+            {writing.data.description && (
+              <p class="type-body writing-description">
+                {writing.data.description}
+              </p>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>

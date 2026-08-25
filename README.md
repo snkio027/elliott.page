@@ -33,11 +33,11 @@ local and Required Quality, 11 content-contract tests, and substantive delta
 review. These primitives are available to later Publishing surfaces.
 
 Phase 2.2 — Writing Surface is in progress. Gate A — Writing Surface Contract is
-`PASS / FROZEN` after local and Required Quality plus substantive delta review.
-Gate B — Candidate Implementation + Public Content is next, but remains not
-started and unauthorized until the Gate A PR merges to protected `main`. Public
-Writing content, `/writing/` routes, Writing navigation, Gate C, production
-activation, and every Notes surface remain unauthorized.
+`PASS / FROZEN`. Gate B — Candidate Implementation + Public Content is authorized
+and in progress on a non-production candidate branch. Its first real Writing,
+`/writing/` index, stable detail route, and Writing navigation are being validated
+as one atomic revision. Publication approval, Gate C, protected-main merge,
+production activation, and every Notes surface remain unauthorized.
 
 ## Runtime
 

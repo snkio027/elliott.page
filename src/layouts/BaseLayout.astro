@@ -11,6 +11,12 @@ interface Props {
 
 const { title, description, lang = "en" } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const writingCurrent =
+  currentPath === "/writing"
+    ? "page"
+    : currentPath.startsWith("/writing/")
+      ? "location"
+      : undefined;
 ---
 
 <!doctype html>
@@ -37,6 +43,7 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
             Elliott Bai
           </a>
           <span class="destination-group">
+            <a href="/writing/" aria-current={writingCurrent}>Writing</a>
             <a
               href="/about/"
               aria-current={currentPath === "/about" ? "page" : undefined}

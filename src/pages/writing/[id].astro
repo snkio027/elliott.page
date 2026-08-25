@@ -1,0 +1,62 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatWritingDate,
+  requirePublicWriting,
+  writingDateLabels,
+} from "../../lib/writing-surface.ts";
+
+export async function getStaticPaths() {
+  const writings = requirePublicWriting(await getCollection("writing"));
+
+  return writings.map((writing) => ({
+    params: { id: writing.id },
+    props: { writing },
+  }));
+}
+
+interface Props {
+  writing: CollectionEntry<"writing">;
+}
+
+const { writing } = Astro.props;
+const { Content } = await render(writing);
+const labels = writingDateLabels(writing.data.lang);
+const showUpdated =
+  writing.data.updated !== undefined &&
+  writing.data.updated !== writing.data.date;
+---
+
+<BaseLayout
+  title={`${writing.data.title} — Elliott.page`}
+  description={writing.data.description}
+  lang={writing.data.lang}
+>
+  <article class="type-region" aria-labelledby="writing-detail-title">
+    <h1 id="writing-detail-title" class="type-title">
+      {writing.data.title}
+    </h1>
+    <div class="meta-line writing-dates">
+      <span>
+        {labels.published}{" "}<time datetime={writing.data.date}
+          >{formatWritingDate(writing.data.date, writing.data.lang)}</time
+        >
+      </span>
+      {
+        showUpdated && writing.data.updated && (
+          <span>
+            {labels.updated}{" "}
+            <time datetime={writing.data.updated}>
+              {formatWritingDate(writing.data.updated, writing.data.lang)}
+            </time>
+          </span>
+        )
+      }
+    </div>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
