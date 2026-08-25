@@ -13,6 +13,7 @@ The product direction and engineering boundaries are defined in:
 - [`docs/identity-surfaces.md`](docs/identity-surfaces.md)
 - [`docs/content-semantics-and-url.md`](docs/content-semantics-and-url.md)
 - [`docs/writing-surface.md`](docs/writing-surface.md)
+- [`docs/notes-surface.md`](docs/notes-surface.md)
 
 ## Status
 
@@ -37,9 +38,14 @@ Gate B — Candidate Implementation + Public Content, and Gate C — Runtime,
 Accessibility & URL Validation are all `PASS / FROZEN`. Publication approval is
 bound to evidence-bearing HEAD
 `f143fc8329ba0c5d427dfcb7dd4aa2a51f9d4c96`; Forced Colors remains
-`UNVERIFIED / DEFERRED`. The first Writing surface is ready for protected-main
-merge and production activation only after status-diff confirmation. Every Notes
-surface remains unauthorized.
+`UNVERIFIED / DEFERRED`. The first Writing surface is active in production at its
+permanent public URL.
+
+Phase 2.3 — Notes Surface is in Gate A contract design. Gate B implementation,
+public Note content, `/notes/` routes, Notes navigation, Gate C, and production
+activation remain unauthorized. Gate A changes only the Notes Surface Contract
+and this lifecycle summary; the frozen content Schema and all production source
+remain untouched.
 
 ## Runtime
 
