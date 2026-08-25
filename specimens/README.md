@@ -311,7 +311,10 @@ Gate B
 PASS / FROZEN
 
 Gate C
-IN PROGRESS
+PASS / FROZEN
+
+Phase 1.3
+PASS / FROZEN
 ```
 
 Gate B has merged and authorizes Gate C. Gate C preserves the unselected Section
@@ -320,8 +323,13 @@ second semantic consumer exists.
 
 ## Phase 1.3 Gate C — Production integration receipt
 
-**Status:** LOCAL IMPLEMENTATION EVIDENCE PASS / REMOTE GATE PENDING /
-SUBSTANTIVE REVIEW PENDING
+**Status:** PASS / FROZEN — Phase 1.3 Gate C: Production Integration
+
+**Required `Delivery / Quality`:** PASS
+
+**Substantive delta review:** PASS — P1 closed; no remaining blocker
+
+**Evidence boundary:** Forced Colors — UNVERIFIED / DEFERRED
 
 Gate C promotes only the values and primitives selected by Gate B. Production now
 contains:
@@ -405,5 +413,6 @@ correction withdraws Inline and destination-group layout from production because
 they no longer have a live consumer; Gate B's decision and specimen evidence are
 unchanged.
 
-Gate C is not frozen by this receipt. Required `Delivery / Quality` and
-substantive review must still pass on the final revision before lifecycle closure.
+Gate C and Phase 1.3 are frozen by the final reviewed revision. They reopen only
+under the change-control conditions in the Layout & Visual Composition Contract;
+Forced Colors remains `UNVERIFIED / DEFERRED`.

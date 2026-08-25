@@ -20,17 +20,13 @@ Phase 1.1 — Information & Page Semantics and Phase 1.2 — Typography System a
 frozen. Typography Gates A, B, and C have passed; the Native System Font Stack is
 selected for v1, Required `Delivery / Quality` passed on the final reviewed
 revision, and the substantive delta review closed all findings. Phase 1.3 — Layout
-& Visual Composition Gate A has passed Required `Delivery / Quality` and
-substantive review and is frozen. Gate B — Composition Specimen has passed and is
-frozen with Candidate A — Editorial breathing room selected for v1. Gate C —
-Production Integration is in progress: the selected minimum shared values and
-layout primitives now drive a root-route production proof, and the selected
-specimen consumes the same production source as its regression baseline. Local
-implementation evidence has passed; Required `Delivery / Quality` and substantive
-review remain pending. The proof exposes only the real root destination; About and
-Now remain specimen evidence rather than dead production links. The proof is not
-the formal Home surface, and no About or Now route has been created. Publishing
-and production content remain outside the current phase.
+& Visual Composition is also frozen. Gates A, B, and C have passed; Candidate A —
+Editorial breathing room is selected for v1, Required `Delivery / Quality` passed
+on the final reviewed revision, and the substantive delta review closed the
+production-navigation finding. The production proof exposes only the real root
+destination; About and Now remain specimen evidence rather than dead production
+links. The proof is not the formal Home surface, and no About or Now route has been
+created. Publishing and production content remain outside the frozen phase.
 
 ## Runtime
 

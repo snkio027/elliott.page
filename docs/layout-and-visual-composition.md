@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 
-**Status:** IN PROGRESS — Phase 1.3: Layout & Visual Composition
+**Status:** PASS / FROZEN — Phase 1.3: Layout & Visual Composition
 
 **Gate A:** PASS / FROZEN — Layout & Visual Contract
 
@@ -14,7 +14,7 @@
 
 **Gate B evidence boundary:** Forced Colors — UNVERIFIED / DEFERRED
 
-**Gate C:** IN PROGRESS — Production Integration
+**Gate C:** PASS / FROZEN — Production Integration
 
 **Gate C authorization:** AUTHORIZED — Gate B merged
 
@@ -27,7 +27,7 @@ group exists.
 SUBSTANTIVE DELTA REVIEW PASS
 
 **Gate C evidence:** LOCAL IMPLEMENTATION EVIDENCE PASS / LOCAL QUALITY PASS /
-REQUIRED `Delivery / Quality` PENDING / SUBSTANTIVE REVIEW PENDING
+REQUIRED `Delivery / Quality` PASS / SUBSTANTIVE DELTA REVIEW PASS
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`
 
@@ -619,7 +619,7 @@ Gate B passes only when:
 - rejected candidates and evidence boundaries are recorded;
 - no candidate artifact enters production.
 
-### Gate C — Production Integration (IN PROGRESS)
+### Gate C — Production Integration (PASS / FROZEN)
 
 Gate C passes only when:
 
