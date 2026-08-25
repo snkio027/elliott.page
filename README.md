@@ -15,11 +15,12 @@ The product direction and engineering boundaries are defined in:
 Foundation is frozen. Domain trust, the repository and Astro baseline, and the
 Cloudflare deployment baseline have passed their acceptance gates.
 
-Phase 1.1 — Information & Page Semantics is frozen. In Phase 1.2 — Typography
-System, Gates A and B are frozen and the Native System Font Stack is selected for
-v1. Gate C implementation and local evidence are complete; the remote quality gate
-is pending, so Phase 1.2 is not yet frozen. Publishing, production content, and
-later design concerns remain outside the current phase.
+Phase 1.1 — Information & Page Semantics and Phase 1.2 — Typography System are
+frozen. Typography Gates A, B, and C have passed; the Native System Font Stack is
+selected for v1, Required `Delivery / Quality` passed on the final reviewed
+revision, and the substantive delta review closed all findings. Phase 1.3 is next.
+Publishing, production content, and later design concerns remain outside the
+completed typography phase.
 
 ## Runtime
 

@@ -6,7 +6,7 @@
 
 **Selected for v1:** Native System Font Stack
 
-**Production integration:** LOCAL COMPLETE / REMOTE GATE PENDING — Native System Font Stack only
+**Production integration:** PASS / FROZEN — Native System Font Stack only
 
 This directory evaluates font systems against the frozen Typography Contract. The
 HTML content, type scale, line heights, rhythm, measure, responsive rules, and
@@ -290,7 +290,7 @@ does not keep Gate B open.
 
 ```text
 Phase 1.2 — Typography System
-NOT YET FROZEN
+PASS / FROZEN
 
 Gate A — Typography Contract
 PASS / FROZEN
@@ -313,5 +313,8 @@ Evidence scope
     └── Cross-platform verification deferred
 
 Gate C — Implementation Readiness
-LOCAL EVIDENCE PASS / REMOTE GATE PENDING
+PASS / FROZEN
+
+Next
+└── Phase 1.3
 ```

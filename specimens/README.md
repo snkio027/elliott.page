@@ -1,6 +1,6 @@
 # Typography specimens
 
-**Status:** LOCAL EVIDENCE PASS / REMOTE GATE PENDING — Phase 1.2 Gate C
+**Status:** PASS / FROZEN — Phase 1.2 Typography System
 
 This directory contains local design-validation artifacts. Astro does not import
 the directory, copy it to `public/`, or deploy it as part of Elliott.page. The
@@ -95,8 +95,12 @@ Candidate CSS and WOFF2 files remain reproducibility evidence under `specimens/`
 They override font slots only inside an explicitly selected local evaluation route
 and never enter the production dependency graph.
 
-**Gate C result:** LOCAL IMPLEMENTATION COMPLETE / LOCAL EVIDENCE PASS
+**Gate C result:** PASS / FROZEN — Implementation Readiness
 
-**Remote gate:** PENDING — Required `Delivery / Quality`
+**Remote `Delivery / Quality`:** PASS
 
-**Phase 1.2 result:** NOT YET FROZEN
+**Substantive delta review:** PASS — all findings closed
+
+**Phase 1.2 result:** PASS / FROZEN — Typography System
+
+**Next:** Phase 1.3

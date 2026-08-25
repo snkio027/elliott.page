@@ -2,15 +2,15 @@
 
 **Version:** 1.0
 
-**Status:** GATE C REMOTE GATE PENDING — Phase 1.2: Typography System
+**Status:** PASS / FROZEN — Phase 1.2: Typography System
 
-**Evidence:** LOCAL IMPLEMENTATION COMPLETE / LOCAL EVIDENCE PASS
+**Evidence:** LOCAL EVIDENCE PASS / REMOTE QUALITY PASS / SUBSTANTIVE REVIEW PASS
 
 **Gate A:** PASS / FROZEN — Typography Contract
 
 **Gate B:** PASS / FROZEN — Native System Font Stack selected for v1
 
-**Gate C:** REMOTE GATE PENDING — Implementation Readiness
+**Gate C:** PASS / FROZEN — Implementation Readiness
 
 **Depends on:** `information-and-page-semantics.md`
 
@@ -503,7 +503,7 @@ rejected for v1; Newsreader + Geist is deferred. This is not a claim of cross-pl
 typography equivalence. Windows, Linux, iOS, Android, and independent browser-engine
 behavior remain unverified and are deferred until a real need or defect appears.
 
-### Gate C — Implementation readiness (REMOTE GATE PENDING)
+### Gate C — Implementation readiness (PASS / FROZEN)
 
 - the selected values can become shared Design Tokens without component-specific
   exceptions;
@@ -540,16 +540,17 @@ Heading, Blockquote, or Code block is the first or last prose child. Existing
 viewport, enlargement, text-spacing, CJK emphasis, local code overflow, candidate
 routing, and Geist delayed-load failure evidence is rerun after this correction.
 
-Gate C implementation and local evidence are complete within the explicit
-current-host evidence boundary. The local canonical `pnpm quality` entrypoint did
-not complete because the execution environment's pnpm shim attempted an unsafe
-`node_modules` reconstruction and TTY protection stopped it. Its four constituent
-checks were run independently and passed without mutating the dependency tree.
+Gate C local evidence passed within the explicit current-host boundary. The local
+canonical `pnpm quality` entrypoint did not complete because the execution
+environment's pnpm shim attempted an unsafe `node_modules` reconstruction and TTY
+protection stopped it; its four constituent checks passed independently without
+mutating the dependency tree. Required `Delivery / Quality` subsequently executed
+canonical `pnpm quality` successfully in clean GitHub CI on the corrected revision.
 
-Gate C remains open until the branch is reviewed through a pull request and the
-Required `Delivery / Quality` check executes canonical `pnpm quality` successfully
-in clean GitHub CI. Phase 1.2 is therefore not yet frozen, and Phase 1.3 must not
-consume this implementation as final authority until that remote gate passes.
+Substantive delta review passed and closed the rhythm cascade, Meta weight, and
+prose-boundary findings without introducing a new blocker. Gate C and Phase 1.2 are
+therefore `PASS / FROZEN`. Phase 1.3 is next and may consume this contract without
+reopening its semantic hierarchy.
 
 ## 15. Change control
 
