@@ -32,11 +32,12 @@ integrity, stable identity, eligibility, ordering, and fail-closed evidence pass
 local and Required Quality, 11 content-contract tests, and substantive delta
 review. These primitives are available to later Publishing surfaces.
 
-Phase 2.2 — Writing Surface is now in Gate A contract design. Gate B implementation,
-public Writing content, `/writing/` routes, Writing navigation, and every Notes
-surface remain unauthorized. Gate A changes only the contract and this lifecycle
-entry; it does not modify the frozen Phase 2.1 implementation or current production
-route inventory.
+Phase 2.2 — Writing Surface is in progress. Gate A — Writing Surface Contract is
+`PASS / FROZEN` after local and Required Quality plus substantive delta review.
+Gate B — Candidate Implementation + Public Content is next, but remains not
+started and unauthorized until the Gate A PR merges to protected `main`. Public
+Writing content, `/writing/` routes, Writing navigation, Gate C, production
+activation, and every Notes surface remain unauthorized.
 
 ## Runtime
 

@@ -2,16 +2,17 @@
 
 **Version:** 1.0
 
-**Status:** DRAFT — Phase 2.2: Writing Surface
+**Status:** IN PROGRESS — Phase 2.2: Writing Surface
 
 **Phase 2:** IN PROGRESS — Publishing
 
 **Phase 2.1:** PASS / FROZEN — Content Semantics & URL Contract
 
-**Gate A:** DRAFT — Writing Surface Contract
+**Gate A:** PASS / FROZEN — Writing Surface Contract
 
-**Gate B:** NOT STARTED / NOT AUTHORIZED — Candidate Implementation + Public
-Content
+**Gate B:** NEXT / NOT STARTED — Candidate Implementation + Public Content
+
+**Gate B authorization:** NOT AUTHORIZED UNTIL GATE A MERGES TO PROTECTED `main`
 
 **Gate C:** NOT STARTED / NOT AUTHORIZED — Runtime, Accessibility & URL
 Validation
@@ -19,6 +20,12 @@ Validation
 **Writing production activation:** NOT AUTHORIZED
 
 **Notes surface:** NOT AUTHORIZED
+
+**Gate A evidence:** LOCAL `pnpm quality` PASS / REQUIRED `Delivery / Quality`
+PASS / SUBSTANTIVE DELTA REVIEW PASS
+
+**Lifecycle closure:** The final status-only revision must pass Required
+`Delivery / Quality` and status-diff confirmation before protected-main merge.
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`,
 `layout-and-visual-composition.md`, `identity-surfaces.md`,
@@ -591,7 +598,7 @@ supporting evidence, not a forced-colors pass.
 
 ## 15. Decision gates
 
-### Gate A — Writing Surface Contract (DRAFT)
+### Gate A — Writing Surface Contract (PASS / FROZEN)
 
 Gate A passes only when:
 
@@ -613,7 +620,7 @@ Gate A `PASS / FROZEN` on protected `main` authorizes Gate B to implement the fi
 Writing surface candidate. It does not authorize Gate C, production merge, deploy,
 or Notes.
 
-### Gate B — Candidate Implementation + Public Content (NOT AUTHORIZED)
+### Gate B — Candidate Implementation + Public Content (NEXT / NOT STARTED)
 
 Gate B passes only when the exact candidate satisfies Section 13, substantive
 implementation review passes, Elliott approves its exact public content, and Local
