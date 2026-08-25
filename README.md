@@ -12,6 +12,7 @@ The product direction and engineering boundaries are defined in:
 - [`docs/layout-and-visual-composition.md`](docs/layout-and-visual-composition.md)
 - [`docs/identity-surfaces.md`](docs/identity-surfaces.md)
 - [`docs/content-semantics-and-url.md`](docs/content-semantics-and-url.md)
+- [`docs/writing-surface.md`](docs/writing-surface.md)
 
 ## Status
 
@@ -29,9 +30,13 @@ and its Gate A are `PASS / FROZEN` after local and Required
 Route Eligibility is also `PASS / FROZEN`: its executable schemas, content
 integrity, stable identity, eligibility, ordering, and fail-closed evidence passed
 local and Required Quality, 11 content-contract tests, and substantive delta
-review. These primitives are available to later Publishing surfaces, but no
-Writing or Notes production surface is currently authorized. Phase 2.2 — Writing
-Surface is next and has not started.
+review. These primitives are available to later Publishing surfaces.
+
+Phase 2.2 — Writing Surface is now in Gate A contract design. Gate B implementation,
+public Writing content, `/writing/` routes, Writing navigation, and every Notes
+surface remain unauthorized. Gate A changes only the contract and this lifecycle
+entry; it does not modify the frozen Phase 2.1 implementation or current production
+route inventory.
 
 ## Runtime
 
