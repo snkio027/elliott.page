@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en" data-composition="control" data-surface="home">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Controlled composition specimen for the Elliott.page layout and visual contract."
+    />
+    <title>Layout Composition Specimen — Elliott.page</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../src/styles/tokens.css" />
+    <link rel="stylesheet" href="../src/styles/typography.css" />
+    <link rel="stylesheet" href="./layout-composition.css" />
+    <script>
+      (() => {
+        const compositions = {
+          control: {
+            label: "Control — Normal flow",
+            note: "The smallest direct Header / Main / Footer composition.",
+          },
+          editorial: {
+            label: "A — Editorial breathing room",
+            note: "Stronger region separation with restrained rules.",
+          },
+          tension: {
+            label: "B — Quiet offset",
+            note: "A measured wide-screen offset with a denser rhythm.",
+          },
+        };
+        const surfaces = new Set(["home", "about", "now"]);
+        const params = new URLSearchParams(window.location.search);
+        const candidate = Object.hasOwn(compositions, params.get("candidate"))
+          ? params.get("candidate")
+          : "control";
+        const surface = surfaces.has(params.get("surface"))
+          ? params.get("surface")
+          : "home";
+        const ui = params.get("ui") === "hidden" ? "hidden" : "visible";
+        const stress = {
+          longContent: params.get("long") === "1",
+          textResize: params.get("resize") === "1",
+          spacingOverride: params.get("spacing") === "1",
+        };
+
+        document.documentElement.dataset.composition = candidate;
+        document.documentElement.dataset.surface = surface;
+        document.documentElement.dataset.ui = ui;
+        document.documentElement.dataset.longContent = String(
+          stress.longContent,
+        );
+        document.documentElement.dataset.textResize = String(stress.textResize);
+        document.documentElement.dataset.spacingOverride = String(
+          stress.spacingOverride,
+        );
+        document.documentElement.lang = surface === "now" ? "zh-CN" : "en";
+
+        window.layoutCompositionSpecimen = {
+          candidate,
+          surface,
+          ui,
+          ...stress,
+          ...compositions[candidate],
+        };
+      })();
+    </script>
+  </head>
+  <body>
+    <aside class="lab-controls type-meta" aria-labelledby="lab-title" lang="en">
+      <div class="lab-controls-inner">
+        <div class="lab-introduction">
+          <p class="lab-kicker">
+            Local validation artifact · not a product page
+          </p>
+          <h2 id="lab-title">Composition laboratory</h2>
+          <p>
+            Identical semantics and frozen Typography; candidate CSS changes
+            only spatial composition. All values remain outside production.
+          </p>
+        </div>
+
+        <div class="lab-group">
+          <p class="lab-label">Composition</p>
+          <nav class="lab-navigation" aria-label="Composition candidates">
+            <a data-candidate-link="control" href="?candidate=control"
+              >Control</a
+            >
+            <a data-candidate-link="editorial" href="?candidate=editorial"
+              >A · Editorial</a
+            >
+            <a data-candidate-link="tension" href="?candidate=tension"
+              >B · Offset</a
+            >
+          </nav>
+        </div>
+
+        <div class="lab-group">
+          <p class="lab-label">Surface fixture</p>
+          <nav class="lab-navigation" aria-label="Page surface fixtures">
+            <a data-surface-link="home" href="?surface=home">Home</a>
+            <a data-surface-link="about" href="?surface=about">About-shaped</a>
+            <a data-surface-link="now" href="?surface=now">Now-shaped</a>
+          </nav>
+        </div>
+
+        <fieldset class="lab-stress-controls">
+          <legend>Stress states</legend>
+          <label>
+            <input id="long-content" type="checkbox" />
+            Long content
+          </label>
+          <label>
+            <input id="text-resize" type="checkbox" />
+            200% root text
+          </label>
+          <label>
+            <input id="spacing-override" type="checkbox" />
+            WCAG text spacing
+          </label>
+        </fieldset>
+
+        <div class="lab-status" aria-live="polite">
+          <strong id="composition-name">Control — Normal flow</strong>
+          <span id="composition-note"
+            >The smallest direct Header / Main / Footer composition.</span
+          >
+          <a id="clean-view-link" href="?ui=hidden">Open clean view</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="page-canvas" data-page-canvas>
+      <div class="site-frame">
+        <header class="site-header" data-region="header">
+          <nav class="primary-navigation type-meta" aria-label="Primary">
+            <a
+              class="identity-anchor"
+              data-page-link="home"
+              href="?surface=home"
+              >Elliott Bai</a
+            >
+            <span class="destination-group">
+              <a data-page-link="about" href="?surface=about">
+                <span class="copy-normal">About</span>
+                <span class="copy-long">About this place</span>
+              </a>
+              <a data-page-link="now" href="?surface=now">
+                <span class="copy-normal">Now</span>
+                <span class="copy-long">What is happening now</span>
+              </a>
+            </span>
+          </nav>
+        </header>
+
+        <main class="site-main" data-region="main">
+          <section
+            class="surface surface-home type-region"
+            data-surface-panel="home"
+            aria-labelledby="home-title"
+          >
+            <div class="identity-cluster">
+              <h1 id="home-title" class="type-display">Elliott Bai</h1>
+              <p class="place-statement type-body">
+                <span class="copy-normal"
+                  >A quiet personal space on the open web.</span
+                >
+                <span class="copy-long"
+                  >A deliberately longer fixture describing a quiet personal
+                  space for writing, notes, and things worth keeping on the open
+                  web over time.</span
+                >
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="surface surface-reading type-region"
+            data-surface-panel="about"
+            aria-labelledby="about-title"
+            hidden
+          >
+            <h1 id="about-title" class="type-title">About</h1>
+            <div class="prose">
+              <p>
+                This is representative English copy for a durable personal
+                context. It exists to test the reading column, not to publish a
+                biography.
+              </p>
+              <p>
+                Elliott.page is treated as a long-term place rather than a
+                portfolio. The composition should remain useful when the prose
+                becomes longer, without adding cards, sidebars, or decorative
+                surfaces.
+              </p>
+              <h2 class="type-heading-2">Questions worth keeping</h2>
+              <p>
+                The page may eventually describe enduring interests and the
+                purpose of this site. For Gate B, this text only proves
+                hierarchy, measure, rhythm, and link treatment such as
+                <a href="https://example.com/about-fixture"
+                  >a descriptive fixture link</a
+                >.
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="surface surface-reading type-region"
+            data-surface-panel="now"
+            aria-labelledby="now-title"
+            lang="zh-CN"
+            hidden
+          >
+            <h1 id="now-title" class="type-title">此刻</h1>
+            <p class="meta-line">
+              <time datetime="2026-08-25">最后更新：2026 年 8 月 25 日</time>
+            </p>
+            <div class="prose">
+              <p>
+                这是用于验证当前页面空间关系的简体中文测试文本，并不是正式内容。页面需要清楚表达更新时间，同时保持安静、易读和诚实。
+              </p>
+              <p>
+                最近的关注可能包括正在学习、阅读或思考的事情。这里也包含
+                <a href="https://example.com/now-fixture"
+                  >一个描述清楚的测试链接</a
+                >
+                以及 Astro、Markdown 和 2026 等混排内容。
+              </p>
+              <h2 class="type-heading-2">正在发生的事情</h2>
+              <p>
+                即使文字长度、字间距或视口发生变化，导航、更新时间与正文仍应保持自然顺序，不出现裁切、重叠或横向页面滚动。
+              </p>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer type-meta" data-region="footer">
+          <a class="contact-link copy-normal" href="mailto:hi@elliott.page"
+            >hi@elliott.page</a
+          >
+          <a
+            class="contact-link copy-long"
+            href="mailto:a-deliberately-long-contact-fixture@elliott.page"
+            >a-deliberately-long-contact-fixture@elliott.page</a
+          >
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const state = window.layoutCompositionSpecimen;
+        const root = document.documentElement;
+        const buildUrl = ({
+          candidate = state.candidate,
+          surface = state.surface,
+          ui = state.ui,
+          longContent = state.longContent,
+          textResize = state.textResize,
+          spacingOverride = state.spacingOverride,
+        }) => {
+          const params = new URLSearchParams({ candidate, surface });
+          if (ui === "hidden") params.set("ui", "hidden");
+          if (longContent) params.set("long", "1");
+          if (textResize) params.set("resize", "1");
+          if (spacingOverride) params.set("spacing", "1");
+          return `?${params.toString()}`;
+        };
+
+        for (const link of document.querySelectorAll("[data-candidate-link]")) {
+          const candidate = link.dataset.candidateLink;
+          link.href = buildUrl({ candidate });
+          if (candidate === state.candidate)
+            link.setAttribute("aria-current", "page");
+        }
+
+        for (const link of document.querySelectorAll("[data-surface-link]")) {
+          const surface = link.dataset.surfaceLink;
+          link.href = buildUrl({ surface });
+          if (surface === state.surface)
+            link.setAttribute("aria-current", "page");
+        }
+
+        for (const link of document.querySelectorAll("[data-page-link]")) {
+          const surface = link.dataset.pageLink;
+          link.href = buildUrl({ surface, ui: state.ui });
+          if (surface === state.surface)
+            link.setAttribute("aria-current", "page");
+        }
+
+        for (const panel of document.querySelectorAll("[data-surface-panel]")) {
+          panel.hidden = panel.dataset.surfacePanel !== state.surface;
+        }
+
+        document.querySelector("#composition-name").textContent = state.label;
+        document.querySelector("#composition-note").textContent = state.note;
+        document.querySelector("#clean-view-link").href = buildUrl({
+          ui: "hidden",
+        });
+
+        const controls = {
+          "long-content": "longContent",
+          "text-resize": "textResize",
+          "spacing-override": "spacingOverride",
+        };
+
+        for (const [id, datasetKey] of Object.entries(controls)) {
+          const control = document.querySelector(`#${id}`);
+          control.checked = state[datasetKey];
+          control.addEventListener("change", (event) => {
+            state[datasetKey] = event.currentTarget.checked;
+            root.dataset[datasetKey] = String(state[datasetKey]);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
