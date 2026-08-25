@@ -9,6 +9,7 @@ The product direction and engineering boundaries are defined in:
 - [`docs/architecture.md`](docs/architecture.md)
 - [`docs/information-and-page-semantics.md`](docs/information-and-page-semantics.md)
 - [`docs/typography.md`](docs/typography.md)
+- [`docs/layout-and-visual-composition.md`](docs/layout-and-visual-composition.md)
 
 ## Status
 
@@ -18,9 +19,10 @@ Cloudflare deployment baseline have passed their acceptance gates.
 Phase 1.1 — Information & Page Semantics and Phase 1.2 — Typography System are
 frozen. Typography Gates A, B, and C have passed; the Native System Font Stack is
 selected for v1, Required `Delivery / Quality` passed on the final reviewed
-revision, and the substantive delta review closed all findings. Phase 1.3 is next.
-Publishing, production content, and later design concerns remain outside the
-completed typography phase.
+revision, and the substantive delta review closed all findings. Phase 1.3 — Layout
+& Visual Composition has entered Gate A contract drafting. No layout or color
+production implementation is authorized yet. Publishing and production content
+remain outside the current phase.
 
 ## Runtime
 
