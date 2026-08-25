@@ -16,7 +16,7 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",
-    "test:content": "node --test tests/content-contract.test.ts",
+    "test:content": "node --test tests/*.test.ts",
     "check": "astro check",
     "quality": "pnpm format:check && pnpm lint && pnpm test:content && pnpm check && pnpm build"
   },

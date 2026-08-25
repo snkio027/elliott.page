@@ -24,7 +24,7 @@ a:hover {
   text-decoration-thickness: 0.15em;
 }
 
-a[aria-current="page"] {
+a[aria-current] {
   color: var(--color-accent);
   font-weight: var(--weight-strong);
   text-decoration-thickness: 0.15em;
@@ -88,6 +88,30 @@ a:focus-visible {
 
 .contact-link {
   overflow-wrap: anywhere;
+}
+
+.writing-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.writing-list-item {
+  max-inline-size: var(--measure);
+}
+
+.writing-item-title {
+  margin-block-end: 0;
+}
+
+.writing-description {
+  margin-block-start: calc(var(--body-line) * var(--rhythm-paragraph));
+}
+
+.writing-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-inline);
 }
 
 @media (max-width: 34rem) {

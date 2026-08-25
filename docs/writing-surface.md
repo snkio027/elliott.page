@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 
-**Status:** IN PROGRESS — Phase 2.2: Writing Surface
+**Status:** PASS / FROZEN — Phase 2.2: Writing Surface
 
 **Phase 2:** IN PROGRESS — Publishing
 
@@ -10,22 +10,39 @@
 
 **Gate A:** PASS / FROZEN — Writing Surface Contract
 
-**Gate B:** NEXT / NOT STARTED — Candidate Implementation + Public Content
+**Gate B:** PASS / FROZEN — Candidate Implementation + Public Content
 
-**Gate B authorization:** NOT AUTHORIZED UNTIL GATE A MERGES TO PROTECTED `main`
+**Gate B authorization:** AUTHORIZED — Gate A merged to protected `main` at
+`a07cff638a00844df3d51d831505acd5dae0b6e1`
 
-**Gate C:** NOT STARTED / NOT AUTHORIZED — Runtime, Accessibility & URL
-Validation
+**Gate C:** PASS / FROZEN — Runtime, Accessibility & URL Validation
 
-**Writing production activation:** NOT AUTHORIZED
+**Publication approval:** PASS — evidence-bearing implementation/content HEAD
+`f143fc8329ba0c5d427dfcb7dd4aa2a51f9d4c96`
+
+**Forced Colors:** UNVERIFIED / DEFERRED
+
+**Writing production merge/deploy:** READY AFTER STATUS-DIFF CONFIRMATION
 
 **Notes surface:** NOT AUTHORIZED
+
+**Gate B candidate:** APPROVED FIRST WRITING / INDEX / DETAIL / NAVIGATION —
+EVIDENCE-BEARING HEAD `f143fc8329ba0c5d427dfcb7dd4aa2a51f9d4c96`
 
 **Gate A evidence:** LOCAL `pnpm quality` PASS / REQUIRED `Delivery / Quality`
 PASS / SUBSTANTIVE DELTA REVIEW PASS
 
-**Lifecycle closure:** The final status-only revision must pass Required
-`Delivery / Quality` and status-diff confirmation before protected-main merge.
+**Gate B evidence:** LOCAL `pnpm quality` PASS / REQUIRED `Delivery / Quality`
+PASS / SUBSTANTIVE DELTA REVIEW PASS / PUBLICATION APPROVAL PASS
+
+**Gate C evidence:** ROUTE / URL / STRUCTURE / LANGUAGE / RESPONSIVE / 200% TEXT /
+WCAG SPACING / LONG-CONTENT OVERFLOW / ACTUAL CHROME KEYBOARD TRAVERSAL / FOCUS /
+CONTRAST / NO-JS PASS / SUBSTANTIVE EVIDENCE REVIEW PASS
+
+**Lifecycle closure:** This status-only revision inherits the evidence-bearing
+HEAD only if its audited diff changes lifecycle authority and no content or
+implementation semantics. It must pass LOCAL `pnpm quality`, Required
+`Delivery / Quality`, and status-diff confirmation before protected-main merge.
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`,
 `layout-and-visual-composition.md`, `identity-surfaces.md`,
@@ -620,7 +637,7 @@ Gate A `PASS / FROZEN` on protected `main` authorizes Gate B to implement the fi
 Writing surface candidate. It does not authorize Gate C, production merge, deploy,
 or Notes.
 
-### Gate B — Candidate Implementation + Public Content (NEXT / NOT STARTED)
+### Gate B — Candidate Implementation + Public Content (PASS / FROZEN)
 
 Gate B passes only when the exact candidate satisfies Section 13, substantive
 implementation review passes, Elliott approves its exact public content, and Local
@@ -628,7 +645,7 @@ and Required Quality pass.
 
 Gate B PASS authorizes Gate C on that unchanged candidate only.
 
-### Gate C — Runtime, Accessibility & URL Validation (NOT AUTHORIZED)
+### Gate C — Runtime, Accessibility & URL Validation (PASS / FROZEN)
 
 Gate C passes only when the exact Gate B candidate satisfies every observed
 runtime boundary in Section 14 and substantive evidence review passes.
