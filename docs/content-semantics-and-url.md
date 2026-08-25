@@ -224,18 +224,51 @@ Writing and Notes remain Markdown-only (`.md`). Phase 2.1 does not authorize MDX
 The frontmatter title owns the document name. The Markdown body owns the
 substantive content below that title.
 
-Required body invariants:
+### 6.1 Non-empty body oracle
 
-- the body contains at least one non-whitespace textual or semantic Markdown node;
-- whitespace, frontmatter, or HTML comments alone do not constitute content;
-- the body does not contain an H1 because the entry title is the single document
-  H1 owner;
-- body headings begin at H2 and preserve a valid outline;
-- no minimum word count distinguishes Writing from Notes;
-- the body is never used to derive the stable ID.
+A body is non-empty only when its parsed Markdown AST contains at least one of:
 
-Gate B must enforce empty-body and body-H1 failures deterministically. It must not
-silently repair them, derive a replacement title, or publish an empty shell.
+- a paragraph with a descendant text or inline-code node whose literal value
+  remains non-empty after ECMAScript `String.prototype.trim()`;
+- a fenced or indented code-block node whose literal value remains non-empty after
+  the same trim operation.
+
+Paragraphs inside list items or blockquotes use the same rule. Link text qualifies
+through its paragraph text node.
+
+The following do not satisfy non-empty body by themselves:
+
+- frontmatter or whitespace;
+- headings;
+- thematic breaks;
+- images or image alt text;
+- raw HTML or HTML comments;
+- empty code fences.
+
+These exclusions do not forbid those nodes in an otherwise non-empty body. They
+only prevent structural or opaque markup from being mistaken for substantive v1
+Writing/Notes content.
+
+### 6.2 Heading oracle
+
+The body may contain no headings. When headings exist:
+
+- every body heading is H2 through H6; H1 always fails because the frontmatter
+  title is the single document H1 owner;
+- the first body heading is H2;
+- reading headings in source order, a move to a deeper level may increase by at
+  most one;
+- the same level or any shallower level is valid.
+
+Therefore `H2 → H3`, `H3 → H2`, and `H2 → H2` pass. `H2 → H4`, a first H3, and
+any H1 fail. Heading text alone does not satisfy the non-empty-body oracle.
+
+No minimum word count distinguishes Writing from Notes, and the body is never used
+to derive the stable ID.
+
+Gate B must enforce the body and heading oracles from the parsed Markdown AST. It
+must not silently repair them, derive a replacement title, or publish an empty
+shell.
 
 ## 7. Date semantics
 
@@ -377,8 +410,8 @@ deployed product reality.
 
 ### 8.3 Immutability after publication
 
-Before first publication, an ID may change while the item remains a private draft.
-After a URL has been public:
+Before first site publication, an ID may change while the item remains an
+unpublished draft. After a URL has been public:
 
 - changing the title does not rename the file;
 - changing the language does not rename the file;
@@ -395,7 +428,7 @@ into a normal 404.
 
 ### 8.4 Collision rules
 
-- a normalized stable ID must be unique within its collection;
+- a validated stable ID must be unique within its collection;
 - duplicate identity fails the build;
 - the same stable ID may exist once in Writing and once in Notes because the URL
   namespaces differ;
@@ -410,7 +443,7 @@ Safe publication is explicit:
 # → semantically draft: true
 
 draft: true
-# → private source asset
+# → unpublished site source asset
 
 draft: false
 # → eligible for a public surface
@@ -419,12 +452,16 @@ draft: false
 The missing-field default is `true`. An author must write `draft: false`
 explicitly to make an otherwise valid entry eligible for publication.
 
+`draft` is a site-publication state, not a confidentiality or access-control
+boundary. The Elliott.page repository is public. Sensitive, confidential, or
+otherwise private material must not be committed to it, regardless of `draft`.
+
 For `draft: true` entries:
 
 - the source may exist and must still pass metadata, ID, date, and body validation;
 - it is absent from public collection queries and ordering;
 - it does not generate a production detail route or public output artifact;
-- guessing its stable URL returns the normal not-found result;
+- guessing its Elliott.page stable URL returns the normal not-found result;
 - it does not activate Writing/Notes navigation or an empty placeholder surface.
 
 Drafts are not silently skipped when malformed. A draft may be unpublished, but it
@@ -464,8 +501,8 @@ below:
 | malformed or impossible `date` / `updated` | fail |
 | `updated < date` | fail |
 | invalid, nested, or duplicate stable ID | fail |
-| empty/comment-only body | fail |
-| body-owned H1 | fail |
+| body fails the Section 6.1 non-empty oracle | fail |
+| heading sequence violates the Section 6.2 oracle | fail |
 
 Validation must not:
 
@@ -491,7 +528,7 @@ resolve these known differences on one reviewed implementation candidate:
 | Writing requires `description` | Writing `description` is optional |
 | Notes requires `title` | retained: Notes title remains required |
 | glob loaders allow nested Markdown paths | v1 content files are flat; stable ID is the file stem |
-| frontmatter validation does not prove a non-empty body | body emptiness and body-owned H1 fail |
+| frontmatter validation does not prove body integrity | the non-empty-body and heading oracles fail closed |
 | draft defaults to `true` | retained and extended to public query/route fail-closed behavior |
 
 This inventory is evidence of an implementation handoff, not authorization to edit
