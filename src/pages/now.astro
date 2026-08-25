@@ -1,0 +1,52 @@
+---
+import { getEntry, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { validateIdentityPageBody } from "../lib/identity-page-validation";
+
+const now = await getEntry("pages", "now");
+
+if (!now) {
+  throw new Error("Required pages/now entry is missing");
+}
+
+if (now.data.draft) {
+  throw new Error("Required pages/now entry must set draft: false");
+}
+
+if (!now.data.description) {
+  throw new Error("Required pages/now entry must define description");
+}
+
+if (!now.data.updated) {
+  throw new Error("Required pages/now entry must define updated as YYYY-MM-DD");
+}
+
+validateIdentityPageBody("now", now.body);
+
+const updatedDate = new Date(`${now.data.updated}T00:00:00.000Z`);
+const formattedUpdated = new Intl.DateTimeFormat(now.data.lang, {
+  dateStyle: "long",
+  timeZone: "UTC",
+}).format(updatedDate);
+const updatedLabel = now.data.lang === "zh-CN" ? "最后更新" : "Last updated";
+const updatedSeparator = now.data.lang === "zh-CN" ? "：" : ": ";
+const { Content } = await render(now);
+---
+
+<BaseLayout
+  title={`${now.data.title} — Elliott.page`}
+  description={now.data.description}
+  lang={now.data.lang}
+>
+  <article class="type-region" aria-labelledby="now-title">
+    <h1 id="now-title" class="type-title">{now.data.title}</h1>
+    <p class="meta-line">
+      {updatedLabel}{updatedSeparator}<time datetime={now.data.updated}
+        >{formattedUpdated}</time
+      >
+    </p>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

@@ -2,24 +2,36 @@
 
 **Version:** 1.0
 
-**Status:** IN PROGRESS — Phase 1.4: Identity Surfaces
+**Status:** PASS / FROZEN — Phase 1.4: Identity Surfaces
 
 **Gate A:** PASS / FROZEN — Identity Content & Surface Contract
 
-**Gate B:** NEXT / NOT STARTED / NOT AUTHORIZED — Production Implementation
+**Gate B:** PASS / FROZEN — Production Implementation
 
-**Gate C:** NOT STARTED / NOT AUTHORIZED — Runtime & Accessibility Validation
+**Gate C:** PASS / FROZEN — Runtime & Accessibility Validation
 
-**Gate B implementation authorization:** NOT AUTHORIZED UNTIL GATE A MERGE
+**Publication approval:** PASS — exact implementation/content revision
+`02c8049558891a9631d3f50a1d6f5c928cfc094c`
 
-**Gate C validation authorization:** NOT AUTHORIZED UNTIL GATE B IMPLEMENTATION
-REVIEW PASSES ON THE CANDIDATE REVISION
+**Gate B evidence:** REQUIRED `Delivery / Quality` PASS / SUBSTANTIVE DELTA REVIEW
+PASS / PUBLICATION APPROVAL PASS
 
-**Production merge/deploy authorization:** NOT AUTHORIZED UNTIL GATE B AND GATE C
-PASS ON THE SAME IMPLEMENTATION CANDIDATE
+**Gate C evidence:** PRODUCTION-EQUIVALENT RUNTIME PASS / RESPONSIVE AND STRESS
+EVIDENCE PASS / SUBSTANTIVE EVIDENCE REVIEW PASS
 
-**Evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
-SUBSTANTIVE DELTA REVIEW PASS
+**Forced Colors:** UNVERIFIED / DEFERRED
+
+**Lifecycle evidence inheritance:** The closure revision is status-only. Gate B,
+publication, and Gate C evidence remain bound to `02c8049...` because approved
+content, implementation, and runtime semantics are unchanged.
+
+**Production merge/deploy authorization:** GATE CONDITIONS SATISFIED — the final
+status-only revision remains subject to Required `Delivery / Quality` and
+status-diff confirmation before protected-main merge.
+
+**Lifecycle closure verification:** LOCAL QUALITY PASS. The final status-only
+revision must also pass Required `Delivery / Quality` and status-diff confirmation
+before protected-main merge.
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`,
 `layout-and-visual-composition.md`, `src/content.config.ts`
@@ -201,9 +213,17 @@ Required invariants:
 - no feed, project list, social directory, portrait, or status excerpt is added.
 
 The current production sentence is provisional implementation copy. Gate A does
-not silently approve it as final. Gate B may begin only with an explicitly
-approved Home place statement; evaluation copy from a specimen is never promoted
-by default.
+not silently approve it as final. After Gate A authorization, Gate B may implement
+candidate publication copy and bind it to an exact implementation revision. Gate B
+may pass only after Elliott explicitly approves that final public copy on the exact
+candidate revision; Gate C may not start before then. Evaluation copy from a
+specimen is never promoted by default.
+
+This is a narrow lifecycle correction to the frozen Gate A wording. The earlier
+requirement for approval before Gate B could begin was incompatible with the exact
+candidate-revision approval model in Section 12; it did not change the publication
+authority or permit Gate B, Gate C, merge, or deployment to proceed without
+Elliott's explicit approval.
 
 Home metadata is:
 
@@ -546,7 +566,7 @@ Gate A passes only when:
 - frozen Phase 1.1–1.3 inputs are not contradicted;
 - no route, content entry, or production implementation is introduced.
 
-### Gate B — Production Implementation (NEXT / NOT STARTED / NOT AUTHORIZED)
+### Gate B — Production Implementation (PASS / FROZEN)
 
 Gate B passes only when:
 
@@ -561,7 +581,7 @@ Gate B passes only when:
 Gate B PASS authorizes Gate C on the same implementation candidate. It does not
 authorize production merge or deployment.
 
-### Gate C — Runtime & Accessibility Validation (NOT STARTED / NOT AUTHORIZED)
+### Gate C — Runtime & Accessibility Validation (PASS / FROZEN)
 
 Gate C passes only when:
 

@@ -54,6 +54,7 @@ a:focus-visible {
 
 .type-title,
 .type-heading-2,
+.prose h2,
 .type-heading-3,
 .type-heading-4 {
   max-inline-size: var(--title-measure);
@@ -69,7 +70,8 @@ a:focus-visible {
   letter-spacing: var(--tracking-title-latin);
 }
 
-.type-heading-2 {
+.type-heading-2,
+.prose h2 {
   margin-block: calc(var(--body-line) * var(--rhythm-heading-2-before))
     calc(var(--body-line) * var(--rhythm-heading-2-after));
   font-size: var(--type-heading-2);
@@ -94,7 +96,7 @@ a:focus-visible {
 }
 
 :where(.type-region:lang(zh-CN))
-  :is(.type-title, .type-heading-2, .type-heading-3) {
+  :is(.type-title, .type-heading-2, .prose h2, .type-heading-3) {
   letter-spacing: 0;
 }
 

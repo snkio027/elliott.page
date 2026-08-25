@@ -51,6 +51,24 @@ a:focus-visible {
   min-inline-size: 0;
 }
 
+.primary-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-cluster);
+}
+
+.destination-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-inline);
+}
+
+.identity-anchor {
+  white-space: nowrap;
+}
+
 .identity-cluster {
   display: grid;
   gap: var(--space-cluster);
@@ -70,4 +88,11 @@ a:focus-visible {
 
 .contact-link {
   overflow-wrap: anywhere;
+}
+
+@media (max-width: 34rem) {
+  .primary-navigation {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
