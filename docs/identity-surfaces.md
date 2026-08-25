@@ -29,8 +29,9 @@ content, implementation, and runtime semantics are unchanged.
 status-only revision remains subject to Required `Delivery / Quality` and
 status-diff confirmation before protected-main merge.
 
-**Lifecycle closure verification:** LOCAL QUALITY PASS / REQUIRED
-`Delivery / Quality` PENDING / STATUS-DIFF CONFIRMATION PENDING
+**Lifecycle closure verification:** LOCAL QUALITY PASS. The final status-only
+revision must also pass Required `Delivery / Quality` and status-diff confirmation
+before protected-main merge.
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`,
 `layout-and-visual-composition.md`, `src/content.config.ts`
