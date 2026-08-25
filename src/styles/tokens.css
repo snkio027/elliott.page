@@ -56,4 +56,16 @@
   --rhythm-heading-4-after: 0.5;
   --rhythm-block: 1.25;
   --rhythm-meta: 0.5;
+
+  --color-canvas: #f6f4ef;
+  --color-text: #25231f;
+  --color-muted: #5e5a52;
+  --color-accent: #704a38;
+
+  --space-inline: 1rem;
+  --space-cluster: 1.75rem;
+  --space-region: 6rem;
+
+  --page-frame-max: 72rem;
+  --page-gutter: clamp(1rem, 5vw, 4rem);
 }

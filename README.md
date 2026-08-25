@@ -23,9 +23,13 @@ revision, and the substantive delta review closed all findings. Phase 1.3 — La
 & Visual Composition Gate A has passed Required `Delivery / Quality` and
 substantive review and is frozen. Gate B — Composition Specimen has passed and is
 frozen with Candidate A — Editorial breathing room selected for v1. Gate C —
-Production Integration is next but has not started; it remains unauthorized until
-the Gate B PR is merged. No formal Home, About, or Now surface has been created.
-Publishing and production content remain outside the current phase.
+Production Integration is in progress: the selected minimum shared values and
+layout primitives now drive a root-route production proof, and the selected
+specimen consumes the same production source as its regression baseline. Local
+implementation evidence has passed; Required `Delivery / Quality` and substantive
+review remain pending. The proof is not the formal Home surface, and no About or
+Now route has been created. Publishing and production content remain outside the
+current phase.
 
 ## Runtime
 

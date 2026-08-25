@@ -14,15 +14,18 @@
 
 **Gate B evidence boundary:** Forced Colors — UNVERIFIED / DEFERRED
 
-**Gate C:** NEXT / NOT STARTED — Production Integration
+**Gate C:** IN PROGRESS — Production Integration
 
-**Gate C authorization:** NOT AUTHORIZED UNTIL GATE B MERGE
+**Gate C authorization:** AUTHORIZED — Gate B merged
 
 **Gate C handoff:** Section and Rule remain unselected; the `4rem` page-edge block
 inset remains a local composition value rather than a shared token.
 
-**Evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
+**Gate A/B evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
 SUBSTANTIVE DELTA REVIEW PASS
+
+**Gate C evidence:** LOCAL IMPLEMENTATION EVIDENCE PASS / LOCAL QUALITY PASS /
+REQUIRED `Delivery / Quality` PENDING / SUBSTANTIVE REVIEW PENDING
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`
 
@@ -614,7 +617,7 @@ Gate B passes only when:
 - rejected candidates and evidence boundaries are recorded;
 - no candidate artifact enters production.
 
-### Gate C — Production Integration (NEXT / NOT STARTED)
+### Gate C — Production Integration (IN PROGRESS)
 
 Gate C passes only when:
 
@@ -630,6 +633,24 @@ Gate C passes only when:
 
 No production layout or color implementation is authorized before Gate B selects a
 composition.
+
+The current Gate C branch promotes only Candidate A's admitted shared consumers:
+Canvas, Text, Muted, Accent, Inline, Cluster, Region, page gutter, and frame
+maximum. Section and Rule remain unselected. The selected `4rem` page-edge block
+inset remains local to `.site-frame`; it is not a shared spacing token.
+
+`BaseLayout.astro` provides the real Header/Main/Footer ownership shell, and the
+root route provides only the minimum identity proof needed to validate it. This
+does not authorize final Home copy or formal About and Now routes. The selected
+specimen imports the production layout source; Control and Candidate B keep only
+their historical evaluation overrides.
+
+Local current-host evidence records exact production/specimen frame and identity
+geometry at `320`, `480`, `768`, `1024`, and `1440px`; the selected specimen also
+passes its complete normal and stress regression matrices. Production link,
+current, hover, and keyboard-focus states pass. Forced Colors remains `UNVERIFIED /
+DEFERRED`, and independent browser-engine or platform equivalence is not claimed.
+The detailed receipt is in `specimens/README.md`.
 
 ## 16. Change control
 
