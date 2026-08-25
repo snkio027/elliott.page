@@ -2,26 +2,35 @@
 
 **Version:** 1.0
 
-**Status:** IN PROGRESS — Phase 1.4: Identity Surfaces
+**Status:** PASS / FROZEN — Phase 1.4: Identity Surfaces
 
 **Gate A:** PASS / FROZEN — Identity Content & Surface Contract
 
-**Gate B:** IN PROGRESS — Production Implementation
+**Gate B:** PASS / FROZEN — Production Implementation
 
-**Gate C:** NOT STARTED / NOT AUTHORIZED — Runtime & Accessibility Validation
+**Gate C:** PASS / FROZEN — Runtime & Accessibility Validation
 
-**Gate B implementation authorization:** AUTHORIZED — Gate A merged
+**Publication approval:** PASS — exact implementation/content revision
+`02c8049558891a9631d3f50a1d6f5c928cfc094c`
 
-**Gate C validation authorization:** NOT AUTHORIZED UNTIL GATE B IMPLEMENTATION
-REVIEW PASSES ON THE CANDIDATE REVISION
+**Gate B evidence:** REQUIRED `Delivery / Quality` PASS / SUBSTANTIVE DELTA REVIEW
+PASS / PUBLICATION APPROVAL PASS
 
-**Production merge/deploy authorization:** NOT AUTHORIZED UNTIL GATE B AND GATE C
-PASS ON THE SAME IMPLEMENTATION CANDIDATE
+**Gate C evidence:** PRODUCTION-EQUIVALENT RUNTIME PASS / RESPONSIVE AND STRESS
+EVIDENCE PASS / SUBSTANTIVE EVIDENCE REVIEW PASS
 
-**Evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
-SUBSTANTIVE DELTA REVIEW PASS
+**Forced Colors:** UNVERIFIED / DEFERRED
 
-**Gate B publication status:** CANDIDATE CONTENT / PUBLICATION APPROVAL PENDING
+**Lifecycle evidence inheritance:** The closure revision is status-only. Gate B,
+publication, and Gate C evidence remain bound to `02c8049...` because approved
+content, implementation, and runtime semantics are unchanged.
+
+**Production merge/deploy authorization:** GATE CONDITIONS SATISFIED — the final
+status-only revision remains subject to Required `Delivery / Quality` and
+status-diff confirmation before protected-main merge.
+
+**Lifecycle closure verification:** LOCAL QUALITY PASS / REQUIRED
+`Delivery / Quality` PENDING / STATUS-DIFF CONFIRMATION PENDING
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`,
 `layout-and-visual-composition.md`, `src/content.config.ts`
@@ -556,7 +565,7 @@ Gate A passes only when:
 - frozen Phase 1.1–1.3 inputs are not contradicted;
 - no route, content entry, or production implementation is introduced.
 
-### Gate B — Production Implementation (IN PROGRESS)
+### Gate B — Production Implementation (PASS / FROZEN)
 
 Gate B passes only when:
 
@@ -571,7 +580,7 @@ Gate B passes only when:
 Gate B PASS authorizes Gate C on the same implementation candidate. It does not
 authorize production merge or deployment.
 
-### Gate C — Runtime & Accessibility Validation (NOT STARTED / NOT AUTHORIZED)
+### Gate C — Runtime & Accessibility Validation (PASS / FROZEN)
 
 Gate C passes only when:
 

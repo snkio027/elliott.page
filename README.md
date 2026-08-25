@@ -25,16 +25,19 @@ revision, and the substantive delta review closed all findings. Phase 1.3 — La
 Editorial breathing room is selected for v1, Required `Delivery / Quality` passed
 on the final reviewed revision, and the substantive delta review closed the
 production-navigation finding. The production proof exposes only the real root
-destination; About and Now remain specimen evidence rather than dead production
-links. The proof is not the formal Home surface, and no About or Now route has been
-created. Publishing and production content remain outside the frozen phase.
+destination; About and Now remained specimen evidence rather than dead links at
+that gate. That historical root-only proof has now been superseded by the approved
+Phase 1.4 identity surfaces without reopening the frozen Phase 1.3 system.
 
-Phase 1.4 — Identity Surfaces is in progress. Gate A — Identity Content & Surface
-Contract has passed Required `Delivery / Quality` and substantive delta review and
-is frozen. Gate B — Production Implementation is in progress on a candidate branch
-with publication approval pending. Gate C remains not started and not authorized,
-and production merge/deploy remains unauthorized until Gate B and Gate C pass on
-the same implementation candidate.
+Phase 1.4 — Identity Surfaces is frozen. Gates A, B, and C have passed on the same
+implementation candidate. Elliott explicitly approved the Home, About, and Now
+publication copy on implementation/content revision
+`02c8049558891a9631d3f50a1d6f5c928cfc094c`; Gate C validated that unchanged
+candidate in a production-equivalent static runtime, and substantive evidence
+review found no blocker. Forced Colors remains `UNVERIFIED / DEFERRED`. The final
+lifecycle-only revision changes status authority, not approved content,
+implementation, or runtime semantics, and remains subject to Required
+`Delivery / Quality` and status-diff confirmation before merge.
 
 ## Runtime
 
