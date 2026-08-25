@@ -274,7 +274,7 @@ Gate B may assign exact values to no more than four shared layout roles:
 | Role | Responsibility | Example consumers |
 | --- | --- | --- |
 | Inline gap | Closely related items on one line | About / Now navigation links |
-| Cluster gap | Elements that form one semantic group | Name, place statement, contact |
+| Cluster gap | Elements that form one semantic group | Display name, place statement |
 | Section gap | Distinct groups inside one page region | Identity cluster to secondary context |
 | Region gap | Header, Main, and Footer separation | Global document composition |
 
@@ -334,9 +334,10 @@ Non-text Contrast:
 
 Across both categories:
 
-- Color is never the only distinction for links, focus, hover, current or visited
-  navigation, or freshness. Underline, outline, weight, text, or structure remains
-  available.
+- Links remain identifiable without relying on color in both unvisited and visited
+  states.
+- Focus, hover, current navigation, and freshness do not rely on color alone.
+  Underline, outline, weight, text, or structure remains available.
 - Muted content remains readable in bright environments and is never used to hide
   required contact or freshness information.
 - Forced-colors compatibility is an intended runtime invariant, but Gate B may mark
@@ -353,8 +354,14 @@ Across both categories:
   geometry and contrast requirements as a stronger project invariant; this does
   not reclassify that criterion as Level AA.
 - Prose links retain the frozen underline behavior.
-- Navigation may omit a persistent underline only when its hover, focus, current,
-  and visited states all remain unambiguous without relying on color alone.
+- Navigation remains identifiable as links without relying on color in both
+  unvisited and visited states. It may omit a persistent underline only when
+  another persistent non-color affordance preserves that recognition.
+- Hover, focus, and current navigation states remain unambiguous without relying on
+  color alone.
+- A distinct visited-state treatment is optional. When used, it is limited to the
+  styling and observability permitted by the user agent's `:visited` privacy model
+  and does not replace or weaken the normal non-color link affordance.
 - A focus indicator has an area at least equivalent to a `2 CSS px` perimeter of
   the unfocused component and at least `3:1` contrast between the same pixels in
   focused and unfocused states.
@@ -550,7 +557,12 @@ Gate B must record:
 - region and cluster relationships;
 - navigation reflow and focus order;
 - text and non-text contrast values;
-- hover, focus, current-link, and visited-link recognition without color alone;
+- default and visited links retaining their non-color link affordance, required
+  contrast, and full content;
+- hover, focus, and current-link recognition without color alone;
+- whether any distinct visited treatment stays within browser-permitted `:visited`
+  behavior; Gate B does not depend on script or computed-style inspection to prove
+  a user's history state;
 - actual forced-colors evidence and result, or `UNVERIFIED / DEFERRED` when the
   environment is unavailable; semantic-color inspection is recorded separately
   and never upgraded to a forced-colors pass;
