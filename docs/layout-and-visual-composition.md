@@ -168,11 +168,11 @@ not required Astro components or DOM wrappers.
 | Page shell | Document-level canvas and logical edges | One canvas; no horizontal page overflow |
 | Site frame | Aligns global navigation, main content, and footer | Centered within the viewport; wider than or equal to the reading column |
 | Page gutter | Protects content from viewport edges | Symmetric in the inline direction; never collapses to zero |
-| Header region | Contains identity anchor and primary navigation | Normal document flow; no sticky or fixed behavior in v1 |
+| Header region | Contains identity anchor and primary navigation | Owns Home orientation through About and Now; normal document flow; no sticky or fixed behavior in v1 |
 | Main region | Owns the page's primary semantic responsibility | Exactly one `main`; no decorative wrapper hierarchy |
 | Reading column | Contains sustained prose | Consumes the frozen typography measure for the page language |
-| Identity cluster | Relates name, place statement, orientation, and contact | Home only; content-sized, never a full-viewport hero |
-| Footer region | Ends the document and exposes restrained contact context | Natural document flow; not pinned to the viewport |
+| Identity cluster | Relates the Display name and place statement | Home Main only; contains no duplicate navigation or contact; content-sized, never a full-viewport hero |
+| Footer region | Ends the document and exposes the primary contact path | Sole Home owner of `hi@elliott.page`; natural document flow; not pinned to the viewport |
 
 These primitives may share an element when semantics and layout permit. The
 implementation must not create a component for each vocabulary term by default.
@@ -187,7 +187,6 @@ implementation must not create a component for each vocabulary term by default.
   and accommodates any applicable safe-area inset.
 - Gutters may grow fluidly, but must stop growing before they make content appear
   detached from the viewport.
-- Edge protection and alignment remain valid in either inline writing direction.
 - The page shell does not force identity content to fill the viewport height.
 - Ordinary content must not create page-level horizontal scrolling at `320px`.
   Source-preserving code remains the existing local-overflow exception.
@@ -335,12 +334,16 @@ Non-text Contrast:
 
 Across both categories:
 
-- Color is never the only distinction for links, focus, current navigation, or
-  freshness. Underline, outline, weight, text, or structure remains available.
+- Color is never the only distinction for links, focus, hover, current or visited
+  navigation, or freshness. Underline, outline, weight, text, or structure remains
+  available.
 - Muted content remains readable in bright environments and is never used to hide
   required contact or freshness information.
-- The browser's forced-colors mode preserves content, link recognition, and visible
-  focus.
+- Forced-colors compatibility is an intended runtime invariant, but Gate B may mark
+  it `PASS` only from an actual browser forced-colors environment. When that
+  environment is unavailable, Gate B records `UNVERIFIED / DEFERRED`; a semantic
+  color inspection is supporting evidence only and must not be reported as a
+  forced-colors pass.
 
 ### 8.3 Link and focus relationship
 
@@ -350,8 +353,8 @@ Across both categories:
   geometry and contrast requirements as a stronger project invariant; this does
   not reclassify that criterion as Level AA.
 - Prose links retain the frozen underline behavior.
-- Navigation may use a quieter default treatment, but its current and focus states
-  remain perceivable without color alone.
+- Navigation may omit a persistent underline only when its hover, focus, current,
+  and visited states all remain unambiguous without relying on color alone.
 - A focus indicator has an area at least equivalent to a `2 CSS px` perimeter of
   the unfocused component and at least `3:1` contrast between the same pixels in
   focused and unfocused states.
@@ -385,15 +388,18 @@ Gate B determines the exact wide alignment and narrow wrapping behavior.
 
 ## 10. Home identity composition
 
-Home answers whose place this is and how to continue. Its complete Phase 1 content
-inventory is:
+Home answers whose place this is and how to continue. Its Phase 1 inventory is
+page-level; listing an item does not authorize rendering it again in every region.
 
-```text
-Elliott Bai
-A short statement about this place.
-About / Now orientation
-hi@elliott.page
-```
+| Region | Unique responsibility on Home | Content |
+| --- | --- | --- |
+| Header | Identity anchor and primary orientation | `Elliott Bai` Home link, About, Now |
+| Main identity cluster | Primary identity statement | `Elliott Bai` as Display, short place statement |
+| Footer | Primary contact path | `hi@elliott.page` |
+
+About and Now are not repeated inside Main, and `hi@elliott.page` is not repeated
+inside the identity cluster. Gate B may compose the regions but may not move or
+duplicate these responsibilities.
 
 Composition invariants:
 
@@ -402,11 +408,11 @@ Composition invariants:
   credential, or parenthetical identity is added.
 - The place statement is Body-level text and remains subordinate to the name.
 - The statement describes this space rather than Elliott's profession.
-- About and Now remain primary navigation, not call-to-action buttons.
-- Contact is available as a text email link and remains quieter than the primary
-  identity.
-- The visible name is not duplicated inside the Home identity composition merely
-  to satisfy separate visual regions.
+- About and Now remain Header navigation, not Main call-to-action buttons.
+- Contact remains a quiet text email link in the Footer.
+- The Header Home anchor and Main Display name have distinct semantic
+  responsibilities. Main contains exactly one Display instance and does not create
+  another name-bearing visual region.
 - The identity cluster is aligned to the logical start edge and remains
   content-sized.
 - It is not vertically centered, stretched to a full viewport, placed over imagery,
@@ -511,17 +517,18 @@ layout and color values outside production.
 
 It includes:
 
-- Home identity content with `Elliott Bai`, a test place statement, About, Now, and
-  `hi@elliott.page`;
+- the Home page-level inventory distributed across Header, Main identity cluster,
+  and Footer exactly as defined in Section 10;
 - an About-shaped English reading surface;
 - a Now-shaped Simplified Chinese or mixed-language reading surface with a freshness
   marker;
-- primary navigation default, current, hover, and keyboard-focus states;
+- primary navigation default, current, visited, hover, and keyboard-focus states;
 - short and deliberately long place-statement variants;
 - long navigation, freshness, and contact strings;
 - Header, Main, and Footer landmarks;
 - the allowed semantic color roles;
-- a forced-colors sanity state;
+- an actual browser forced-colors state when a credible environment is available,
+  or an explicitly deferred result plus a supporting semantic-color inspection;
 - no image, icon, card, shadow, Web Font, or production content.
 
 It is reviewed at:
@@ -531,7 +538,8 @@ It is reviewed at:
 100% text / 200% text
 normal spacing / existing WCAG text-spacing override
 keyboard navigation
-forced colors or an equivalent semantic-color inspection
+actual forced colors when available
+semantic-color inspection as supporting evidence only
 ```
 
 Gate B must record:
@@ -542,7 +550,10 @@ Gate B must record:
 - region and cluster relationships;
 - navigation reflow and focus order;
 - text and non-text contrast values;
-- current-link and focus recognition without color alone;
+- hover, focus, current-link, and visited-link recognition without color alone;
+- actual forced-colors evidence and result, or `UNVERIFIED / DEFERRED` when the
+  environment is unavailable; semantic-color inspection is recorded separately
+  and never upgraded to a forced-colors pass;
 - whether each proposed token has a real consumer;
 - any rejected composition and the reason it failed.
 
