@@ -29,27 +29,9 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
           aria-label="Primary"
           lang="en"
         >
-          <a
-            class="identity-anchor"
-            href="/"
-            aria-current={currentPath === "/" ? "page" : undefined}
-          >
+          <a href="/" aria-current={currentPath === "/" ? "page" : undefined}>
             Elliott Bai
           </a>
-          <span class="destination-group">
-            <a
-              href="/about/"
-              aria-current={currentPath === "/about" ? "page" : undefined}
-            >
-              About
-            </a>
-            <a
-              href="/now/"
-              aria-current={currentPath === "/now" ? "page" : undefined}
-            >
-              Now
-            </a>
-          </span>
         </nav>
       </header>
 

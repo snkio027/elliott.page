@@ -10,6 +10,10 @@
   --space-region: 4rem;
 }
 
+:root[data-composition="editorial"] {
+  --space-inline: 1rem;
+}
+
 :root[data-composition="tension"] {
   --page-frame-max: 72rem;
   --page-gutter: clamp(1rem, 4vw, 3rem);
@@ -95,6 +99,24 @@ input:focus-visible {
   background: var(--color-canvas);
 }
 
+.primary-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-cluster);
+}
+
+.destination-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-inline);
+}
+
+.identity-anchor {
+  white-space: nowrap;
+}
+
 :root[data-composition="control"] .site-frame {
   padding-block: 2.75rem;
 }
@@ -167,6 +189,13 @@ input:focus-visible {
 
 :root[data-spacing-override="true"] .page-canvas .prose p + p {
   margin-block-start: 2em !important;
+}
+
+@media (max-width: 34rem) {
+  .primary-navigation {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 64rem) {

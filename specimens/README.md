@@ -329,48 +329,57 @@ contains:
 ```text
 tokens.css
 ├── Canvas / Text / Muted / Accent
-├── Inline / Cluster / Region
+├── Cluster / Region
 └── page gutter / frame maximum
 
 layout.css
 ├── shared canvas and link states
 ├── site frame and responsive gutter
 ├── Header / Main / Footer region shell
-├── primary navigation composition
 └── Home identity-cluster composition
 ```
 
 There is no Section token, Rule token, palette scale, rejected-candidate selector,
-or specimen query/stress machinery in production. The `4rem` page-edge block
-inset remains a local `.site-frame` value. The build contains one root HTML file
-and one compiled CSS asset, with no Web Font asset or formal About/Now route.
+or specimen query/stress machinery in production. Inline remains selected Gate B
+evidence, but its token and destination-group layout stay specimen-local until a
+real production consumer exists. The `4rem` page-edge block inset remains a local
+`.site-frame` value. The build contains one root HTML file and one compiled CSS
+asset, with no Web Font asset or formal About/Now route.
 
 `BaseLayout.astro` owns one Header, one Main, and one Footer. Header owns `Elliott
-Bai / About / Now`, Main receives the route content, and Footer owns
-`hi@elliott.page`. The root route adds only the Display name and provisional place
-statement as an implementation proof; it is not the formal Home surface.
+Bai → /`, Main receives the route content, and Footer owns `hi@elliott.page`.
+About and Now remain in the complete Gate B specimen but are not production links
+until their routes exist. The root route adds only the Display name and provisional
+place statement as an implementation proof; it is not the formal Home surface.
 
-### Production/specimen parity
+### Production/specimen shared-baseline parity
 
 Validated on 25 August 2026 in the current local macOS Codex in-app browser. At
-every width below, the production proof and the selected specimen have exactly the
-same frame and identity-cluster geometry:
+every width below, production and the selected specimen have the same frame width,
+gutter, Region gap, identity-cluster inline start, width, and height:
 
-| Viewport | Frame                                                  | Identity cluster                                   |   Gutter | Region gap |
-| -------: | ------------------------------------------------------ | -------------------------------------------------- | -------: | ---------: |
-|  `320px` | `320 × 507.398px`, inline start `0`                    | `288 × 96.398px`, inline start `16px`, top `230px` |   `16px` |     `96px` |
-|  `480px` | `480 × 513.359px`, inline start `0`                    | `432 × 101.563px`, inline start `24px`             |   `24px` |     `96px` |
-|  `768px` | `768 × 474.414px`, inline start `0`                    | `648.141 × 110.898px`, inline start `38.398px`     | `38.4px` |     `96px` |
-| `1024px` | `1024 × 483.586px`, inline start `0`                   | `648.141 × 119.195px`, inline start `51.195px`     | `51.2px` |     `96px` |
-| `1440px` | `1152 × 489.891px`, centered with inline start `144px` | `648.141px` wide, inline start `208px`             |   `64px` |     `96px` |
+| Viewport | Production frame | Specimen frame | Shared identity size  |   Gutter | Region gap | Interpretation                                       |
+| -------: | ---------------: | -------------: | --------------------- | -------: | ---------: | ---------------------------------------------------- |
+|  `320px` |      `458.398px` |    `507.398px` | `288 × 96.398px`      |   `16px` |     `96px` | production omits the `49px` inactive destination row |
+|  `480px` |      `464.094px` |    `513.359px` | `432 × 101.563px`     |   `24px` |     `96px` | production omits the `49.265px` destination row      |
+|  `768px` |      `474.414px` |    `474.414px` | `648.141 × 110.898px` | `38.4px` |     `96px` | exact full geometry                                  |
+| `1024px` |      `483.586px` |    `483.586px` | `648.141 × 119.195px` | `51.2px` |     `96px` | exact full geometry                                  |
+| `1440px` |      `489.891px` |    `489.891px` | `648.141 × 124.891px` |   `64px` |     `96px` | exact full geometry                                  |
 
-No tested production or selected-specimen state has page or frame overflow.
-Section and Rule are unselected in both sources.
+The narrow frame-height and identity-position difference is intentional evidence
+of route reality, not a layout divergence: the selected specimen retains the
+complete future destination group, while production exposes only `/`. No tested
+production or selected-specimen state has page or frame overflow. Section and Rule
+are unselected in both sources; Inline is `UNSELECTED` in production and `1rem` in
+the selected specimen.
 
 ### Regression and interaction evidence
 
 | Evidence                                                              | Result                                                                                                          |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Production route reality                                              | PASS — one primary link to `/`; zero About/Now links; one built route; no destination group                     |
+| Production token admission                                            | PASS — Inline, Section, and Rule are unselected                                                                 |
+| Selected specimen navigation                                          | PASS — complete Elliott Bai/About/Now composition remains reproducible; Inline is specimen-local                |
 | Selected specimen × Home/About/Now × five normal widths               | PASS — 15 states                                                                                                |
 | Selected specimen × Home/About/Now × `320/768/1440px` combined stress | PASS — 9 long-content + 200% text + spacing-override states                                                     |
 | Selected specimen × Home/About/Now × separate `320px` stress states   | PASS — 12 long-content, resize, spacing, and combined states                                                    |
@@ -385,8 +394,16 @@ Section and Rule are unselected in both sources.
 This is current-host evidence. Independent browser-engine, operating-system, and
 device equivalence is not claimed. Direct production DOM mutation is not used as
 evidence: stress states run in the selected specimen, which imports the production
-tokens and layout source, while the normal production/specimen parity receipt
-proves that both use the same selected geometry.
+tokens and shared layout source. The corrected parity receipt distinguishes shared
+geometry from the intentional route-inventory difference instead of treating
+inactive destinations as production capability.
+
+The first substantive review found that the initial production proof rendered
+About and Now anchors despite building no corresponding routes. Gate C removes
+those dead destinations rather than creating routes outside phase scope. The same
+correction withdraws Inline and destination-group layout from production because
+they no longer have a live consumer; Gate B's decision and specimen evidence are
+unchanged.
 
 Gate C is not frozen by this receipt. Required `Delivery / Quality` and
 substantive review must still pass on the final revision before lifecycle closure.
