@@ -174,11 +174,12 @@ complete type level of their context.
 
 ### 6.3 Weight and style
 
-The first implementation needs only two semantic weights:
+The first implementation uses three semantic weight levels:
 
 ```text
 Regular   400   Body, Quote, Code
-Strong    600   Display, Heading, Meta, strong emphasis
+Meta      500   Navigation, dates, captions, labels, freshness markers
+Strong    600   Display, Heading, strong emphasis
 ```
 
 - A selected font may map these values to the nearest genuine faces only when the
@@ -214,7 +215,7 @@ The final stacks must provide:
 
 - real glyph coverage for the declared language;
 - compatible perceived size and baseline alignment;
-- clear Regular and Strong states;
+- clear Regular, Meta, and Strong states;
 - legible punctuation and numerals;
 - stable fallback when the preferred face is unavailable.
 
@@ -448,6 +449,8 @@ It includes:
 - ordered, unordered, and nested lists;
 - a blockquote with citation;
 - inline code and a code block containing ambiguous glyphs;
+- explicit `p + p`, paragraph-to-list, and list-to-paragraph rhythm probes;
+- Heading, Blockquote, and Code cases as the first or last prose child;
 - a long URL and a long unbroken identifier;
 - intentional font-load failure.
 
@@ -477,6 +480,14 @@ Lorem ipsum or repeated placeholder glyphs are not sufficient evidence.
 - rhythm and measure intervals are approved;
 - accessibility and loading constraints are executable;
 - no page-layout or color decision has entered the contract.
+
+**Gate A correction — 25 August 2026:** Gate C substantive review found that the
+type-level table and the implementation assigned Meta weight `500`, while the
+original prose in Section 6.3 incorrectly grouped Meta under Strong `600` and
+described only two weight levels. The table, accepted specimen, and production
+token establish `500` as the intended Meta value. Section 6.3 now states the same
+three-level invariant. This corrects a contradictory invariant; it does not reopen
+font selection or redesign the hierarchy.
 
 ### Gate B — Font family (PASS / FROZEN)
 
@@ -516,11 +527,18 @@ The implementation authority is deliberately narrow:
 - the static production build contains no `@font-face`, WOFF2 asset, or
   rejected/deferred candidate family reference.
 
-The shared implementation reproduced the frozen control geometry at `320px`,
-`768px`, and `1440px`. At `320px`, 200% root text, the WCAG text-spacing override,
-and their combined state produced no page-level horizontal overflow; long code
-remained locally scrollable. The candidate routes and Geist delayed-load failure
-also remained reproducible after the specimen began consuming production CSS.
+The initial Gate C implementation reproduced the prior control geometry, but
+substantive review found that both implementations contained the same selector
+cascade defect: the broad paragraph/list transition rule overrode the frozen
+`0.8B` consecutive-paragraph rhythm with `1B`. The production source and specimen
+were corrected to implement `p + p = 0.8B` and `p ↔ list = 1B`; the corrected
+baseline replaces the defective geometry rather than preserving it as false
+parity.
+
+The corrected specimen also verifies zero leading and trailing margin when a
+Heading, Blockquote, or Code block is the first or last prose child. Existing
+viewport, enlargement, text-spacing, CJK emphasis, local code overflow, candidate
+routing, and Geist delayed-load failure evidence is rerun after this correction.
 
 Gate C implementation and local evidence are complete within the explicit
 current-host evidence boundary. The local canonical `pnpm quality` entrypoint did

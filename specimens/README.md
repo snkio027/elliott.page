@@ -30,10 +30,13 @@ Validated on 23 August 2026 using the system-font control:
 | Simplified Chinese `<em>`       | Filled dots below the text remain distinct without line collision                                                     |
 | Weight-only Chinese `<em>`      | Rejected because it becomes visually equivalent to `<strong>`                                                         |
 
-This is the frozen Gate A control baseline. Gate B subsequently selected the Native
-System Font Stack for v1 using current-host evidence from the local macOS
-Chrome/Chromium environment. Cross-platform typography behavior remains unverified
-and is intentionally deferred until a real need or defect appears.
+Gate C substantive review on 25 August 2026 found that the original specimen's
+broad paragraph/list selector also matched `p + p`, overriding the frozen `0.8B`
+paragraph rhythm with `1B`. Production CSS and the specimen now share the corrected
+selector, so the corrected control replaces the defective geometry as the Gate A
+baseline. Gate B's Native System Font Stack decision is unchanged. Cross-platform
+typography behavior remains unverified and is intentionally deferred until a real
+need or defect appears.
 
 ## Gate B candidate routing
 
@@ -60,19 +63,33 @@ production integration.
 
 ## Gate C implementation record
 
-Validated on 23 August 2026 in the same local macOS Chrome/Chromium evidence
-boundary used by Gate B:
+Initially validated on 23 August 2026 and corrected on 25 August 2026 in the same
+local macOS Chrome/Chromium evidence boundary used by Gate B:
 
-| Concern              | Result                                                                                                                              |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Shared source        | The specimen consumes `src/styles/tokens.css` and `src/styles/typography.css` directly                                              |
-| Control parity       | Display, English title/body, and Chinese title/body geometry match the frozen Gate A control at `320px`, `768px`, and `1440px`      |
-| `320px` resilience   | 200% root text, WCAG text spacing, and the combined state produce no page-level horizontal overflow                                 |
-| Long code            | Remains horizontally scrollable inside its own block in every stress state                                                          |
-| Chinese `<em>`       | The production primitive renders filled dots below the text on the validated host                                                   |
-| Candidate regression | Candidate routes still load only their selected local assets; the Geist `+53.758px` delayed-load title failure remains reproducible |
-| Production proof     | `BaseLayout.astro` imports the shared source and the baseline Home renders one semantic Display heading                             |
-| Production isolation | The static build contains no `@font-face`, WOFF2 asset, or candidate-family reference                                               |
+| Concern                | Result                                                                                                                              |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Shared source          | The specimen consumes `src/styles/tokens.css` and `src/styles/typography.css` directly                                              |
+| Corrected rhythm       | Computed `p + p = 0.8B`; computed `p → list` and `list → p = 1B`                                                                    |
+| Boundary normalization | Heading, Blockquote, and Code fixtures have zero leading margin as first child and zero trailing margin as last child               |
+| Viewport regression    | Corrected baseline has no page-level horizontal overflow at `320px`, `768px`, or `1440px`                                           |
+| `320px` resilience     | 200% root text, WCAG text spacing, and the combined state produce no page-level horizontal overflow                                 |
+| Long code              | Remains horizontally scrollable inside its own block in every stress state                                                          |
+| Chinese `<em>`         | The production primitive renders filled dots below the text on the validated host                                                   |
+| Candidate regression   | Candidate routes still load only their selected local assets; the Geist `+53.758px` delayed-load title failure remains reproducible |
+| Production proof       | `BaseLayout.astro` imports the shared source and the baseline Home renders one semantic Display heading                             |
+| Production isolation   | The static build contains no `@font-face`, WOFF2 asset, or candidate-family reference                                               |
+
+Computed normal-state rhythm evidence:
+
+| Viewport | Body line box |                            `p + p` |         `p → list` |         `list → p` |
+| -------: | ------------: | ---------------------------------: | -----------------: | -----------------: |
+|  `320px` |      `26.4px` |                 `21.12px` / `0.8B` |    `26.4px` / `1B` |    `26.4px` / `1B` |
+|  `768px` |   `28.0791px` | `22.4633px` / approximately `0.8B` | `28.0791px` / `1B` | `28.0791px` / `1B` |
+| `1440px` |      `29.7px` |                 `23.76px` / `0.8B` |    `29.7px` / `1B` |    `29.7px` / `1B` |
+
+The Heading fixture reports `0px` first-child leading margin and `0px` last-child
+trailing margin. The only-child Blockquote and Code fixtures report `0px` on both
+block edges. Meta computes to weight `500`.
 
 Candidate CSS and WOFF2 files remain reproducibility evidence under `specimens/`.
 They override font slots only inside an explicitly selected local evaluation route

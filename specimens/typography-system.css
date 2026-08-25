@@ -112,10 +112,10 @@ nav {
   min-inline-size: 0;
 }
 
-.type-title::before,
-.type-heading-2::before,
-.type-heading-3::before,
-.type-heading-4::before {
+.type-title[data-token]::before,
+.type-heading-2[data-token]::before,
+.type-heading-3[data-token]::before,
+.type-heading-4[data-token]::before {
   display: block;
   margin-block-end: 0.35rem;
   content: attr(data-token);
@@ -138,6 +138,29 @@ nav {
 .prose pre {
   padding: 1em;
   border: 1px solid currentColor;
+}
+
+.boundary-sample {
+  grid-column: 1 / -1;
+  padding-block-start: 2rem;
+  border-block-start: 1px solid currentColor;
+}
+
+.boundary-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 2rem;
+  margin-block-start: 2rem;
+}
+
+.boundary-case {
+  min-inline-size: 0;
+  padding: 1rem;
+  border: 1px solid currentColor;
+}
+
+.boundary-case > .type-meta {
+  margin-block-end: 0.75rem;
 }
 
 .role-sample {

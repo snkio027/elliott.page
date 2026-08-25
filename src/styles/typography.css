@@ -150,7 +150,8 @@ a:focus-visible {
   margin-block-start: calc(var(--body-line) * var(--rhythm-paragraph));
 }
 
-.prose :is(p, ul, ol) + :is(ul, ol, p) {
+.prose p + :is(ul, ol),
+.prose :is(ul, ol) + p {
   margin-block-start: calc(var(--body-line) * var(--rhythm-list));
 }
 
@@ -217,6 +218,14 @@ code {
   line-height: var(--line-code);
   tab-size: 2;
   white-space: pre;
+}
+
+.prose > :first-child {
+  margin-block-start: 0;
+}
+
+.prose > :last-child {
+  margin-block-end: 0;
 }
 
 .breakable {
