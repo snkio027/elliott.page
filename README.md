@@ -23,11 +23,11 @@ Identity surfaces have passed their gates. Production is active on
 `elliott.page`; Forced Colors remains `UNVERIFIED / DEFERRED` rather than inferred
 from unobserved runtime evidence.
 
-Phase 2 — Publishing is in progress. Phase 2.1 Gate A is contract-only and defines
-Writing/Notes semantics, minimal metadata, strict date and draft behavior, durable
-file-derived identity, deterministic ordering, and fail-closed validation.
-Content Schema & Route Eligibility implementation is not authorized until that
-contract passes and freezes. No Writing or Notes production surface is currently
+Phase 2 — Publishing is in progress. Phase 2.1 — Content Semantics & URL Contract
+and its Gate A are `PASS / FROZEN` after local and Required
+`Delivery / Quality` plus substantive delta review. Gate B — Content Schema &
+Route Eligibility is `NEXT / NOT STARTED` and remains unauthorized until the Gate A
+PR merges to protected `main`. No Writing or Notes production surface is currently
 authorized.
 
 ## Runtime

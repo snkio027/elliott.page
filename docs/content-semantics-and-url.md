@@ -2,16 +2,23 @@
 
 **Version:** 1.0
 
-**Status:** DRAFT — Phase 2.1: Content Semantics & URL Contract
+**Status:** PASS / FROZEN — Phase 2.1: Content Semantics & URL Contract
 
 **Phase 2:** IN PROGRESS — Publishing
 
-**Gate A:** IN PROGRESS — Content Semantics & URL Contract
+**Gate A:** PASS / FROZEN — Content Semantics & URL Contract
 
-**Gate B:** NOT STARTED / NOT AUTHORIZED — Content Schema & Route Eligibility
-Implementation
+**Gate B:** NEXT / NOT STARTED — Content Schema & Route Eligibility Implementation
+
+**Gate B authorization:** NOT AUTHORIZED UNTIL GATE A MERGES TO PROTECTED `main`
 
 **Publishing surfaces:** NOT AUTHORIZED
+
+**Gate A evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
+SUBSTANTIVE DELTA REVIEW PASS
+
+**Lifecycle closure:** The final status-only revision must pass Required
+`Delivery / Quality` and status-diff confirmation before protected-main merge.
 
 **Depends on:** `manifesto.md`, `architecture.md`,
 `information-and-page-semantics.md`
@@ -565,7 +572,7 @@ destinations that actually exist and have passed their own implementation gates.
 
 ## 14. Decision gates
 
-### Gate A — Content Semantics & URL Contract (IN PROGRESS)
+### Gate A — Content Semantics & URL Contract (PASS / FROZEN)
 
 Gate A passes only when:
 
@@ -582,10 +589,11 @@ Gate A passes only when:
 - no publishing route, content entry, style, script, or production source enters the
   Gate A change.
 
-Gate A PASS authorizes Gate B to implement the content contract. It does not
-authorize a Publishing surface or production navigation change.
+Gate A `PASS / FROZEN` on protected `main` authorizes Gate B to implement the
+content contract. It does not authorize a Publishing surface or production
+navigation change.
 
-### Gate B — Content Schema & Route Eligibility Implementation (NOT AUTHORIZED)
+### Gate B — Content Schema & Route Eligibility Implementation (NEXT / NOT STARTED)
 
 Gate B begins only after Gate A is `PASS / FROZEN` on protected `main`.
 
