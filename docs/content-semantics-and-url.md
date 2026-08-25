@@ -8,15 +8,23 @@
 
 **Gate A:** PASS / FROZEN — Content Semantics & URL Contract
 
-**Gate B:** IN PROGRESS — Content Schema & Route Eligibility Implementation
+**Gate B:** PASS / FROZEN — Content Schema & Route Eligibility Implementation
 
 **Gate B authorization:** AUTHORIZED — Gate A merged to protected `main` at
 `2a716e5c87e1ac8d6af70b0ac696c3eb4eae2c53`
+
+**Publishing content primitives:** AVAILABLE FOR LATER SURFACES
 
 **Publishing surfaces:** NOT AUTHORIZED
 
 **Gate A evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
 SUBSTANTIVE DELTA REVIEW PASS
+
+**Gate B evidence:** LOCAL `pnpm quality` PASS / REQUIRED
+`Delivery / Quality` PASS / CONTENT CONTRACT TESTS 11/11 PASS / SUBSTANTIVE DELTA
+REVIEW PASS
+
+**Next:** Phase 2.2 — Writing Surface (NOT STARTED)
 
 **Lifecycle closure:** The final status-only revision must pass Required
 `Delivery / Quality` and status-diff confirmation before protected-main merge.
@@ -617,7 +625,7 @@ Gate A `PASS / FROZEN` on protected `main` authorizes Gate B to implement the
 content contract. It does not authorize a Publishing surface or production
 navigation change.
 
-### Gate B — Content Schema & Route Eligibility Implementation (IN PROGRESS)
+### Gate B — Content Schema & Route Eligibility Implementation (PASS / FROZEN)
 
 Gate B begins only after Gate A is `PASS / FROZEN` on protected `main`.
 
