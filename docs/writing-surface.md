@@ -140,16 +140,24 @@ generation. It is not publication approval.
 
 ### 4.3 Approved
 
-An approved Writing has explicit human authorization from Elliott for the exact
-candidate revision containing its final public title, description when present,
-dates, language, and Markdown body.
+An approved Writing has either:
+
+- explicit human authorization from Elliott for the exact candidate revision,
+  required for first publication or changed approval-covered content; or
+- carried approval from an earlier public revision whose approval-covered content
+  is proven unchanged under Section 12.
 
 Schema success, `draft: false`, Agent review, CI success, and a rendered preview do
 not imply approval.
 
-For every merge candidate, all eligible Writing entries must be approved. An
-unapproved item remains `draft: true`; there is no repository approval flag,
-database, or speculative workflow metadata.
+An eligible but not-yet-approved Writing may exist on the non-production Gate B
+candidate. `draft` expresses source-controlled public eligibility only; it does
+not encode human approval.
+
+Gate B cannot pass, Gate C cannot start, and the candidate cannot merge while any
+eligible Writing lacks either explicit current-revision approval or valid approval
+continuity under Section 12. There is no repository approval flag, database, or
+speculative workflow metadata.
 
 ## 5. Atomic surface activation
 
@@ -307,9 +315,15 @@ Required index semantics:
 - every index link resolves to its corresponding detail route;
 - the index contains all eligible entries and no draft entries.
 
-The visible date may use a human-readable locale presentation, but it must be
-derived from the authored date-only value with explicit UTC handling. It must
-render the same calendar day in every build environment.
+Index date presentation is local to each Writing item. A human-readable lexical
+date derives its locale from the entry's authored language: `en` uses an English
+locale and `zh-CN` uses a Simplified Chinese locale. A language-neutral numeric
+date is also valid. If visible lexical date text deliberately uses another
+language, that text carries its correct local `lang` rather than inheriting the
+item language incorrectly.
+
+Every presentation derives from the authored date-only value with explicit UTC
+handling and renders the same calendar day in every build environment.
 
 The v1 index has no introductory essay, item number, cover, card, category,
 reading-time estimate, update badge, year grouping, pagination, or alternate sort.
@@ -351,7 +365,8 @@ Required detail semantics:
 - an equal `updated` and `date` does not render a duplicate update line;
 - the English labels are `Published` and `Updated`;
 - the Simplified Chinese labels are `发布于` and `更新于`;
-- visible dates use explicit UTC handling and preserve the authored calendar day;
+- visible dates derive their locale from the authored item language, use explicit
+  UTC handling, and preserve the authored calendar day;
 - an authored description supplies `<meta name="description">` and the index
   summary, but is not duplicated as a visible detail-page lead in v1;
 - when description is absent, no excerpt or metadata description is inferred from
@@ -443,26 +458,48 @@ A clear approval in the PR conversation or review record is sufficient. No
 approval file, schema field, CI job, CODEOWNERS rule, or external database is
 introduced.
 
-Approval must not be inferred from:
+First-publication approval must not be inferred from:
 
 - `draft: false`;
 - successful schema or AST validation;
 - Local or Required Quality;
 - Agent editorial judgment;
 - the existence of a preview or built route;
-- approval of another revision.
+- approval of another revision without the continuity evidence below.
 
-Gate B may implement candidate content before approval, but it cannot pass and
-Gate C cannot start until Elliott approves the exact content/implementation
-revision. Any later content or visible-copy change invalidates that approval. A
-strictly status-only commit may inherit it under the evidence rule in Section 6.
+Gate B may set `draft: false` and implement the complete candidate before approval.
+This allows Elliott to approve the exact eligible content and implementation
+revision that Gate C will validate. Gate B cannot pass and Gate C cannot start
+until every first-publication Writing on that candidate has explicit approval.
+
+For an already-public Writing, approval carries forward to a later candidate only
+when an audited diff proves all approval-covered content remains unchanged:
+
+- stable ID;
+- `title` and the presence/value of `description`;
+- `date`, the presence/value of `updated`, and `lang`;
+- the complete authored Markdown body.
+
+Unrelated repository, route, style, tooling, Identity, Notes, or Open Web changes
+do not invalidate approval for an unchanged Writing. The audit binds the prior
+approval evidence to the unchanged content in the new candidate; it does not infer
+approval from CI or create an approval field.
+
+Any change to an approval-covered field, stable ID, or Markdown body invalidates
+that Writing's carried approval and requires new explicit approval. A change to
+the Writing-index metadata description or other visible surface wording requires
+new approval for that surface copy without forcing approval renewal for unchanged
+articles.
+
+A strictly status-only lifecycle commit may inherit article and surface-copy
+approval only under the evidence rule in Section 6.
 
 ## 13. Gate B implementation boundary
 
 After Gate A passes, closes, and merges to protected `main`, Gate B may create one
 candidate containing:
 
-- at least one real Writing Markdown asset approved for first publication;
+- at least one real Writing Markdown asset intended for first publication;
 - the `/writing/` index route;
 - static `/writing/<stable-id>/` detail generation;
 - atomic Writing navigation activation;
@@ -564,7 +601,8 @@ Gate A passes only when:
 - permanent routes consume frozen stable identity without title slugging;
 - index inventory, ordering, language, date, and description behavior are exact;
 - detail H1/body ownership and update presentation are exact;
-- publication approval binds to one candidate revision;
+- first-publication approval binds to one candidate revision, while unchanged
+  already-public Writing carries approval forward only through exact diff evidence;
 - Gate C has executable route, URL, structure, responsive, and accessibility
   acceptance criteria;
 - Notes and every deferred Publishing concern remain out of scope;
