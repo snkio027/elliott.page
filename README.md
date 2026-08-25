@@ -11,33 +11,24 @@ The product direction and engineering boundaries are defined in:
 - [`docs/typography.md`](docs/typography.md)
 - [`docs/layout-and-visual-composition.md`](docs/layout-and-visual-composition.md)
 - [`docs/identity-surfaces.md`](docs/identity-surfaces.md)
+- [`docs/content-semantics-and-url.md`](docs/content-semantics-and-url.md)
 
 ## Status
 
-Foundation is frozen. Domain trust, the repository and Astro baseline, and the
-Cloudflare deployment baseline have passed their acceptance gates.
+Foundation is `PASS / FROZEN`.
 
-Phase 1.1 — Information & Page Semantics and Phase 1.2 — Typography System are
-frozen. Typography Gates A, B, and C have passed; the Native System Font Stack is
-selected for v1, Required `Delivery / Quality` passed on the final reviewed
-revision, and the substantive delta review closed all findings. Phase 1.3 — Layout
-& Visual Composition is also frozen. Gates A, B, and C have passed; Candidate A —
-Editorial breathing room is selected for v1, Required `Delivery / Quality` passed
-on the final reviewed revision, and the substantive delta review closed the
-production-navigation finding. The production proof exposes only the real root
-destination; About and Now remained specimen evidence rather than dead links at
-that gate. That historical root-only proof has now been superseded by the approved
-Phase 1.4 identity surfaces without reopening the frozen Phase 1.3 system.
+Phase 1 — Identity & Design is `PASS / FROZEN`. Information semantics,
+Typography, Layout & Visual Composition, and the approved Home, About, and Now
+Identity surfaces have passed their gates. Production is active on
+`elliott.page`; Forced Colors remains `UNVERIFIED / DEFERRED` rather than inferred
+from unobserved runtime evidence.
 
-Phase 1.4 — Identity Surfaces is frozen. Gates A, B, and C have passed on the same
-implementation candidate. Elliott explicitly approved the Home, About, and Now
-publication copy on implementation/content revision
-`02c8049558891a9631d3f50a1d6f5c928cfc094c`; Gate C validated that unchanged
-candidate in a production-equivalent static runtime, and substantive evidence
-review found no blocker. Forced Colors remains `UNVERIFIED / DEFERRED`. The final
-lifecycle-only revision changes status authority, not approved content,
-implementation, or runtime semantics, and remains subject to Required
-`Delivery / Quality` and status-diff confirmation before merge.
+Phase 2 — Publishing is in progress. Phase 2.1 — Content Semantics & URL Contract
+and its Gate A are `PASS / FROZEN` after local and Required
+`Delivery / Quality` plus substantive delta review. Gate B — Content Schema &
+Route Eligibility is `NEXT / NOT STARTED` and remains unauthorized until the Gate A
+PR merges to protected `main`. No Writing or Notes production surface is currently
+authorized.
 
 ## Runtime
 
