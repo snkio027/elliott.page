@@ -10,7 +10,13 @@
 
 **Gate C:** NOT STARTED / NOT AUTHORIZED — Runtime & Accessibility Validation
 
-**Production authorization:** NOT AUTHORIZED UNTIL GATE A MERGE
+**Gate B implementation authorization:** NOT AUTHORIZED UNTIL GATE A MERGE
+
+**Gate C validation authorization:** NOT AUTHORIZED UNTIL GATE B IMPLEMENTATION
+REVIEW PASSES ON THE CANDIDATE REVISION
+
+**Production merge/deploy authorization:** NOT AUTHORIZED UNTIL GATE B AND GATE C
+PASS ON THE SAME IMPLEMENTATION CANDIDATE
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`,
 `layout-and-visual-composition.md`, `src/content.config.ts`
@@ -93,7 +99,7 @@ pass from semantic-color inspection.
 ## 4. Surface activation is atomic
 
 Navigation describes deployed product reality. About and Now become active only
-when one production revision contains all of the following:
+when one candidate revision contains all of the following:
 
 ```text
 validated authored content
@@ -104,6 +110,36 @@ complete primary navigation
         +
 successful quality gate
 ```
+
+The required lifecycle is:
+
+```text
+Gate A contract merge
+        ↓
+Gate B implementation on one candidate branch / PR
+        ↓
+Gate B substantive implementation review PASS
+        ↓
+Gate C validates that same candidate build
+in a production-equivalent static runtime
+        ↓
+Gate C PASS
+        ↓
+production merge to main
+        ↓
+automatic Cloudflare deployment
+```
+
+Gate B PASS authorizes Gate C validation only. It does not authorize merge to
+`main`, normal production deployment, or activation of About and Now. Gate C uses
+the built candidate before merge; the existing Astro preview runtime is sufficient
+and no staging or Preview deployment is required.
+
+Any change to production source, content, route behavior, metadata, or styling
+after Gate B review or during Gate C invalidates the affected evidence and requires
+the relevant checks again. A later strictly status-only lifecycle commit may carry
+the evidence forward only when its diff is audited to contain no implementation or
+content change and Required `Delivery / Quality` passes again.
 
 Gate B must not produce any intermediate production state in which:
 
@@ -118,7 +154,8 @@ Once the identity surfaces are active, changing a required entry back to draft m
 also fail the normal production path rather than silently removing the route.
 
 The branch and PR may contain incomplete work during development. Atomicity applies
-to the revision approved for merge and deployment.
+to the implementation candidate approved by both Gate B and Gate C before merge
+and deployment.
 
 ## 5. Source ownership
 
@@ -179,7 +216,7 @@ About answers: **Who is Elliott over time?**
 
 The active entry is `src/content/pages/about.md`. Its content may include concise
 durable context, enduring interests and questions, the purpose of Elliott.page,
-selected public identities, and a restrained contact reference.
+and selected public identities.
 
 It must not become:
 
@@ -188,6 +225,11 @@ It must not become:
 - a current-project or current-reading log;
 - a duplicate contact directory;
 - a generic personal-brand biography.
+
+The Footer is the sole owner of the primary `hi@elliott.page` contact path on every
+identity surface. About Main may include a restrained selected public-identity link
+only when it has real visitor value; it must not repeat the primary email address or
+create a second contact block.
 
 About frontmatter must satisfy:
 
@@ -381,7 +423,26 @@ Each route must provide:
 
 Gate A freezes the roles and approval boundary, not the actual About/Now prose or
 the final Home place-statement wording. Those words must be supplied and approved
-before Gate B implementation is merge-ready.
+before Gate B implementation review can pass and Gate C can begin.
+
+Publication approval is human evidence from Elliott, bound to the exact candidate
+content and implementation revision. A clear approval in the PR conversation or
+review record is sufficient. No approval database, repository file, CI job, or
+additional workflow is required.
+
+Approval must not be inferred from:
+
+- the presence or authorship of a content file;
+- schema, build, or Required `Delivery / Quality` success;
+- an Agent's assessment that wording appears complete;
+- prior approval of different copy or a different candidate revision.
+
+Machine gates prove structure, schema, route, and build correctness. Elliott's
+human approval proves that the actual public wording and claims are authorized for
+publication. Any later change to the Home statement, About body, Now body, page
+titles, descriptions, or visible freshness wording requires renewed approval. A
+strictly status-only lifecycle commit may retain the approval only when its audited
+diff proves the approved content is unchanged.
 
 ## 13. Runtime and accessibility acceptance surface
 
@@ -433,7 +494,9 @@ Gate C preserves `UNVERIFIED / DEFERRED`.
 
 ## 14. Required Gate B implementation
 
-Gate B is authorized only after this contract passes review and is merged.
+Gate B implementation is authorized only after this contract passes review and is
+merged. Gate B remains on its candidate branch after implementation review; it is
+not independently merged to `main`.
 
 Its minimum implementation set is:
 
@@ -456,7 +519,8 @@ Gate B must prove:
 - About and Now consume validated Pages entries rather than duplicated inline
   prose;
 - route activation and navigation are atomic;
-- the final Home statement and both Markdown bodies are approved content;
+- the final Home statement, page metadata, visible freshness wording, and both
+  Markdown bodies have Elliott's explicit approval bound to the candidate revision;
 - the production output contains exactly the active identity world and no reserved
   product surface;
 - frozen Typography and Layout source are consumed without redesign;
@@ -491,10 +555,14 @@ Gate B passes only when:
 - local and Required `Delivery / Quality` pass;
 - substantive implementation review closes all findings.
 
+Gate B PASS authorizes Gate C on the same implementation candidate. It does not
+authorize production merge or deployment.
+
 ### Gate C — Runtime & Accessibility Validation (NOT STARTED / NOT AUTHORIZED)
 
 Gate C passes only when:
 
+- it validates the same implementation candidate that passed Gate B;
 - every active route returns 200 in the production-equivalent static runtime;
 - navigation, current state, language, freshness, landmarks, and content ownership
   match this contract;
@@ -503,6 +571,11 @@ Gate C passes only when:
 - evidence boundaries, including Forced Colors, are recorded at exactly the
   observed strength;
 - final Required `Delivery / Quality` and substantive review pass.
+
+Only Gate B PASS plus Gate C PASS authorizes lifecycle closure and squash merge of
+the candidate PR into protected `main`. The subsequent automatic production deploy
+is therefore the activation of a revision already validated by both gates, not the
+environment in which Gate C is first attempted.
 
 ## 16. Change control
 
