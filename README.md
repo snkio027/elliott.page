@@ -32,12 +32,14 @@ integrity, stable identity, eligibility, ordering, and fail-closed evidence pass
 local and Required Quality, 11 content-contract tests, and substantive delta
 review. These primitives are available to later Publishing surfaces.
 
-Phase 2.2 — Writing Surface is in progress. Gate A — Writing Surface Contract is
-`PASS / FROZEN`. Gate B — Candidate Implementation + Public Content is authorized
-and in progress on a non-production candidate branch. Its first real Writing,
-`/writing/` index, stable detail route, and Writing navigation are being validated
-as one atomic revision. Publication approval, Gate C, protected-main merge,
-production activation, and every Notes surface remain unauthorized.
+Phase 2.2 — Writing Surface is `PASS / FROZEN`. Gate A — Writing Surface Contract,
+Gate B — Candidate Implementation + Public Content, and Gate C — Runtime,
+Accessibility & URL Validation are all `PASS / FROZEN`. Publication approval is
+bound to evidence-bearing HEAD
+`f143fc8329ba0c5d427dfcb7dd4aa2a51f9d4c96`; Forced Colors remains
+`UNVERIFIED / DEFERRED`. The first Writing surface is ready for protected-main
+merge and production activation only after status-diff confirmation. Every Notes
+surface remains unauthorized.
 
 ## Runtime
 
