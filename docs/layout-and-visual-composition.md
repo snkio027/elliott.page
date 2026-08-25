@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 
-**Status:** IN PROGRESS — Phase 1.3: Layout & Visual Composition
+**Status:** PASS / FROZEN — Phase 1.3: Layout & Visual Composition
 
 **Gate A:** PASS / FROZEN — Layout & Visual Contract
 
@@ -14,15 +14,20 @@
 
 **Gate B evidence boundary:** Forced Colors — UNVERIFIED / DEFERRED
 
-**Gate C:** NEXT / NOT STARTED — Production Integration
+**Gate C:** PASS / FROZEN — Production Integration
 
-**Gate C authorization:** NOT AUTHORIZED UNTIL GATE B MERGE
+**Gate C authorization:** AUTHORIZED — Gate B merged
 
 **Gate C handoff:** Section and Rule remain unselected; the `4rem` page-edge block
-inset remains a local composition value rather than a shared token.
+inset remains a local composition value rather than a shared token. Inline remains
+a selected Gate B decision but is not promoted until a real production destination
+group exists.
 
-**Evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
+**Gate A/B evidence:** LOCAL QUALITY PASS / REQUIRED `Delivery / Quality` PASS /
 SUBSTANTIVE DELTA REVIEW PASS
+
+**Gate C evidence:** LOCAL IMPLEMENTATION EVIDENCE PASS / LOCAL QUALITY PASS /
+REQUIRED `Delivery / Quality` PASS / SUBSTANTIVE DELTA REVIEW PASS
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`
 
@@ -614,7 +619,7 @@ Gate B passes only when:
 - rejected candidates and evidence boundaries are recorded;
 - no candidate artifact enters production.
 
-### Gate C — Production Integration (NEXT / NOT STARTED)
+### Gate C — Production Integration (PASS / FROZEN)
 
 Gate C passes only when:
 
@@ -630,6 +635,30 @@ Gate C passes only when:
 
 No production layout or color implementation is authorized before Gate B selects a
 composition.
+
+The current Gate C branch promotes only Candidate A's admitted values that have
+live production consumers: Canvas, Text, Muted, Accent, Cluster, Region, page
+gutter, and frame maximum. Inline remains selected by Gate B but specimen-local
+until About and Now become real production destinations. Section and Rule remain
+unselected. The selected `4rem` page-edge block inset remains local to
+`.site-frame`; it is not a shared spacing token.
+
+`BaseLayout.astro` provides the real Header/Main/Footer ownership shell, and the
+root route provides only the minimum identity proof needed to validate it. Header
+exposes only the real `/` destination; About and Now remain absent until their
+routes exist. This does not authorize final Home copy or formal About and Now
+routes. The selected specimen imports the production layout source and keeps the
+future destination-group composition as evaluation evidence; Control and Candidate
+B keep only their historical evaluation overrides.
+
+Local current-host evidence records exact shared gutter, Region gap, frame width,
+and identity-cluster dimensions at `320`, `480`, `768`, `1024`, and `1440px`.
+Full geometry is exact from `768px` upward. At `320` and `480px`, production is
+shorter by exactly the specimen's destination row, because inactive routes are not
+rendered. The selected specimen still passes its complete normal and stress
+regression matrices. Production link/current/focus behavior passes. Forced Colors
+remains `UNVERIFIED / DEFERRED`, and independent browser-engine or platform
+equivalence is not claimed. The detailed receipt is in `specimens/README.md`.
 
 ## 16. Change control
 

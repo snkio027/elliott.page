@@ -1,6 +1,7 @@
 ---
 import "../styles/tokens.css";
 import "../styles/typography.css";
+import "../styles/layout.css";
 
 interface Props {
   title: string;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const { title, description, lang = "en" } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 ---
 
 <!doctype html>
@@ -20,6 +22,28 @@ const { title, description, lang = "en" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <div class="site-frame">
+      <header class="site-header">
+        <nav
+          class="primary-navigation type-meta"
+          aria-label="Primary"
+          lang="en"
+        >
+          <a href="/" aria-current={currentPath === "/" ? "page" : undefined}>
+            Elliott Bai
+          </a>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        <slot />
+      </main>
+
+      <footer class="site-footer type-meta">
+        <a class="contact-link" href="mailto:hi@elliott.page">
+          hi@elliott.page
+        </a>
+      </footer>
+    </div>
   </body>
 </html>

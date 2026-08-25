@@ -117,9 +117,11 @@ and never enter the production dependency graph.
 **Substantive delta review:** PASS — all findings closed
 
 `layout-composition.html` and `layout-composition.css` form the controlled Gate B
-laboratory. The HTML imports frozen production `tokens.css` and `typography.css`
-directly. Candidate layout, spacing, and semantic-color values exist only in the
-specimen stylesheet; no layout or color source has entered `src/` or `public/`.
+laboratory. During Gate B, the HTML imported frozen production `tokens.css` and
+`typography.css` directly while all candidate layout, spacing, and semantic-color
+values remained specimen-only. Gate C now also imports production `layout.css`:
+the selected Candidate A baseline comes from production, while Control and
+Candidate B retain only their historical evaluation overrides.
 
 The fixture renders exactly one active surface at a time with real Header, Main,
 and Footer landmarks:
@@ -309,9 +311,108 @@ Gate B
 PASS / FROZEN
 
 Gate C
-NEXT / NOT STARTED
+PASS / FROZEN
+
+Phase 1.3
+PASS / FROZEN
 ```
 
-Production integration remains unauthorized until this Gate B decision is merged.
-Gate C must preserve the unselected Section and Rule decisions, and the `4rem`
-page-edge block inset remains local until a second semantic consumer exists.
+Gate B has merged and authorizes Gate C. Gate C preserves the unselected Section
+and Rule decisions, and the `4rem` page-edge block inset remains local until a
+second semantic consumer exists.
+
+## Phase 1.3 Gate C — Production integration receipt
+
+**Status:** PASS / FROZEN — Phase 1.3 Gate C: Production Integration
+
+**Required `Delivery / Quality`:** PASS
+
+**Substantive delta review:** PASS — P1 closed; no remaining blocker
+
+**Evidence boundary:** Forced Colors — UNVERIFIED / DEFERRED
+
+Gate C promotes only the values and primitives selected by Gate B. Production now
+contains:
+
+```text
+tokens.css
+├── Canvas / Text / Muted / Accent
+├── Cluster / Region
+└── page gutter / frame maximum
+
+layout.css
+├── shared canvas and link states
+├── site frame and responsive gutter
+├── Header / Main / Footer region shell
+└── Home identity-cluster composition
+```
+
+There is no Section token, Rule token, palette scale, rejected-candidate selector,
+or specimen query/stress machinery in production. Inline remains selected Gate B
+evidence, but its token and destination-group layout stay specimen-local until a
+real production consumer exists. The `4rem` page-edge block inset remains a local
+`.site-frame` value. The build contains one root HTML file and one compiled CSS
+asset, with no Web Font asset or formal About/Now route.
+
+`BaseLayout.astro` owns one Header, one Main, and one Footer. Header owns `Elliott
+Bai → /`, Main receives the route content, and Footer owns `hi@elliott.page`.
+About and Now remain in the complete Gate B specimen but are not production links
+until their routes exist. The root route adds only the Display name and provisional
+place statement as an implementation proof; it is not the formal Home surface.
+
+### Production/specimen shared-baseline parity
+
+Validated on 25 August 2026 in the current local macOS Codex in-app browser. At
+every width below, production and the selected specimen have the same frame width,
+gutter, Region gap, identity-cluster inline start, width, and height:
+
+| Viewport | Production frame | Specimen frame | Shared identity size  |   Gutter | Region gap | Interpretation                                       |
+| -------: | ---------------: | -------------: | --------------------- | -------: | ---------: | ---------------------------------------------------- |
+|  `320px` |      `458.398px` |    `507.398px` | `288 × 96.398px`      |   `16px` |     `96px` | production omits the `49px` inactive destination row |
+|  `480px` |      `464.094px` |    `513.359px` | `432 × 101.563px`     |   `24px` |     `96px` | production omits the `49.265px` destination row      |
+|  `768px` |      `474.414px` |    `474.414px` | `648.141 × 110.898px` | `38.4px` |     `96px` | exact full geometry                                  |
+| `1024px` |      `483.586px` |    `483.586px` | `648.141 × 119.195px` | `51.2px` |     `96px` | exact full geometry                                  |
+| `1440px` |      `489.891px` |    `489.891px` | `648.141 × 124.891px` |   `64px` |     `96px` | exact full geometry                                  |
+
+The narrow frame-height and identity-position difference is intentional evidence
+of route reality, not a layout divergence: the selected specimen retains the
+complete future destination group, while production exposes only `/`. No tested
+production or selected-specimen state has page or frame overflow. Section and Rule
+are unselected in both sources; Inline is `UNSELECTED` in production and `1rem` in
+the selected specimen.
+
+### Regression and interaction evidence
+
+| Evidence                                                              | Result                                                                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Production route reality                                              | PASS — one primary link to `/`; zero About/Now links; one built route; no destination group                     |
+| Production token admission                                            | PASS — Inline, Section, and Rule are unselected                                                                 |
+| Selected specimen navigation                                          | PASS — complete Elliott Bai/About/Now composition remains reproducible; Inline is specimen-local                |
+| Selected specimen × Home/About/Now × five normal widths               | PASS — 15 states                                                                                                |
+| Selected specimen × Home/About/Now × `320/768/1440px` combined stress | PASS — 9 long-content + 200% text + spacing-override states                                                     |
+| Selected specimen × Home/About/Now × separate `320px` stress states   | PASS — 12 long-content, resize, spacing, and combined states                                                    |
+| Region ownership                                                      | PASS — Header/Main/Footer order stable; navigation visible; no Main navigation/contact duplicates               |
+| Long Chinese freshness and language of parts                          | PASS — complete marker visible at `320px`; `zh-CN` root with persistent English navigation marked `lang="en"`   |
+| Production default/current/hover link recognition                     | PASS — persistent underline; current adds Accent, weight `600`, and thicker underline                           |
+| Production keyboard focus                                             | PASS — visible `2px` Accent outline with `2.5px` offset on the validated host                                   |
+| Visited-link affordance                                               | PASS WITH BOUNDARY — underline persists in the selected specimen; no history state inferred from computed style |
+| Production console                                                    | PASS — no warning or error entries                                                                              |
+| Forced Colors                                                         | `UNVERIFIED / DEFERRED`                                                                                         |
+
+This is current-host evidence. Independent browser-engine, operating-system, and
+device equivalence is not claimed. Direct production DOM mutation is not used as
+evidence: stress states run in the selected specimen, which imports the production
+tokens and shared layout source. The corrected parity receipt distinguishes shared
+geometry from the intentional route-inventory difference instead of treating
+inactive destinations as production capability.
+
+The first substantive review found that the initial production proof rendered
+About and Now anchors despite building no corresponding routes. Gate C removes
+those dead destinations rather than creating routes outside phase scope. The same
+correction withdraws Inline and destination-group layout from production because
+they no longer have a live consumer; Gate B's decision and specimen evidence are
+unchanged.
+
+Gate C and Phase 1.3 are frozen by the final reviewed revision. They reopen only
+under the change-control conditions in the Layout & Visual Composition Contract;
+Forced Colors remains `UNVERIFIED / DEFERRED`.
