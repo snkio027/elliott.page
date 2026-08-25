@@ -21,7 +21,7 @@
           },
           editorial: {
             label: "A — Editorial breathing room",
-            note: "Stronger region separation with restrained rules.",
+            note: "Stronger region separation without an unearned visual primitive.",
           },
           tension: {
             label: "B — Quiet offset",
@@ -37,6 +37,7 @@
           ? params.get("surface")
           : "home";
         const ui = params.get("ui") === "hidden" ? "hidden" : "visible";
+        const editorialRules = params.get("rules") === "on";
         const stress = {
           longContent: params.get("long") === "1",
           textResize: params.get("resize") === "1",
@@ -46,6 +47,8 @@
         document.documentElement.dataset.composition = candidate;
         document.documentElement.dataset.surface = surface;
         document.documentElement.dataset.ui = ui;
+        document.documentElement.dataset.editorialRules =
+          String(editorialRules);
         document.documentElement.dataset.longContent = String(
           stress.longContent,
         );
@@ -59,6 +62,7 @@
           candidate,
           surface,
           ui,
+          editorialRules,
           ...stress,
           ...compositions[candidate],
         };
@@ -117,6 +121,10 @@
             <input id="spacing-override" type="checkbox" />
             WCAG text spacing
           </label>
+          <label>
+            <input id="editorial-rules" type="checkbox" />
+            Enable A rules (ablation)
+          </label>
         </fieldset>
 
         <div class="lab-status" aria-live="polite">
@@ -132,7 +140,11 @@
     <div class="page-canvas" data-page-canvas>
       <div class="site-frame">
         <header class="site-header" data-region="header">
-          <nav class="primary-navigation type-meta" aria-label="Primary">
+          <nav
+            class="primary-navigation type-meta"
+            aria-label="Primary"
+            lang="en"
+          >
             <a
               class="identity-anchor"
               data-page-link="home"
@@ -213,7 +225,13 @@
           >
             <h1 id="now-title" class="type-title">此刻</h1>
             <p class="meta-line">
-              <time datetime="2026-08-25">最后更新：2026 年 8 月 25 日</time>
+              <time datetime="2026-08-25">
+                <span class="copy-normal">最后更新：2026 年 8 月 25 日</span>
+                <span class="copy-long"
+                  >最后更新：2026 年 8 月 25
+                  日；此页面记录的是当前阶段状态，并可能随时间发生变化</span
+                >
+              </time>
             </p>
             <div class="prose">
               <p>
@@ -255,12 +273,14 @@
           candidate = state.candidate,
           surface = state.surface,
           ui = state.ui,
+          editorialRules = state.editorialRules,
           longContent = state.longContent,
           textResize = state.textResize,
           spacingOverride = state.spacingOverride,
         }) => {
           const params = new URLSearchParams({ candidate, surface });
           if (ui === "hidden") params.set("ui", "hidden");
+          if (editorialRules) params.set("rules", "on");
           if (longContent) params.set("long", "1");
           if (textResize) params.set("resize", "1");
           if (spacingOverride) params.set("spacing", "1");
@@ -302,6 +322,7 @@
           "long-content": "longContent",
           "text-resize": "textResize",
           "spacing-override": "spacingOverride",
+          "editorial-rules": "editorialRules",
         };
 
         for (const [id, datasetKey] of Object.entries(controls)) {

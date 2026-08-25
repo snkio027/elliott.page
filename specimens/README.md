@@ -110,8 +110,7 @@ and never enter the production dependency graph.
 
 ## Phase 1.3 Gate B — Controlled Composition Specimen
 
-**Status:** LOCAL EVIDENCE PASS / REMOTE QUALITY PENDING / SUBSTANTIVE REVIEW
-PENDING
+**Status:** LOCAL DELTA EVIDENCE PASS / SUBSTANTIVE DELTA REVIEW PENDING
 
 `layout-composition.html` and `layout-composition.css` form the controlled Gate B
 laboratory. The HTML imports frozen production `tokens.css` and `typography.css`
@@ -153,22 +152,42 @@ tension    B — Quiet offset
 Stress states are available through controls or reproducible query parameters:
 
 ```text
-long=1     long navigation, place statement, and contact fixtures
+long=1     long navigation, place statement, freshness, and contact fixtures
 resize=1   200% root text
 spacing=1  WCAG text-spacing override
+rules=on   Candidate A Rule-on ablation; Rules are off by default
 ui=hidden  composition without laboratory controls
 ```
 
+The long-content state covers navigation, place statement, freshness, and contact
+fixtures. On the Now-shaped surface it replaces the short freshness marker with a
+deliberately long Chinese fixture.
+
 ### Candidate comparison
 
-Every candidate uses exactly four structural spacing roles plus the separate page
-gutter. Values below are local experiment parameters, not production tokens.
+The frozen Contract allows at most four structural spacing roles; it does not
+require all four. The current page inventory has no distinct groups inside one
+region that are not already owned by Typography. `Section` is therefore
+unselected in every candidate. Page-edge block padding remains a local
+composition value and is not represented as a shared Section token.
 
-| Candidate        |    Inline |   Cluster |   Section |   Region |   Frame | Disposition                                                                               |
-| ---------------- | --------: | --------: | --------: | -------: | ------: | ----------------------------------------------------------------------------------------- |
-| Control          | `0.75rem` | `1.25rem` | `2.75rem` |   `4rem` | `66rem` | PASS / REJECT FOR V1 — simplest, but provides the weakest identity and region distinction |
-| A — Editorial    |    `1rem` | `1.75rem` |    `4rem` |   `6rem` | `72rem` | PASS / PROVISIONAL SELECT — strongest hierarchy with only two restrained Rule consumers   |
-| B — Quiet offset | `0.75rem` | `1.25rem` |    `3rem` | `4.5rem` | `72rem` | PASS / REJECT FOR V1 — offset and inline Rule add action without a material gain over A   |
+| Candidate        |    Inline |   Cluster | Section |   Region | Local page-edge block inset | Frame   | Disposition                                                                               |
+| ---------------- | --------: | --------: | :-----: | -------: | --------------------------: | ------- | ----------------------------------------------------------------------------------------- |
+| Control          | `0.75rem` | `1.25rem` |    —    |   `4rem` |                   `2.75rem` | `66rem` | PASS / REJECT FOR V1 — simplest, but provides the weakest identity and region distinction |
+| A — Editorial    |    `1rem` | `1.75rem` |    —    |   `6rem` |                      `4rem` | `72rem` | PASS / PROVISIONAL SELECT — strongest hierarchy without admitting an unnecessary Rule     |
+| B — Quiet offset | `0.75rem` | `1.25rem` |    —    | `4.5rem` |                      `3rem` | `72rem` | PASS / REJECT FOR V1 — offset and inline Rule add action without a material gain over A   |
+
+Candidate A's actual normal-state gutter and frame behavior is:
+
+| Viewport | Page gutter | Content inline start | Frame behavior                                                 |
+| -------- | ----------: | -------------------: | -------------------------------------------------------------- |
+| `320px`  |      `16px` |               `16px` | fluid below maximum                                            |
+| `768px`  |    `38.4px` |           `38.398px` | fluid below maximum                                            |
+| `1440px` |      `64px` |              `208px` | `72rem` / `1152px` centered frame, plus `64px` internal gutter |
+
+The difference between page gutter and content inline start at `1440px` is the
+centered frame's `144px` outer margin. No fixed viewport height participates in
+the composition.
 
 Normal Home frame heights expose the spatial difference without forcing viewport
 height:
@@ -176,7 +195,7 @@ height:
 | Candidate        |     `320px` |     `768px` |    `1440px` |
 | ---------------- | ----------: | ----------: | ----------: |
 | Control          | `387.398px` | `362.414px` | `377.891px` |
-| A — Editorial    | `693.398px` | `660.414px` | `675.891px` |
+| A — Editorial    | `507.398px` | `474.414px` | `489.891px` |
 | B — Quiet offset | `437.797px` | `386.414px` | `401.891px` |
 
 Candidate A materially strengthens Header/Main/Footer separation and identity
@@ -184,17 +203,46 @@ priority while remaining content-sized. Control is valid but under-articulated.
 Candidate B is valid, but its wide offset and identity-side Rule do not earn their
 additional visual action.
 
+### Selected consumers and Rule ablation
+
+Candidate A admits only roles with observed consumers:
+
+| Role        | Observed consumer                                                                |
+| ----------- | -------------------------------------------------------------------------------- |
+| Inline      | About / Now destination group                                                    |
+| Cluster     | Primary-navigation groups and Home Display-name/place-statement identity cluster |
+| Region      | Header / Main / Footer separation in the site frame                              |
+| Section     | `UNSELECTED` — no current consumer                                               |
+| Page gutter | Responsive inline edge protection on the centered site frame                     |
+
+Candidate A was compared with Rules OFF and ON at exact shared spacing. The
+Rule-on query uses non-layout pseudo-elements, so the ablation does not change
+geometry:
+
+| Viewport | Rules OFF frame | Rules ON frame | Overflow / order |
+| -------- | --------------: | -------------: | ---------------- |
+| `320px`  |     `507.398px` |    `507.398px` | PASS             |
+| `768px`  |     `474.414px` |    `474.414px` | PASS             |
+| `1440px` |     `489.891px` |    `489.891px` | PASS             |
+
+Spacing and alignment remained sufficient to identify Header, Main, and Footer
+with Rules OFF at narrow and wide viewports. The Rules added visual segmentation
+but no necessary orientation or hierarchy. Candidate A therefore keeps Rules OFF;
+the Rule role is not selected for its v1 production handoff.
+
 ### Semantic colors
 
-All three candidates use the same five roles:
+The specimen declares only the five frozen roles. Candidate A selects Canvas,
+Text, Muted, and Accent; Rule remains available only to Candidate B and the
+Candidate A ablation witness.
 
-| Role   | Value     | Contrast against Canvas | Result                              |
-| ------ | --------- | ----------------------: | ----------------------------------- |
-| Canvas | `#f6f4ef` |                       — | PASS                                |
-| Text   | `#25231f` |              `14.270:1` | PASS                                |
-| Muted  | `#5e5a52` |               `6.243:1` | PASS                                |
-| Rule   | `#858078` |               `3.567:1` | PASS — meaningful non-text boundary |
-| Accent | `#704a38` |               `7.010:1` | PASS — current and focus states     |
+| Role   | Value     | Contrast against Canvas | Result                                                   |
+| ------ | --------- | ----------------------: | -------------------------------------------------------- |
+| Canvas | `#f6f4ef` |                       — | PASS                                                     |
+| Text   | `#25231f` |              `14.270:1` | PASS                                                     |
+| Muted  | `#5e5a52` |               `6.243:1` | PASS                                                     |
+| Rule   | `#858078` |               `3.567:1` | PASS — Candidate B and A ablation only; unselected for A |
+| Accent | `#704a38` |               `7.010:1` | PASS — current and focus states                          |
 
 Contrast values are calculated from the declared sRGB values without rounding a
 failure upward. No palette scale or sixth semantic role is introduced.
@@ -207,16 +255,21 @@ equivalence is not claimed.
 
 | Evidence                                                                   | Result                                                                                                                                                                    |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| All candidates × Home/About/Now × `320/768/1440px`                         | PASS — 27 normal states; no page or canvas overflow                                                                                                                       |
-| Candidate A × Home/About/Now × `320/480/768/1024/1440px`                   | PASS — continuous reflow, stable region order, visible navigation                                                                                                         |
-| Candidate A × Home/About/Now × `320/768/1440px` combined stress            | PASS — long content + 200% text + spacing override                                                                                                                        |
-| Candidate A × Home/About/Now × separate `320px` long/resize/spacing states | PASS — 12 states                                                                                                                                                          |
+| All candidates × Home/About/Now × `320/768/1440px`                         | PASS — 27 corrected normal states; no page or canvas overflow                                                                                                             |
+| Candidate A × Home/About/Now × `320/480/768/1024/1440px`                   | PASS — 15 corrected states; continuous reflow, stable region order, visible navigation                                                                                    |
+| Candidate A × Home/About/Now × `320/768/1440px` combined stress            | PASS — 9 corrected states; long content + 200% text + spacing override                                                                                                    |
+| Candidate A × Home/About/Now × separate `320px` long/resize/spacing states | PASS — 12 corrected states                                                                                                                                                |
+| Required long freshness                                                    | PASS — complete long Chinese marker visible at `320px` in both long-only and combined stress states; no overflow                                                          |
 | Semantic structure                                                         | PASS — one visible `h1`, three Header links, one current link, one visible Footer contact                                                                                 |
 | Home ownership                                                             | PASS — zero links in Home Main; navigation and contact are not duplicated                                                                                                 |
 | Reading measure                                                            | PASS — English stops at approximately `648.141px`; Chinese stops at `512px` on the validated host                                                                         |
 | Keyboard order                                                             | PASS — Header links, optional Main prose link, then Footer contact                                                                                                        |
 | Focus appearance                                                           | PASS — Accent outline `2px` normal and `3.5px` at 200%; `7.010:1` against Canvas                                                                                          |
+| Link-state recognition                                                     | PASS — default underline persists; hover sets `0.15em` underline thickness; current uses weight `600` plus thicker underline; focus uses a visible Accent outline         |
 | Visited link                                                               | PASS WITH BOUNDARY — normal underline remains after navigation; optional visited treatment changes only color; no history state is inferred from script or computed style |
+| Language of parts                                                          | PASS — Now root is `zh-CN`; persistent English primary navigation is locally marked `lang="en"`                                                                           |
+| Spacing consumers                                                          | PASS — Inline, Cluster, Region, and page gutter have observed consumers; Section is explicitly unselected                                                                 |
+| Rule admission                                                             | PASS — exact-geometry ON/OFF ablation; Rules removed from selected Candidate A                                                                                            |
 | Browser console                                                            | PASS — no warning or error entries                                                                                                                                        |
 | Forced colors                                                              | `UNVERIFIED / DEFERRED` — no credible runtime environment; semantic-color inspection is supporting evidence only                                                          |
 
@@ -226,6 +279,15 @@ an oversized automatic minimum. The specimen now gives those authored-text
 children `min-inline-size: 0`, caps them to the available width, and permits an
 emergency wrap. The full normal and stress matrices passed after this correction;
 the defect was not averaged into candidate scoring.
+
+The substantive review then exposed a spacing-ownership defect: the specimen had
+used `Section` for frame and Main padding even though no within-region Section
+consumer existed. The corrected candidate removes that role, treats page-edge
+block padding as a local composition value, removes Main padding, and reruns the
+complete Candidate A matrix. This correction reduced normal Home height from
+`693.398/660.414/675.891px` to `507.398/474.414/489.891px` at the three acceptance
+viewports without weakening hierarchy. The same delta added the required long
+freshness fixture and English language-of-parts marker.
 
 ### Current disposition
 
@@ -240,9 +302,8 @@ Candidate B — Quiet offset
 PASS / REJECT FOR V1
 
 Gate B
-LOCAL EVIDENCE PASS
-REMOTE QUALITY PENDING
-SUBSTANTIVE REVIEW PENDING
+LOCAL DELTA EVIDENCE PASS
+SUBSTANTIVE DELTA REVIEW PENDING
 ```
 
 Production integration remains unauthorized. Gate C may begin only after Candidate

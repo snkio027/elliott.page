@@ -12,7 +12,6 @@
   --page-gutter: clamp(1rem, 4vw, 2.5rem);
   --space-inline: 0.75rem;
   --space-cluster: 1.25rem;
-  --space-section: 2.75rem;
   --space-region: 4rem;
 }
 
@@ -21,7 +20,6 @@
   --page-gutter: clamp(1rem, 5vw, 4rem);
   --space-inline: 1rem;
   --space-cluster: 1.75rem;
-  --space-section: 4rem;
   --space-region: 6rem;
 }
 
@@ -30,7 +28,6 @@
   --page-gutter: clamp(1rem, 4vw, 3rem);
   --space-inline: 0.75rem;
   --space-cluster: 1.25rem;
-  --space-section: 3rem;
   --space-region: 4.5rem;
 }
 
@@ -153,8 +150,16 @@ input:focus-visible {
   gap: var(--space-region);
   max-inline-size: var(--frame-maximum);
   margin-inline: auto;
-  padding-block: var(--space-section);
+  padding-block: 2.75rem;
   padding-inline: var(--page-gutter);
+}
+
+:root[data-composition="editorial"] .site-frame {
+  padding-block: 4rem;
+}
+
+:root[data-composition="tension"] .site-frame {
+  padding-block: 3rem;
 }
 
 .site-header,
@@ -225,18 +230,30 @@ input:focus-visible {
   display: inline;
 }
 
-:root[data-composition="editorial"] .site-header {
-  padding-block-end: var(--space-cluster);
-  border-block-end: 1px solid var(--color-rule);
+:root[data-composition="editorial"][data-editorial-rules="true"]
+  :is(.site-header, .site-footer) {
+  position: relative;
 }
 
-:root[data-composition="editorial"] .site-main {
-  padding-block: var(--space-section);
+:root[data-composition="editorial"][data-editorial-rules="true"]
+  .site-header::after,
+:root[data-composition="editorial"][data-editorial-rules="true"]
+  .site-footer::before {
+  position: absolute;
+  inset-inline: 0;
+  block-size: 1px;
+  content: "";
+  background: var(--color-rule);
 }
 
-:root[data-composition="editorial"] .site-footer {
-  padding-block-start: var(--space-cluster);
-  border-block-start: 1px solid var(--color-rule);
+:root[data-composition="editorial"][data-editorial-rules="true"]
+  .site-header::after {
+  inset-block-end: 0;
+}
+
+:root[data-composition="editorial"][data-editorial-rules="true"]
+  .site-footer::before {
+  inset-block-start: 0;
 }
 
 :root[data-composition="tension"] .identity-cluster,
