@@ -8,9 +8,10 @@
 
 **Gate A:** PASS / FROZEN — Content Semantics & URL Contract
 
-**Gate B:** NEXT / NOT STARTED — Content Schema & Route Eligibility Implementation
+**Gate B:** IN PROGRESS — Content Schema & Route Eligibility Implementation
 
-**Gate B authorization:** NOT AUTHORIZED UNTIL GATE A MERGES TO PROTECTED `main`
+**Gate B authorization:** AUTHORIZED — Gate A merged to protected `main` at
+`2a716e5c87e1ac8d6af70b0ac696c3eb4eae2c53`
 
 **Publishing surfaces:** NOT AUTHORIZED
 
@@ -593,7 +594,7 @@ Gate A `PASS / FROZEN` on protected `main` authorizes Gate B to implement the
 content contract. It does not authorize a Publishing surface or production
 navigation change.
 
-### Gate B — Content Schema & Route Eligibility Implementation (NEXT / NOT STARTED)
+### Gate B — Content Schema & Route Eligibility Implementation (IN PROGRESS)
 
 Gate B begins only after Gate A is `PASS / FROZEN` on protected `main`.
 
