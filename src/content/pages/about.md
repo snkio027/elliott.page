@@ -1,5 +1,5 @@
 ---
-title: About
+title: 关于
 description: 关于 Elliott Bai，以及这个长期个人空间。
 lang: zh-CN
 draft: false

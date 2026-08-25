@@ -203,9 +203,17 @@ Required invariants:
 - no feed, project list, social directory, portrait, or status excerpt is added.
 
 The current production sentence is provisional implementation copy. Gate A does
-not silently approve it as final. Gate B may begin only with an explicitly
-approved Home place statement; evaluation copy from a specimen is never promoted
-by default.
+not silently approve it as final. After Gate A authorization, Gate B may implement
+candidate publication copy and bind it to an exact implementation revision. Gate B
+may pass only after Elliott explicitly approves that final public copy on the exact
+candidate revision; Gate C may not start before then. Evaluation copy from a
+specimen is never promoted by default.
+
+This is a narrow lifecycle correction to the frozen Gate A wording. The earlier
+requirement for approval before Gate B could begin was incompatible with the exact
+candidate-revision approval model in Section 12; it did not change the publication
+authority or permit Gate B, Gate C, merge, or deployment to proceed without
+Elliott's explicit approval.
 
 Home metadata is:
 
