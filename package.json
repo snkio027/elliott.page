@@ -16,8 +16,9 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",
+    "test:content": "node --test tests/content-contract.test.ts",
     "check": "astro check",
-    "quality": "pnpm format:check && pnpm lint && pnpm check && pnpm build"
+    "quality": "pnpm format:check && pnpm lint && pnpm test:content && pnpm check && pnpm build"
   },
   "dependencies": {
     "astro": "7.2.4"
@@ -25,8 +26,12 @@
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@eslint/js": "10.0.1",
+    "@types/node": "24.13.3",
     "eslint": "10.8.1",
     "eslint-plugin-astro": "3.1.0",
+    "mdast-util-from-markdown": "2.0.3",
+    "mdast-util-gfm": "3.1.0",
+    "micromark-extension-gfm": "3.0.0",
     "prettier": "3.9.6",
     "prettier-plugin-astro": "0.14.1",
     "typescript": "6.0.3",

@@ -2,9 +2,14 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
+import {
+  notesSchema,
+  publishingMarkdownLoader,
+  writingSchema,
+} from "./content/content-contract.ts";
+
 const nonEmptyString = z.string().trim().min(1);
 const language = z.enum(["en", "zh-CN"]);
-const tags = z.array(nonEmptyString).default([]);
 const draft = z.boolean().default(true);
 const dateOnlyString = z
   .string()
@@ -21,38 +26,14 @@ const dateOnlyString = z
     { error: "updated must be a valid calendar date" },
   );
 
-const datedContent = {
-  title: nonEmptyString,
-  date: z.coerce.date(),
-  updated: z.coerce.date().optional(),
-  tags,
-  lang: language,
-  draft,
-};
-
 const writing = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/writing" }),
-  schema: z
-    .object({
-      ...datedContent,
-      description: nonEmptyString,
-    })
-    .strict()
-    .refine(({ date, updated }) => !updated || updated >= date, {
-      error: "updated must not be earlier than date",
-      path: ["updated"],
-    }),
+  loader: publishingMarkdownLoader("./src/content/writing"),
+  schema: writingSchema,
 });
 
 const notes = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/notes" }),
-  schema: z
-    .object(datedContent)
-    .strict()
-    .refine(({ date, updated }) => !updated || updated >= date, {
-      error: "updated must not be earlier than date",
-      path: ["updated"],
-    }),
+  loader: publishingMarkdownLoader("./src/content/notes"),
+  schema: notesSchema,
 });
 
 const pages = defineCollection({

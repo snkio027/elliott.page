@@ -26,9 +26,12 @@ from unobserved runtime evidence.
 Phase 2 — Publishing is in progress. Phase 2.1 — Content Semantics & URL Contract
 and its Gate A are `PASS / FROZEN` after local and Required
 `Delivery / Quality` plus substantive delta review. Gate B — Content Schema &
-Route Eligibility is `NEXT / NOT STARTED` and remains unauthorized until the Gate A
-PR merges to protected `main`. No Writing or Notes production surface is currently
-authorized.
+Route Eligibility is also `PASS / FROZEN`: its executable schemas, content
+integrity, stable identity, eligibility, ordering, and fail-closed evidence passed
+local and Required Quality, 11 content-contract tests, and substantive delta
+review. These primitives are available to later Publishing surfaces, but no
+Writing or Notes production surface is currently authorized. Phase 2.2 — Writing
+Surface is next and has not started.
 
 ## Runtime
 
