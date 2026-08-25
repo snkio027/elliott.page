@@ -332,8 +332,13 @@ Changing, removing, or moving an already-public Note ID remains governed by the
 Phase 2.1 permanence contract. Moving a Note to Writing would create a different
 collection identity and is not a routine content edit.
 
-Short or provisional content does not weaken URL permanence. A Note's public URL
-is an interface for as long as the thought remains addressable.
+Short or provisional content does not weaken URL permanence. Once public, a
+Note's URL remains governed by the Phase 2.1 permanence contract even if the
+thought later changes, matures, or no longer reflects Elliott's current view.
+
+Withdrawal, reclassification, or migration requires an explicit Phase 2.1
+exception or a future reviewed redirect/tombstone path. It must not silently turn
+an already-public Note URL into a normal 404.
 
 ## 9. Notes index contract
 
@@ -607,7 +612,45 @@ titles.
 Gate C also proves that a draft stable ID has no public route or output. Test-only
 fixtures may supply this evidence without fake production content.
 
-### 15.2 Structure and language evidence
+### 15.2 Existing Writing sibling regression evidence
+
+Notes activation changes the shared primary navigation and therefore must prove
+that the already-public Writing interface has not regressed. At minimum:
+
+```text
+/writing/                              → 200
+every already-public Writing detail   → 200
+
+Writing index
+└── Writing aria-current="page"
+
+Writing detail
+└── Writing aria-current="location"
+```
+
+The detail-route check derives from the candidate's complete already-public
+Writing inventory. The Contract does not maintain a second hard-coded URL list.
+
+An audited candidate diff must prove that Notes activation leaves every public
+Writing stable ID, canonical route, title, description, date, updated value,
+language, and complete Markdown body unchanged. Existing publication approval
+therefore carries forward under the frozen Writing continuity model rather than
+being inferred from a successful build.
+
+Shared-navigation validation must prove that inserting Notes does not regress:
+
+- the exact Writing index or detail canonical href;
+- index `aria-current="page"` and detail `aria-current="location"` semantics;
+- visible non-color current and focus treatment;
+- native keyboard order through the shared Header and Writing page content;
+- the terminal availability of every already-public Writing route.
+
+Gate C does not repeat the complete Phase 2.2 typography, 200% text, or long-prose
+matrix when the affected Writing implementation is unchanged. If the Notes
+candidate changes shared rendering or styles beyond navigation insertion, sibling
+regression evidence expands to cover every affected frozen Writing behavior.
+
+### 15.3 Structure and language evidence
 
 Required checks:
 
@@ -624,7 +667,7 @@ Required checks:
 - Writing remains active and no deferred surface appears;
 - native links and Note content work without client JavaScript.
 
-### 15.3 Responsive and accessibility evidence
+### 15.4 Responsive and accessibility evidence
 
 Required evidence covers:
 
@@ -664,6 +707,9 @@ Gate A passes only when:
 - detail H1/body ownership and update display are exact;
 - primary navigation order and Notes current-location semantics are exact;
 - first-publication approval and approval continuity bind to audited revisions;
+- existing public Writing routes, canonical links, current-state semantics,
+  approved copy, and shared-navigation focus behavior have executable sibling
+  regression evidence;
 - Gate C has executable route, URL, structure, responsive, and accessibility
   criteria;
 - Writing remains active and every deferred concern remains absent;
