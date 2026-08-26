@@ -12,10 +12,10 @@
 
 **Gate A:** PASS / FROZEN — Notes Surface Contract
 
-**Gate B:** NEXT / NOT STARTED / NOT AUTHORIZED — Candidate Implementation +
-Public Content
+**Gate B:** IN PROGRESS — Candidate Implementation + Public Content
 
-**Gate B authorization:** NOT AUTHORIZED UNTIL Gate A merges to protected `main`
+**Gate B authorization:** AUTHORIZED — Gate A merged to protected `main` at
+`9a0909d0abba66502d04a23987bdcd7aab2c3865`
 
 **Gate C:** NOT STARTED / NOT AUTHORIZED — Runtime, Accessibility & URL
 Validation
@@ -23,6 +23,14 @@ Validation
 **Notes production merge/deploy:** NOT AUTHORIZED
 
 **Forced Colors:** UNVERIFIED / DEFERRED
+
+**Publication approval:** PENDING — first Note and Notes-index copy require
+Elliott approval on the exact candidate revision
+
+**Gate B candidate:** LOCAL IMPLEMENTATION / PUBLICATION APPROVAL PENDING
+
+**Gate B evidence:** LOCAL QUALITY / REQUIRED `Delivery / Quality` / SUBSTANTIVE
+IMPLEMENTATION REVIEW PENDING
 
 **Gate A evidence:** LOCAL `pnpm quality` PASS / REQUIRED `Delivery / Quality`
 PASS / SUBSTANTIVE DELTA REVIEW PASS

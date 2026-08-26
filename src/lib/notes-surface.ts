@@ -5,24 +5,24 @@ import {
 } from "../content/content-contract.ts";
 
 export {
-  formatPublishingDate as formatWritingDate,
-  publishingDateLabels as writingDateLabels,
+  formatPublishingDate as formatNoteDate,
+  publishingDateLabels as noteDateLabels,
 } from "./publishing-presentation.ts";
 
-export function requirePublicWriting<TEntry extends PublishingEntry>(
+export function requirePublicNotes<TEntry extends PublishingEntry>(
   entries: readonly TEntry[],
 ) {
   const ordered = orderPublicEntries(entries);
 
   if (ordered.length === 0) {
     throw new Error(
-      "The active Writing surface requires at least one eligible entry",
+      "The active Notes surface requires at least one eligible entry",
     );
   }
 
   return ordered;
 }
 
-export function writingPathFor(stableId: string) {
-  return publishingPathFor("writing", stableId);
+export function notesPathFor(stableId: string) {
+  return publishingPathFor("notes", stableId);
 }

@@ -43,10 +43,11 @@ permanent public URL.
 
 Phase 2.3 — Notes Surface is in progress. Gate A — Notes Surface Contract is
 `PASS / FROZEN` after Local and Required `Delivery / Quality` plus substantive
-delta review. Gate B — Candidate Implementation + Public Content is `NEXT / NOT
-STARTED` and remains unauthorized until Gate A merges to protected `main`. Public
-Note content, `/notes/` routes, Notes navigation, Gate C, and Notes production
-activation remain unauthorized.
+delta review. Gate B — Candidate Implementation + Public Content is authorized and
+in progress on a non-production candidate. Its first Note and Notes-index copy
+remain publication-approval pending; Gate C, protected-main merge, and Notes
+production activation remain unauthorized. Writing production remains the active,
+frozen sibling surface.
 
 ## Runtime
 
