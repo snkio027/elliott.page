@@ -41,13 +41,15 @@ bound to evidence-bearing HEAD
 `UNVERIFIED / DEFERRED`. The first Writing surface is active in production at its
 permanent public URL.
 
-Phase 2.3 — Notes Surface is in progress. Gate A — Notes Surface Contract is
-`PASS / FROZEN` after Local and Required `Delivery / Quality` plus substantive
-delta review. Gate B — Candidate Implementation + Public Content is authorized and
-in progress on a non-production candidate. Its first Note and Notes-index copy
-remain publication-approval pending; Gate C, protected-main merge, and Notes
-production activation remain unauthorized. Writing production remains the active,
-frozen sibling surface.
+Phase 2.3 — Notes Surface is `PASS / FROZEN`. Gate A — Notes Surface Contract,
+Gate B — Candidate Implementation + Public Content, and Gate C — Runtime,
+Accessibility & URL Validation are all `PASS / FROZEN`. Publication approval is
+bound to evidence-bearing HEAD
+`979712764f923517b99535118cde76fb9ad0f41f`; Forced Colors remains
+`UNVERIFIED / DEFERRED`. Notes production merge/deploy remains unauthorized until
+the lifecycle-only status diff passes Required `Delivery / Quality` and final
+status-diff confirmation. Writing production remains the active, frozen sibling
+surface.
 
 ## Runtime
 
