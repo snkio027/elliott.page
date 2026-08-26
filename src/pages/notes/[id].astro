@@ -1,0 +1,58 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatNoteDate,
+  noteDateLabels,
+  requirePublicNotes,
+} from "../../lib/notes-surface.ts";
+
+export async function getStaticPaths() {
+  const notes = requirePublicNotes(await getCollection("notes"));
+
+  return notes.map((note) => ({
+    params: { id: note.id },
+    props: { note },
+  }));
+}
+
+interface Props {
+  note: CollectionEntry<"notes">;
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+const labels = noteDateLabels(note.data.lang);
+const showUpdated =
+  note.data.updated !== undefined && note.data.updated !== note.data.date;
+---
+
+<BaseLayout title={`${note.data.title} — Elliott.page`} lang={note.data.lang}>
+  <article class="type-region" aria-labelledby="notes-detail-title">
+    <h1 id="notes-detail-title" class="type-title">
+      {note.data.title}
+    </h1>
+    <div class="meta-line notes-dates">
+      <span>
+        {labels.published}{" "}
+        <time datetime={note.data.date}
+          >{formatNoteDate(note.data.date, note.data.lang)}</time
+        >
+      </span>
+      {
+        showUpdated && note.data.updated && (
+          <span>
+            {labels.updated}{" "}
+            <time datetime={note.data.updated}>
+              {formatNoteDate(note.data.updated, note.data.lang)}
+            </time>
+          </span>
+        )
+      }
+    </div>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatNoteDate,
+  notesPathFor,
+  requirePublicNotes,
+} from "../../lib/notes-surface.ts";
+
+const notes = requirePublicNotes(await getCollection("notes"));
+const description = "Notes on ideas, questions, and things I am learning.";
+---
+
+<BaseLayout title="Notes — Elliott.page" description={description} lang="en">
+  <section class="type-region" aria-labelledby="notes-title">
+    <h1 id="notes-title" class="type-title">Notes</h1>
+    <ol class="notes-list">
+      {
+        notes.map((note) => (
+          <li class="type-region notes-list-item" lang={note.data.lang}>
+            <h2 class="type-heading-2 notes-item-title">
+              <a href={notesPathFor(note.id)}>{note.data.title}</a>
+            </h2>
+            <p class="meta-line">
+              <time datetime={note.data.date}>
+                {formatNoteDate(note.data.date, note.data.lang)}
+              </time>
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>

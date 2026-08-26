@@ -2,6 +2,7 @@
 import "../styles/tokens.css";
 import "../styles/typography.css";
 import "../styles/layout.css";
+import { primaryNavigationState } from "../lib/primary-navigation.ts";
 
 interface Props {
   title: string;
@@ -10,13 +11,7 @@ interface Props {
 }
 
 const { title, description, lang = "en" } = Astro.props;
-const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
-const writingCurrent =
-  currentPath === "/writing"
-    ? "page"
-    : currentPath.startsWith("/writing/")
-      ? "location"
-      : undefined;
+const current = primaryNavigationState(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -35,27 +30,14 @@ const writingCurrent =
           aria-label="Primary"
           lang="en"
         >
-          <a
-            class="identity-anchor"
-            href="/"
-            aria-current={currentPath === "/" ? "page" : undefined}
-          >
+          <a class="identity-anchor" href="/" aria-current={current.home}>
             Elliott Bai
           </a>
           <span class="destination-group">
-            <a href="/writing/" aria-current={writingCurrent}>Writing</a>
-            <a
-              href="/about/"
-              aria-current={currentPath === "/about" ? "page" : undefined}
-            >
-              About
-            </a>
-            <a
-              href="/now/"
-              aria-current={currentPath === "/now" ? "page" : undefined}
-            >
-              Now
-            </a>
+            <a href="/writing/" aria-current={current.writing}>Writing</a>
+            <a href="/notes/" aria-current={current.notes}>Notes</a>
+            <a href="/about/" aria-current={current.about}> About </a>
+            <a href="/now/" aria-current={current.now}> Now </a>
           </span>
         </nav>
       </header>
