@@ -41,11 +41,12 @@ bound to evidence-bearing HEAD
 `UNVERIFIED / DEFERRED`. The first Writing surface is active in production at its
 permanent public URL.
 
-Phase 2.3 — Notes Surface is in Gate A contract design. Gate B implementation,
-public Note content, `/notes/` routes, Notes navigation, Gate C, and production
-activation remain unauthorized. Gate A changes only the Notes Surface Contract
-and this lifecycle summary; the frozen content Schema and all production source
-remain untouched.
+Phase 2.3 — Notes Surface is in progress. Gate A — Notes Surface Contract is
+`PASS / FROZEN` after Local and Required `Delivery / Quality` plus substantive
+delta review. Gate B — Candidate Implementation + Public Content is `NEXT / NOT
+STARTED` and remains unauthorized until Gate A merges to protected `main`. Public
+Note content, `/notes/` routes, Notes navigation, Gate C, and Notes production
+activation remain unauthorized.
 
 ## Runtime
 

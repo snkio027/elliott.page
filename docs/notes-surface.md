@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 
-**Status:** DRAFT — Phase 2.3: Notes Surface
+**Status:** IN PROGRESS — Phase 2.3: Notes Surface
 
 **Phase 2:** IN PROGRESS — Publishing
 
@@ -10,10 +10,12 @@
 
 **Phase 2.2:** PASS / FROZEN — Writing Surface; production active
 
-**Gate A:** DRAFT — Notes Surface Contract
+**Gate A:** PASS / FROZEN — Notes Surface Contract
 
-**Gate B:** NOT STARTED / NOT AUTHORIZED — Candidate Implementation + Public
-Content
+**Gate B:** NEXT / NOT STARTED / NOT AUTHORIZED — Candidate Implementation +
+Public Content
+
+**Gate B authorization:** NOT AUTHORIZED UNTIL Gate A merges to protected `main`
 
 **Gate C:** NOT STARTED / NOT AUTHORIZED — Runtime, Accessibility & URL
 Validation
@@ -22,8 +24,13 @@ Validation
 
 **Forced Colors:** UNVERIFIED / DEFERRED
 
-**Gate A evidence:** PENDING — Local `pnpm quality`, Required
-`Delivery / Quality`, and substantive review
+**Gate A evidence:** LOCAL `pnpm quality` PASS / REQUIRED `Delivery / Quality`
+PASS / SUBSTANTIVE DELTA REVIEW PASS
+
+**Lifecycle closure:** This status-only revision inherits substantive Gate A
+evidence only if its audited diff changes lifecycle authority and no Contract or
+implementation semantics. It must pass Local `pnpm quality`, Required
+`Delivery / Quality`, and status-diff confirmation before protected-main merge.
 
 **Depends on:** `information-and-page-semantics.md`, `typography.md`,
 `layout-and-visual-composition.md`, `identity-surfaces.md`,
@@ -691,7 +698,7 @@ supporting evidence, not a forced-colors pass.
 
 ## 16. Decision gates
 
-### Gate A — Notes Surface Contract (DRAFT)
+### Gate A — Notes Surface Contract (PASS / FROZEN)
 
 Gate A passes only when:
 
@@ -719,7 +726,7 @@ Gate A passes only when:
 Gate A `PASS / FROZEN` on protected `main` authorizes Gate B to implement the first
 Notes candidate. It does not authorize Gate C, merge, deploy, or Notes production.
 
-### Gate B — Candidate Implementation + Public Content (NOT AUTHORIZED)
+### Gate B — Candidate Implementation + Public Content (NEXT / NOT STARTED / NOT AUTHORIZED UNTIL GATE A MERGES)
 
 Gate B begins only after Gate A is `PASS / FROZEN` on protected `main`.
 
