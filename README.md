@@ -63,8 +63,36 @@ version declared in `package.json` through Corepack.
 
 ```sh
 pnpm install --frozen-lockfile
+pnpm exec playwright install chromium
 pnpm dev
 pnpm quality
 ```
 
 `pnpm quality` is the single local and CI quality gate.
+
+## Writing browser regression
+
+`pnpm test:e2e` builds the site, starts a fresh loopback-only preview server, and
+runs Chromium at desktop 1440 × 900 and mobile 390 × 844. It follows every
+published Writing link from `/writing/`, checks the article heading and body,
+then returns through the existing Primary / Writing link. Each page is checked
+for horizontal document overflow; console errors, uncaught page errors, failed
+requests and HTTP errors fail the test.
+
+The suite is included in `pnpm quality`. It does not reuse an existing server:
+port 4321 must be free, so stale content cannot silently satisfy the checks. Tests
+have bounded timeouts and no retries. On Linux, install browser OS dependencies
+with `pnpm exec playwright install --with-deps chromium` (as CI does).
+The test server sets `ASTRO_PREVIEW_BACKGROUND=0` so Astro stays in the foreground
+under AI-agent shells and Playwright owns startup and shutdown.
+
+Failures retain screenshots, a Playwright trace and `browser-diagnostics` JSON in
+`test-results/`, plus the HTML report in `playwright-report/`. Both directories
+are local generated output, excluded from Git, formatting and linting. Open a
+report with `pnpm exec playwright show-report`; CI uploads failure evidence for
+seven days. A later run replaces these output directories, so copy any evidence
+you need to retain before rerunning.
+
+This is a navigation/layout/browser-error regression, not a visual snapshot,
+content publication approval, or a Safari/Firefox compatibility claim. Frozen
+Writing content, URL semantics and visual design are unchanged.
